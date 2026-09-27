@@ -1,1 +1,1 @@
-Foundation option folders: typography, color, spacing, radius, elevation, motion, z-index, breakpoints-grid, iconography, borders-opacity, focus-accessibility, layout-composition; typography and spacing contain five options; other categories contain descriptions only.
+Foundation option folders: typography, color, spacing, radius, elevation, motion, z-index, breakpoints-grid, iconography, borders-opacity, focus-accessibility, layout-composition; typography, spacing and color contain nine options; other categories contain descriptions only.

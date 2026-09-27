@@ -1,6 +1,6 @@
 # Source policy and licence checks
 
-Aligned to Workstream C1–C7 of the transformation plan dated 2026-09-27. All entries checked **2026-09-27**. Repository evidence is pinned to full commit revisions; live website terms have no repository revision and are explicitly dated observations.
+Aligned to Workstream C1–C7 of the transformation plan dated 2026-09-27. Initial register checked **2026-09-27**; colour imports were rechecked **2026-09-28** as recorded below. Repository evidence is pinned to full commit revisions; live website terms have no repository revision and are explicitly dated observations.
 
 ## Material used in this package
 
@@ -10,7 +10,17 @@ Aligned to Workstream C1–C7 of the transformation plan dated 2026-09-27. All e
 | Same Tailwind revision, [default-theme.ts](https://github.com/tailwindlabs/tailwindcss/blob/fa81d697fe572a10ac150d18964a093a7a874081/packages/tailwindcss/src/compat/default-theme.ts), MIT | Selected spacing values | `foundations/spacing/options/base-4/{tokens.css,tokens.json,README.md}`: renamed; subset selected; 0px normalized to 0rem. Density mappings independently derived. | 2026-09-27 |
 | Independently derived | Compact/editorial type values, base-8 values, all density mappings and remaining choices | Derivations and field-level source IDs in each option's README/JSON. Templates/specs are original writing. | 2026-09-27 |
 
-[The Tailwind MIT notice](LICENSES/Tailwind-CSS-MIT.txt) is retained verbatim. All other registered sources below remain candidates or principles-only references: no values, structures, copy, code or assets taken in this package. Inter appears as an optional family name; no font files are bundled. For future imports record exact revision, paths, destination, changes, licence, date and what was taken.
+[The Tailwind MIT notice](LICENSES/Tailwind-CSS-MIT.txt) is retained verbatim. The additional colour imports are recorded below; sources not listed as used remain candidates or principles-only references. Inter appears as an optional family name; no font files are bundled. For future imports record exact revision, paths, destination, changes, licence, date and what was taken.
+
+## Colour package imports — checked 2026-09-28
+
+| Source / revision | Taken and destination | Modifications / notice |
+|---|---|---|
+| Radix Colors `dbdb85470547c7d34b9001f48fddb08ded335979`, `src/light.ts` and `src/dark.ts`, MIT | Seven opaque ramps in `scripts/sources/color-values.json`; `radix-12-step`, `functional-roles`, `simple-roles` | Values unchanged; names/variant organization and role mappings independently defined. [MIT notice](LICENSES/Radix-Colors-MIT.txt). Step jobs preserved with independently worded labels; [role reference](https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale). |
+| Tailwind CSS `fa81d697fe572a10ac150d18964a093a7a874081`, `packages/tailwindcss/theme.css`, MIT | Seven 50–950 ramps, `tailwind-11-step` | Original OKLCH retained as `sourceValue`; converted to clipped byte-rounded sRGB for web/native parity. Role mappings independent. [MIT notice](LICENSES/Tailwind-CSS-MIT.txt). |
+| Primer primitives `f48bc063f7bc0fb3e447386a8c259650ce46dea8`, `src/tokens/functional/color/fgColor.json5`, MIT | Role-separation influence for `functional-roles` | No Primer values or prose copied. Names and cross-product are our own. [Notice](LICENSES/Primer-Primitives-MIT.txt). |
+
+No restricted material or fonts added. Black/white endpoints are independently specified. The generated specimen embeds these values; notices remain in the kit and source attribution is available in each option README. Source URLs and exact source paths are retained in JSON. Palette contrast promises are limited to declared pairs, not every possible pair.
 
 ## Permissive repository material
 

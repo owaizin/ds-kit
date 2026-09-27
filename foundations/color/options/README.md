@@ -1,1 +1,1 @@
-Reserved for independently authored or permitted color options with provenance and tradeoffs; no options are included.
+Choose a palette model when defining project roles, or a supplied semantic contract when its naming fits. Each option is a literal upstream snapshot; project aliases remain separate. Compare the four options in ../../../specimens/index.html.

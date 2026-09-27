@@ -34,3 +34,21 @@ Not checked: a native renderer, screen-reader behavior, all font fallbacks/langu
 - [375px dark form](screenshots/mobile-dark.png)
 
 Screenshots are browser captures, not generated previews. Applied uses compact-ui/base-4 at compact density; settings were toggled during interaction testing. The checks panel separates audit results from numerical validation. [Upstream configuration resolution](../docs/upstream-layer-gap.md).
+
+## Colour and Current additions — 2026-09-28
+
+Four colour options add six neutral/mode variants each. The scale view shows step/role swatches and measured pairs; applied compositions consume the selected values. All 552 declared pairs pass full-precision WCAG 2 thresholds. Body/error text measured from rendered styles also passed in all 24 colour × neutral × mode combinations (minimum observed body contrast 15.881:1; error text 12.121:1). This does not certify every rendered pairing or full accessibility.
+
+Current appears beside options in Compare. The committed input is a real engine audit of `fixtures/current/example.css`, invented for this kit. Value rows come from the unfiltered ordinary-CSS inventory: 5 font-size occurrences / 4 distinct values, 7 spacing occurrences / 5 distinct values, 7 colour occurrences / 6 distinct values. References remain source strings, not resolved values. Older audits fall back to finding hits with an explicit coverage limitation. Token declarations and markup are not reconstructed.
+
+The local file picker was tested with the invented audit: it updated the comparison. An invalid config JSON produced an error and retained the previous report. The file stays in memory; no upload, storage or generated-file mutation is implemented. All four compositions rendered in every colour variant with no console warnings/errors. Comparison containment checked at 320, 375, 768, 1024 and 1440px; a 320px navigation/file-input overflow was fixed and rechecked. Wider comparisons scroll within the comparison region.
+
+Fresh captures:
+
+- [Colour swatches and step roles](screenshots/colour-scale.png)
+- [Current font sizes beside typography options](screenshots/current-type.png)
+- [Current colours beside colour options](screenshots/current-colour.png)
+- [Applied, light](screenshots/colour-applied-light.png)
+- [Applied, dark](screenshots/colour-applied-dark.png)
+
+Previous captures above are historical evidence from before A13. Native rendering and screen-reader behavior remain unverified.

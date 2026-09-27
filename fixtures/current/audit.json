@@ -1,0 +1,845 @@
+{
+  "manifest": {
+    "tool": "ds-loop",
+    "command": "audit",
+    "target": "all",
+    "fixtureLabel": "ds-kit",
+    "fixtureSha": "git:c48ef043cf06",
+    "adapter": "css-custom-props@0.3.0 + css-rule-bodies@0.1.0",
+    "configHash": "b158c121",
+    "ranAt": "2026-09-27T19:18:14.379Z"
+  },
+  "styleInventory": {
+    "color": {
+      "values": [
+        {
+          "value": "#333333",
+          "property": "color",
+          "classification": "color",
+          "occurrences": 2
+        },
+        {
+          "value": "#111827",
+          "property": "color",
+          "classification": "color",
+          "occurrences": 1
+        },
+        {
+          "value": "#64748b",
+          "property": "color",
+          "classification": "color",
+          "occurrences": 1
+        },
+        {
+          "value": "#b91c1c",
+          "property": "color",
+          "classification": "color",
+          "occurrences": 1
+        },
+        {
+          "value": "#f8fafc",
+          "property": "background",
+          "classification": "color",
+          "occurrences": 1
+        },
+        {
+          "value": "#ffffff",
+          "property": "background",
+          "classification": "color",
+          "occurrences": 1
+        }
+      ],
+      "occurrences": 7,
+      "distinctValues": 6,
+      "literals": 7,
+      "references": 0,
+      "mixed": 0,
+      "unclassified": 0,
+      "excluded": 0,
+      "topFiles": [
+        {
+          "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+          "occurrences": 7
+        }
+      ],
+      "tokenizationRatio": 0
+    },
+    "spacing": {
+      "values": [
+        {
+          "value": "12px",
+          "property": "gap",
+          "classification": "dimension",
+          "occurrences": 1
+        },
+        {
+          "value": "12px",
+          "property": "padding",
+          "classification": "dimension",
+          "occurrences": 1
+        },
+        {
+          "value": "16px",
+          "property": "margin",
+          "classification": "dimension",
+          "occurrences": 1
+        },
+        {
+          "value": "16px",
+          "property": "padding",
+          "classification": "dimension",
+          "occurrences": 1
+        },
+        {
+          "value": "4px",
+          "property": "margin",
+          "classification": "dimension",
+          "occurrences": 1
+        },
+        {
+          "value": "8px",
+          "property": "gap",
+          "classification": "dimension",
+          "occurrences": 1
+        },
+        {
+          "value": "var(--example-scale-4, 16px)",
+          "property": "padding",
+          "classification": "reference",
+          "occurrences": 1
+        }
+      ],
+      "occurrences": 7,
+      "distinctValues": 5,
+      "literals": 6,
+      "references": 1,
+      "mixed": 0,
+      "unclassified": 0,
+      "excluded": 0,
+      "topFiles": [
+        {
+          "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+          "occurrences": 7
+        }
+      ],
+      "tokenizationRatio": 0.14285714285714285
+    },
+    "typography": {
+      "values": [
+        {
+          "value": "14px",
+          "property": "font-size",
+          "classification": "dimension",
+          "occurrences": 2
+        },
+        {
+          "value": "13px",
+          "property": "font-size",
+          "classification": "dimension",
+          "occurrences": 1
+        },
+        {
+          "value": "16px",
+          "property": "font-size",
+          "classification": "dimension",
+          "occurrences": 1
+        },
+        {
+          "value": "24px",
+          "property": "font-size",
+          "classification": "dimension",
+          "occurrences": 1
+        }
+      ],
+      "occurrences": 5,
+      "distinctValues": 4,
+      "literals": 5,
+      "references": 0,
+      "mixed": 0,
+      "unclassified": 0,
+      "excluded": 0,
+      "topFiles": [
+        {
+          "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+          "occurrences": 5
+        }
+      ],
+      "tokenizationRatio": 0
+    }
+  },
+  "rulesRun": [
+    "token/upstream-bypass",
+    "token/tier-leakage",
+    "color/semantic-holds-literal",
+    "color/literal-duplicate-tokens",
+    "token/semantic-name-describes-appearance",
+    "token/var-missing-fallback",
+    "token/tier-model-undetectable",
+    "token/raw-dimension-in-semantic",
+    "token/raw-value-in-markup",
+    "token/stock-palette-utility",
+    "color/near-duplicate-primitives",
+    "color/mixed-storage-forms",
+    "color/no-intent-plateau",
+    "token/raw-value-in-style"
+  ],
+  "findings": [
+    {
+      "ruleId": "token/raw-value-in-style",
+      "severity": "high",
+      "summary": "7 color property value(s) contain literals in ordinary CSS (6 distinct); project permission not judged",
+      "where": "color: #333333 at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:3; background: #ffffff at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:3; color: #333333 at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:4; background: #f8fafc at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:4; color: #b91c1c at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:5; color: #111827 at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:6; color: #64748b at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:7",
+      "fix": "Review these values against the project token contract. Where a shared role applies, choose its token and verify affected states. Retain intentional literals with a recorded reason; this finding does not establish a policy violation.",
+      "data": {
+        "category": "color",
+        "count": 7,
+        "hits": [
+          {
+            "value": "#333333",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 3,
+            "selector": ".example-table",
+            "property": "color",
+            "tokenName": null,
+            "surface": "style",
+            "category": "color",
+            "classification": "color",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "#ffffff",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 3,
+            "selector": ".example-table",
+            "property": "background",
+            "tokenName": null,
+            "surface": "style",
+            "category": "color",
+            "classification": "color",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "#333333",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 4,
+            "selector": ".example-form",
+            "property": "color",
+            "tokenName": null,
+            "surface": "style",
+            "category": "color",
+            "classification": "color",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "#f8fafc",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 4,
+            "selector": ".example-form",
+            "property": "background",
+            "tokenName": null,
+            "surface": "style",
+            "category": "color",
+            "classification": "color",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "#b91c1c",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 5,
+            "selector": ".example-error",
+            "property": "color",
+            "tokenName": null,
+            "surface": "style",
+            "category": "color",
+            "classification": "color",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "#111827",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 6,
+            "selector": ".example-title",
+            "property": "color",
+            "tokenName": null,
+            "surface": "style",
+            "category": "color",
+            "classification": "color",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "#64748b",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 7,
+            "selector": ".example-note",
+            "property": "color",
+            "tokenName": null,
+            "surface": "style",
+            "category": "color",
+            "classification": "color",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          }
+        ]
+      },
+      "suggestion": {
+        "basis": "Value candidates only; cascade, mode, semantic role and replacement safety are not established. No automatic replacement.",
+        "values": [
+          {
+            "value": "#333333",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 3,
+            "property": "color",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "#ffffff",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 3,
+            "property": "background",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "#333333",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 4,
+            "property": "color",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "#f8fafc",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 4,
+            "property": "background",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "#b91c1c",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 5,
+            "property": "color",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "#111827",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 6,
+            "property": "color",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "#64748b",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 7,
+            "property": "color",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          }
+        ],
+        "resolutionLimits": []
+      },
+      "impact": "Literal parts do not follow token changes; whether that matters depends on this property and the project contract."
+    },
+    {
+      "ruleId": "token/raw-value-in-style",
+      "severity": "high",
+      "summary": "6 spacing property value(s) contain literals in ordinary CSS (4 distinct); project permission not judged",
+      "where": "padding: 12px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:3; gap: 8px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:3; padding: 16px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:4; gap: 12px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:4; margin: 4px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:5; margin: 16px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:6",
+      "fix": "Review these values against the project token contract. Where a shared role applies, choose its token and verify affected states. Retain intentional literals with a recorded reason; this finding does not establish a policy violation.",
+      "data": {
+        "category": "spacing",
+        "count": 6,
+        "hits": [
+          {
+            "value": "12px",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 3,
+            "selector": ".example-table",
+            "property": "padding",
+            "tokenName": null,
+            "surface": "style",
+            "category": "spacing",
+            "classification": "dimension",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "8px",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 3,
+            "selector": ".example-table",
+            "property": "gap",
+            "tokenName": null,
+            "surface": "style",
+            "category": "spacing",
+            "classification": "dimension",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "16px",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 4,
+            "selector": ".example-form",
+            "property": "padding",
+            "tokenName": null,
+            "surface": "style",
+            "category": "spacing",
+            "classification": "dimension",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "12px",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 4,
+            "selector": ".example-form",
+            "property": "gap",
+            "tokenName": null,
+            "surface": "style",
+            "category": "spacing",
+            "classification": "dimension",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "4px",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 5,
+            "selector": ".example-error",
+            "property": "margin",
+            "tokenName": null,
+            "surface": "style",
+            "category": "spacing",
+            "classification": "dimension",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "16px",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 6,
+            "selector": ".example-title",
+            "property": "margin",
+            "tokenName": null,
+            "surface": "style",
+            "category": "spacing",
+            "classification": "dimension",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          }
+        ]
+      },
+      "suggestion": {
+        "basis": "Value candidates only; cascade, mode, semantic role and replacement safety are not established. No automatic replacement.",
+        "values": [
+          {
+            "value": "12px",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 3,
+            "property": "padding",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "8px",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 3,
+            "property": "gap",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "16px",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 4,
+            "property": "padding",
+            "status": "exact",
+            "candidates": [
+              {
+                "token": "--example-scale-4",
+                "value": "1rem",
+                "match": "exact",
+                "distance": 0,
+                "metric": "identity",
+                "tier": "primitive",
+                "aliasChain": [
+                  "--example-scale-4"
+                ],
+                "declarations": [
+                  {
+                    "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+                    "line": 2,
+                    "selector": ":root",
+                    "property": "--example-scale-4",
+                    "tokenName": "--example-scale-4",
+                    "surface": null,
+                    "category": null,
+                    "fixtureSha": "git:c48ef043cf06",
+                    "adapterId": "css-custom-props",
+                    "adapterVersion": "0.3.0",
+                    "classification": "dimension",
+                    "reason": "raw length literal"
+                  }
+                ],
+                "preferred": true
+              }
+            ],
+            "limits": [
+              "rem normalization assumes rootFontSize=16px; computed root not measured."
+            ]
+          },
+          {
+            "value": "12px",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 4,
+            "property": "gap",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "4px",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 5,
+            "property": "margin",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "16px",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 6,
+            "property": "margin",
+            "status": "exact",
+            "candidates": [
+              {
+                "token": "--example-scale-4",
+                "value": "1rem",
+                "match": "exact",
+                "distance": 0,
+                "metric": "identity",
+                "tier": "primitive",
+                "aliasChain": [
+                  "--example-scale-4"
+                ],
+                "declarations": [
+                  {
+                    "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+                    "line": 2,
+                    "selector": ":root",
+                    "property": "--example-scale-4",
+                    "tokenName": "--example-scale-4",
+                    "surface": null,
+                    "category": null,
+                    "fixtureSha": "git:c48ef043cf06",
+                    "adapterId": "css-custom-props",
+                    "adapterVersion": "0.3.0",
+                    "classification": "dimension",
+                    "reason": "raw length literal"
+                  }
+                ],
+                "preferred": true
+              }
+            ],
+            "limits": [
+              "rem normalization assumes rootFontSize=16px; computed root not measured."
+            ]
+          }
+        ],
+        "resolutionLimits": []
+      },
+      "impact": "Literal parts do not follow token changes; whether that matters depends on this property and the project contract."
+    },
+    {
+      "ruleId": "token/raw-value-in-style",
+      "severity": "medium",
+      "summary": "5 typography property value(s) contain literals in ordinary CSS (4 distinct); project permission not judged",
+      "where": "font-size: 14px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:3; font-size: 16px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:4; font-size: 13px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:5; font-size: 24px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:6; font-size: 14px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:7",
+      "fix": "Review these values against the project token contract. Where a shared role applies, choose its token and verify affected states. Retain intentional literals with a recorded reason; this finding does not establish a policy violation.",
+      "data": {
+        "category": "typography",
+        "count": 5,
+        "hits": [
+          {
+            "value": "14px",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 3,
+            "selector": ".example-table",
+            "property": "font-size",
+            "tokenName": null,
+            "surface": "style",
+            "category": "typography",
+            "classification": "dimension",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "16px",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 4,
+            "selector": ".example-form",
+            "property": "font-size",
+            "tokenName": null,
+            "surface": "style",
+            "category": "typography",
+            "classification": "dimension",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "13px",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 5,
+            "selector": ".example-error",
+            "property": "font-size",
+            "tokenName": null,
+            "surface": "style",
+            "category": "typography",
+            "classification": "dimension",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "24px",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 6,
+            "selector": ".example-title",
+            "property": "font-size",
+            "tokenName": null,
+            "surface": "style",
+            "category": "typography",
+            "classification": "dimension",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          },
+          {
+            "value": "14px",
+            "refs": [],
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 7,
+            "selector": ".example-note",
+            "property": "font-size",
+            "tokenName": null,
+            "surface": "style",
+            "category": "typography",
+            "classification": "dimension",
+            "reason": "literal present in an ordinary CSS property; project permission not judged",
+            "fixtureSha": "git:c48ef043cf06",
+            "adapterId": "css-rule-bodies",
+            "adapterVersion": "0.1.0"
+          }
+        ]
+      },
+      "suggestion": {
+        "basis": "Value candidates only; cascade, mode, semantic role and replacement safety are not established. No automatic replacement.",
+        "values": [
+          {
+            "value": "14px",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 3,
+            "property": "font-size",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "16px",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 4,
+            "property": "font-size",
+            "status": "exact",
+            "candidates": [
+              {
+                "token": "--example-scale-4",
+                "value": "1rem",
+                "match": "exact",
+                "distance": 0,
+                "metric": "identity",
+                "tier": "primitive",
+                "aliasChain": [
+                  "--example-scale-4"
+                ],
+                "declarations": [
+                  {
+                    "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+                    "line": 2,
+                    "selector": ":root",
+                    "property": "--example-scale-4",
+                    "tokenName": "--example-scale-4",
+                    "surface": null,
+                    "category": null,
+                    "fixtureSha": "git:c48ef043cf06",
+                    "adapterId": "css-custom-props",
+                    "adapterVersion": "0.3.0",
+                    "classification": "dimension",
+                    "reason": "raw length literal"
+                  }
+                ],
+                "preferred": true
+              }
+            ],
+            "limits": [
+              "rem normalization assumes rootFontSize=16px; computed root not measured."
+            ]
+          },
+          {
+            "value": "13px",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 5,
+            "property": "font-size",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "24px",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 6,
+            "property": "font-size",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          },
+          {
+            "value": "14px",
+            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "line": 7,
+            "property": "font-size",
+            "status": "no-token",
+            "candidates": [],
+            "limits": []
+          }
+        ],
+        "resolutionLimits": []
+      },
+      "impact": "Literal parts do not follow token changes; whether that matters depends on this property and the project contract."
+    }
+  ],
+  "coverage": {
+    "unreadFormats": {},
+    "partialReads": [
+      {
+        "adapter": "css-custom-props@0.3.0",
+        "extensions": [
+          ".css"
+        ],
+        "reads": "custom-property declarations (--token: value) — not rule bodies, not at-rules"
+      },
+      {
+        "adapter": "css-rule-bodies@0.1.0",
+        "extensions": [
+          ".css"
+        ],
+        "reads": "selected ordinary CSS properties and var() references, including nested rules — no cascade/import resolution, inline styles, or preprocessor syntax; unsupported expressions remain ambiguous"
+      }
+    ],
+    "unreadTokenFiles": [],
+    "unconvertible": {
+      "count": 0,
+      "samples": []
+    },
+    "undecided": {
+      "count": 0,
+      "samples": []
+    },
+    "couldNotJudge": [],
+    "complete": true
+  },
+  "suppressions": [],
+  "ratios": {
+    "literal-colors-per-distinct": 0,
+    "colors-per-distinct-in-scope": 0,
+    "ambiguous-share": 0,
+    "style-tokenization-color": 0,
+    "style-tokenization-spacing": 0.143,
+    "style-tokenization-typography": 0
+  },
+  "next": [
+    {
+      "command": "decide on the rest",
+      "why": "nothing here is mechanically provable — all 3 findings state their choice on the fix line"
+    },
+    {
+      "command": "ds-loop scorecard fixtures/current/example.css",
+      "why": "pin these ratios as run 1 — a ratio only says something against a previous row"
+    },
+    {
+      "command": "ds-loop guard on",
+      "why": "report high-severity findings after each Claude Code edit (never blocks)"
+    }
+  ],
+  "verdict": "issues"
+}

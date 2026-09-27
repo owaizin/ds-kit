@@ -2,7 +2,7 @@
 
 Reusable records and CSS patterns for an agent helping a team establish or maintain a design system. Use this kit with **Design System Loop (`ds-loop`)** to connect measured findings to project decisions, implementation contracts, and verification.
 
-This local kit contains seven original templates, three typography options and two spacing options. It has no reference components, patterns, bundles, CLI, or installer yet. Examples use invented “Example DS” names; they are not client evidence or production recommendations.
+This local kit contains seven original templates, three typography options, two spacing options and four colour options. It has no reference components, patterns, bundles, CLI, or installer yet. Examples use invented “Example DS” names; they are not client evidence or production recommendations.
 
 ## Use with ds-loop
 
@@ -24,30 +24,35 @@ This local kit contains seven original templates, three typography options and t
 | Work needs a clear disposition and next entry point | [Completion record](templates/completion-record.md) | `specs/completion/control-spacing.md` |
 | Discovery has surfaced problems to investigate | [Problem list](templates/problem-list.md) | the existing investigation or issue record |
 
-## Typography and spacing options
+## Foundation options
 
 - Typography: [compact-ui](foundations/typography/options/compact-ui/README.md), [default-ui](foundations/typography/options/default-ui/README.md), [editorial](foundations/typography/options/editorial/README.md).
 - Spacing: [base-4](foundations/spacing/options/base-4/README.md), [base-8](foundations/spacing/options/base-8/README.md).
 
 Choose one option per foundation and adapt its spec to the project. Each contains exactly README.md, tokens.css, tokens.json and spec.md. CSS is layer-1 literal values; density mappings and text roles still need project aliases and real consumers. Values and sources are documented per option; Inter remains optional, with no bundled fonts.
 
-Run `node scripts/check-options.mjs` and `node --test scripts/check-options.test.mjs` (Node 22+; no dependencies). [Checker scope](scripts/README.md) separates numerical checks from rendered validation. Each option README contains its actual engine audit. The kit config declares `--ds-*` upstream; all five option audits now have no findings, without suppressions. See [the resolved configuration gap](docs/upstream-layer-gap.md).
+Run `node scripts/check-options.mjs` and `node --test scripts/check-options.test.mjs` (Node 22+; no dependencies). [Checker scope](scripts/README.md) separates numerical checks from rendered validation. Each option README contains its actual engine audit. The kit config declares `--ds-*` upstream; typography and spacing audits have no findings, without suppressions. See [the resolved configuration gap](docs/upstream-layer-gap.md).
+
+- Colour palettes: [radix-12-step](foundations/color/options/radix-12-step/README.md), [tailwind-11-step](foundations/color/options/tailwind-11-step/README.md).
+- Colour roles: [functional-roles](foundations/color/options/functional-roles/README.md), [simple-roles](foundations/color/options/simple-roles/README.md).
+
+Colour options include cool/warm/pure neutrals and light/dark variants. All declared contrast pairs are checked; palette duplication/proximity diagnostics remain in the actual audits.
 
 ## Inspect the options
 
-Open [the self-contained specimen](specimens/index.html) locally. It offers real-size scales, side-by-side comparison, four applied compositions and per-option checks. Select typography, spacing, density, light/dark and a 375px sample width. No fonts or scripts are fetched. The palette is specimen chrome, not a colour foundation.
+Open [the self-contained specimen](specimens/index.html) locally. It offers real-size scales, side-by-side comparison, four applied compositions and per-option checks. Select typography, spacing, density, light/dark and a 375px sample width. No fonts or scripts are fetched. Samples use the selected colour option. The Current column accepts an audit JSON locally; the committed build includes invented Example DS evidence only.
 
 Build with `node scripts/build-specimens.mjs`; verify with `node scripts/build-specimens.mjs --check`. [Browser verification and screenshots](specimens/README.md) cover the exercised web states. Native JSON is checked numerically; React Native rendering remains unverified.
 
 ## Content folders
 
-[Foundations](foundations/README.md) contains the twelve named categories; typography and spacing have the options above, while the other ten are reserved. [Component references](components/reference/README.md), [patterns](patterns/README.md), and [bundles](bundles/README.md) contain only folder descriptions. These reserved folders contain no product implementations.
+[Foundations](foundations/README.md) contains the twelve named categories; typography, spacing and colour have the options above, while the other nine are reserved. [Component references](components/reference/README.md), [patterns](patterns/README.md), and [bundles](bundles/README.md) contain only folder descriptions. These reserved folders contain no product implementations.
 
 Read [SOURCES.md](SOURCES.md) before deriving or importing third-party material. Tailwind-derived token values carry a retained MIT notice; no third-party component implementations or font files are included.
 
 ## Plan alignment and remaining work
 
-Aligned to Workstream C1–C7 and B4/B5/B7 in the transformation plan dated 2026-09-27. C1's source register and C4's seven templates are present. C2 typography and spacing now contain five options; the other ten foundations and C3 reference folder remain scaffold only.
+Aligned to Workstream C1–C7 and B4/B5/B7 in the transformation plan dated 2026-09-27. C1's source register and C4's seven templates are present. C2 typography, spacing and colour now contain nine options; the other nine foundations and C3 reference folder remain scaffold only.
 
 For a project without an existing spec layout, use `specs/foundations/`, `specs/tokens/`, `specs/components/{atoms,molecules,organisms}/`, and `specs/patterns/`. Create component specs only for components that exist. Both spec templates use metadata, overview, anatomy, tokens used, props/API, states, code example, and cross-references; record inapplicable fields explicitly.
 

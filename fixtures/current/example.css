@@ -1,0 +1,7 @@
+/* Independently invented Example DS; deliberately inconsistent specimen input. */
+:root { --example-scale-4: 1rem; }
+.example-table { color: #333333; background: #ffffff; font-size: 14px; padding: 12px; gap: 8px; }
+.example-form { color: #333333; background: #f8fafc; font-size: 16px; padding: 16px; gap: 12px; }
+.example-error { color: #b91c1c; font-size: 13px; margin: 4px; }
+.example-title { color: #111827; font-size: 24px; margin: 16px; }
+.example-note { color: #64748b; font-size: 14px; padding: var(--example-scale-4, 16px); }

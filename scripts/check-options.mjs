@@ -1,3 +1,4 @@
+import { validateColor } from './check-color.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync } from 'node:fs';
@@ -16,7 +17,7 @@ const rem = (value) => {
 // Reject extra CSS rather than claiming parity over declarations we did not read.
 export function validate(data, css) {
   assert.equal(data.format, 'ds-kit-option-v1');
-  assert.equal(data.rootFontSizePx, 16, 'px equivalence tables assume a 16px reference root');
+  if(data.foundation !== 'color') assert.equal(data.rootFontSizePx, 16, 'px equivalence tables assume a 16px reference root');
   const clean = css.replace(/\/\*[\s\S]*?\*\//g, '').trim();
   const block = /^:root\s*\{([^{}]*)\}$/.exec(clean);
   assert.ok(block, 'CSS must be a single :root literal-token block');
@@ -29,6 +30,7 @@ export function validate(data, css) {
     parsed[match[1]] = match[2].trim();
   }
   assert.ok(Object.keys(data.tokens).length > 0, 'No token values');
+  if(data.foundation === 'color') return validateColor(data,parsed);
   const expected = {};
   for (const [name, token] of Object.entries(data.tokens)) {
     assert.match(name, /^--ds-[a-z0-9-]+$/);
@@ -120,7 +122,7 @@ export function validate(data, css) {
 
 export function checkAll(directory = root) {
   let count = 0;
-  for (const [foundation, names] of Object.entries({ typography: ['compact-ui', 'default-ui', 'editorial'], spacing: ['base-4', 'base-8'] })) {
+  for (const [foundation, names] of Object.entries({ typography: ['compact-ui', 'default-ui', 'editorial'], spacing: ['base-4', 'base-8'], color: ['radix-12-step','tailwind-11-step','functional-roles','simple-roles'] })) {
     const options = join(directory, 'foundations', foundation, 'options');
     const actual = readdirSync(options, { withFileTypes: true }).filter((entry) => entry.isDirectory()).map((entry) => entry.name).sort();
     assert.deepEqual(actual, [...names].sort(), 'Unexpected option inventory');

@@ -1,1 +1,1 @@
-Reserved for color foundation choices; see options/ when C2 content is authored.
+Colour options: radix-12-step and tailwind-11-step palettes; functional-roles and simple-roles semantic contracts. Each includes cool/warm/pure neutrals, light/dark variants, declared contrast pairs and source notices; see options/ and ../../specimens/index.html.
