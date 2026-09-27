@@ -1,0 +1,19 @@
+/* Example DS — original, fictional layer-2 alias pattern; not a shipped scale.
+ * Replace names and fallbacks with the project's recorded foundation choices.
+ * Upstream primitives come from the existing source. Fallbacks keep this example
+ * valid when that source is absent; they do not prove it was integrated.
+ * Put mode overrides on these aliases using the project's actual theme mechanism.
+ */
+:root {
+  --ds-control-gap: var(--ds-primitive-space-2, 0.5rem);
+  --ds-control-radius: var(--ds-primitive-radius-2, 0.25rem);
+}
+
+/* Filled consumer example: component styles consume project aliases only.
+.example-button {
+  gap: var(--ds-control-gap);
+  border-radius: var(--ds-control-radius);
+}
+ * Verify computed values with upstream present/absent and in supported modes.
+ * Keep the existing tier model; map this alias layer onto it in the decision.
+ */
