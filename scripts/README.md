@@ -21,7 +21,7 @@ Use the inspected local engine branch; this command does not install or publish 
 DS_LOOP_SOURCE=/absolute/path/to/ds-loop node scripts/record-audits.mjs
 ```
 
-The recorder checks for `codex/token-suggestions` and clean tracked engine sources, audits each `tokens.css`, and stores real stdout, exit status, engine revision and the CSS hash. Review findings; a nonzero audit is not automatically an invalid kit option. See [the upstream model gap](../docs/upstream-layer-gap.md).
+The recorder checks for `codex/upstream-layer` and clean tracked engine sources, audits each `tokens.css`, and stores real stdout, exit status, engine revision and the CSS hash. Review findings; a nonzero audit is not automatically an invalid kit option. See [the upstream model gap](../docs/upstream-layer-gap.md).
 
 ## Build specimens
 

@@ -63,7 +63,7 @@ No values or copy from principles-only sources were used. Every token records pr
 <!-- audit:start -->
 ## Recorded engine audit
 
-Engine branch `codex/token-suggestions`, commit `92a51436b96682745333da23597111ab755cd2d8`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. No suppression or custom config was applied: the engine has no upstream-tier namespace setting.
+Engine branch `codex/upstream-layer`, commit `c4dc3380d8395a0b7b32ea0816d52a93f52af00d`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
 Audited `tokens.css` SHA-256: `af29978dfb2298b80997b4e826f57c1b14bd0f07a36119fe5cc69f93911a1eda`.
 
@@ -76,10 +76,11 @@ node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_
 Exit status: `0`. Standard output, verbatim:
 
 ```text
+  config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:e69decfd7546   adapter css-custom-props@0.3.0   config 6b7f4662
-  13 rules run
+  version git:0cf76f6ebadc   adapter css-custom-props@0.3.0   config b158c121
+  14 rules run
 
   ✓ clean — every rule that ran could judge this source, and found nothing
 

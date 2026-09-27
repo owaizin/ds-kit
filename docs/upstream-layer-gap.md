@@ -1,4 +1,8 @@
-# Upstream is not an engine tier
+# Upstream layer — resolved by A13
+
+Engine commit `c4dc3380d8395a0b7b32ea0816d52a93f52af00d` on `codex/upstream-layer` adds `taxonomy.upstreamPattern`. The kit declares `^--ds-` in `ds-loop.config.json`. Imported literals are allowed; component/use-site bypasses produce `token/upstream-bypass`; project aliases keep fallback checks. No ignore entries. All five refreshed audits have no findings. Palette diagnostics are still active.
+
+## Original gap (historical, before A13)
 
 Checked against `ds-loop` branch `codex/token-suggestions`, commit `92a51436b96682745333da23597111ab755cd2d8`.
 

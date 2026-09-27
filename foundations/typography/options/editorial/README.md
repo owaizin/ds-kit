@@ -66,7 +66,7 @@ All supplied values are independently derived as described above; no vendor toke
 <!-- audit:start -->
 ## Recorded engine audit
 
-Engine branch `codex/token-suggestions`, commit `92a51436b96682745333da23597111ab755cd2d8`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. No suppression or custom config was applied: the engine has no upstream-tier namespace setting.
+Engine branch `codex/upstream-layer`, commit `c4dc3380d8395a0b7b32ea0816d52a93f52af00d`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
 Audited `tokens.css` SHA-256: `fc6704233aee99272c771d77e1c379abffac878407b9ab41021ac6179e124a99`.
 
@@ -76,21 +76,17 @@ From the kit root, set `DS_LOOP_SOURCE` to that checkout:
 node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/typography/options/editorial/tokens.css
 ```
 
-Exit status: `1`. Standard output, verbatim:
+Exit status: `0`. Standard output, verbatim:
 
 ```text
+  config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:e69decfd7546   adapter css-custom-props@0.3.0   config 6b7f4662
-  13 rules run
+  version git:0cf76f6ebadc   adapter css-custom-props@0.3.0   config b158c121
+  14 rules run
 
-  [HIGH] token/raw-dimension-in-semantic
-  │ 21 token(s) hold a raw length / number instead of referencing a primitive
-  │ where: --ds-type-max-reading-width = 45rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:9); --ds-type-display-size = 3.8125rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:10); --ds-type-display-letter-spacing = -0.02em (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:13); --ds-type-h1-size = 3.0625rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:14); --ds-type-h1-letter-spacing = -0.02em (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:17); --ds-type-h2-size = 2.4375rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:18); --ds-type-h2-letter-spacing = -0.01em (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:21); --ds-type-h3-size = 1.9375rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:22)
-  │ risk:  A spacing or type change edits these tokens by hand instead of moving one scale step; the value drifts from the scale the moment anyone touches it.
-  │ fix:   Point each at a spacing / size / type primitive: --token: var(--<ns>-space-4). If no primitive matches the value, add one to the scale first.
+  ✓ clean — every rule that ran could judge this source, and found nothing
 
-  1 findings — 0 blocking · 1 high · 0 medium · 0 low
 
   scope — what this audit read
     css-custom-props@0.3.0
@@ -103,7 +99,6 @@ Exit status: `1`. Standard output, verbatim:
     ambiguous-share              0
 
   next
-    decide on the rest                                                      nothing here is mechanically provable — all 1 findings state their choice on the fix line
     ds-loop scorecard foundations/typography/options/editorial/tokens.css   pin these ratios as run 1 — a ratio only says something against a previous row
     ds-loop guard on                                                        report high-severity findings after each Claude Code edit (never blocks)
 ```
@@ -113,6 +108,6 @@ Standard error: empty.
 
 ### Finding disposition
 
-The default taxonomy treats `--ds-type-*` as semantic names and reports 21 literal dimensions as `token/raw-dimension-in-semantic`. This kit deliberately supplies literal layer-1 values with named roles, as required by this package; project layer-2 aliases are still separate. That naming-model mismatch is unresolved for engine integration. No ignore entry, taxonomy override, automatic fix or token renaming was applied to hide it. The HIGH remains in this recorded audit; an adopter must decide and record how the kit layer maps onto its taxonomy.
+The configured upstream layer accepts these literal kit values. Project aliases remain separate and should reference kit tokens with fallbacks; components should consume those aliases. No suppression is applied. The audit below/above is declaration-only evidence, not product validation.
 
 The audit checks declarations in this single CSS file. It does not validate the scale's numerical progression, body readability, optional fonts, JSON format, native mapping or rendered consumers. The local self-check covers only the stated numerical/parity checks; it does not make those product checks pass.

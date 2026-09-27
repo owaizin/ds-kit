@@ -31,7 +31,7 @@ This local kit contains seven original templates, three typography options and t
 
 Choose one option per foundation and adapt its spec to the project. Each contains exactly README.md, tokens.css, tokens.json and spec.md. CSS is layer-1 literal values; density mappings and text roles still need project aliases and real consumers. Values and sources are documented per option; Inter remains optional, with no bundled fonts.
 
-Run `node scripts/check-options.mjs` and `node --test scripts/check-options.test.mjs` (Node 22+; no dependencies). [Checker scope](scripts/README.md) separates numerical checks from rendered validation. Each option README contains its actual engine audit. Typography retains a HIGH naming/tier finding; no exceptions conceal it. The engine cannot declare an upstream layer; see [the exact configuration gap](docs/upstream-layer-gap.md). No suppression is used.
+Run `node scripts/check-options.mjs` and `node --test scripts/check-options.test.mjs` (Node 22+; no dependencies). [Checker scope](scripts/README.md) separates numerical checks from rendered validation. Each option README contains its actual engine audit. The kit config declares `--ds-*` upstream; all five option audits now have no findings, without suppressions. See [the resolved configuration gap](docs/upstream-layer-gap.md).
 
 ## Inspect the options
 

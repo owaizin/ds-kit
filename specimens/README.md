@@ -24,7 +24,7 @@ Tested in the Codex in-app browser over a local HTTP server:
 
 Not checked: a native renderer, screen-reader behavior, all font fallbacks/languages, full accessibility compliance, or product-specific fit. Passing numerical checks does not imply those outcomes.
 
-## Screenshots
+## Screenshots from 0cf76f6 (before A13)
 
 - [Scale — rounded editorial values](screenshots/scale.png)
 - [Compare — three typography options](screenshots/compare.png)
@@ -33,4 +33,4 @@ Not checked: a native renderer, screen-reader behavior, all font fallbacks/langu
 - [Spacing comparison](screenshots/spacing.png)
 - [375px dark form](screenshots/mobile-dark.png)
 
-Screenshots are browser captures, not generated previews. Applied uses compact-ui/base-4 at compact density; settings were toggled during interaction testing. The checks panel separates audit results from numerical validation. [Why no upstream config was added](../docs/upstream-layer-gap.md).
+Screenshots are browser captures, not generated previews. Applied uses compact-ui/base-4 at compact density; settings were toggled during interaction testing. The checks panel separates audit results from numerical validation. [Upstream configuration resolution](../docs/upstream-layer-gap.md).
