@@ -2,7 +2,15 @@
 
 Aligned to Workstream C1–C7 of the transformation plan dated 2026-09-27. All entries checked **2026-09-27**. Repository evidence is pinned to full commit revisions; live website terms have no repository revision and are explicitly dated observations.
 
-**What was taken for every entry below: none.** This commit records licence evidence and allowed future use; it imports no third-party values, structures, prose, component code or fonts. The templates remain independently written fictional examples. For each future import or principle actually used, record the exact source URL/revision, imported paths, local destination, licence, date, modifications, and whether values, structure or a principle were taken.
+## Material used in this package
+
+| Source / revision | Taken | Local destinations / modifications | Date |
+|---|---|---|---|
+| Tailwind CSS `fa81d697fe572a10ac150d18964a093a7a874081`, [theme.css](https://github.com/tailwindlabs/tailwindcss/blob/fa81d697fe572a10ac150d18964a093a7a874081/packages/tailwindcss/theme.css), MIT | Selected font-size values and non-display line-height ratios | `foundations/typography/options/default-ui/{tokens.css,tokens.json,README.md}`: names mapped to roles; subset selected; calc ratios evaluated to six decimals. Display leading, weights, tracking, families and reading width independently chosen. | 2026-09-27 |
+| Same Tailwind revision, [default-theme.ts](https://github.com/tailwindlabs/tailwindcss/blob/fa81d697fe572a10ac150d18964a093a7a874081/packages/tailwindcss/src/compat/default-theme.ts), MIT | Selected spacing values | `foundations/spacing/options/base-4/{tokens.css,tokens.json,README.md}`: renamed; subset selected; 0px normalized to 0rem. Density mappings independently derived. | 2026-09-27 |
+| Independently derived | Compact/editorial type values, base-8 values, all density mappings and remaining choices | Derivations and field-level source IDs in each option's README/JSON. Templates/specs are original writing. | 2026-09-27 |
+
+[The Tailwind MIT notice](LICENSES/Tailwind-CSS-MIT.txt) is retained verbatim. All other registered sources below remain candidates or principles-only references: no values, structures, copy, code or assets taken in this package. Inter appears as an optional family name; no font files are bundled. For future imports record exact revision, paths, destination, changes, licence, date and what was taken.
 
 ## Permissive repository material
 
@@ -42,7 +50,7 @@ This is a path-specific check, not certification of every repository file. Futur
 
 [LICENSE.md @ 3f094fde](https://github.com/w3c/aria-practices/blob/3f094fde1c81b25dfa69162563bf28d093f854d4/LICENSE.md) assigns repository documents to the [W3C Software and Document License](https://www.w3.org/copyright/software-license-2023/). That licence permits reuse and modification subject to its notice, attribution and modification conditions; it is **not itself a cite-only licence**.
 
-Our narrower policy: cite the relevant [APG pattern](https://www.w3.org/WAI/ARIA/apg/patterns/) and independently describe the behavior required by the target component. No copied APG prose, example code or assets in this scaffold. A derived contract must identify its pattern and checked revision, describe its own implementation, and never imply W3C endorsement or accessibility conformance from a citation alone.
+Our narrower policy: cite the relevant [APG pattern](https://www.w3.org/WAI/ARIA/apg/patterns/) and independently describe the behavior required by the target component. No copied APG prose, example code or assets in this kit. A derived contract must identify its pattern and checked revision, describe its own implementation, and never imply W3C endorsement or accessibility conformance from a citation alone.
 
 ## Principles only: no values or copy
 
@@ -67,7 +75,7 @@ Use system stacks without bundling font files, or fonts verified under **SIL Ope
 
 | Font | Verified licence and pinned evidence | Kit status |
 |---|---|---|
-| Inter | [SIL OFL 1.1 @ 353b61b9](https://github.com/rsms/inter/blob/353b61b9f4430d5f420d56605a6e7993e0941470/LICENSE.txt) | Checked 2026-09-27; candidate only, no files or typography option bundled. |
+| Inter | [SIL OFL 1.1 @ 353b61b9](https://github.com/rsms/inter/blob/353b61b9f4430d5f420d56605a6e7993e0941470/LICENSE.txt) | Checked 2026-09-27; optional family in all three typography options; no font files bundled. |
 
 ## Qualifications to the plan
 

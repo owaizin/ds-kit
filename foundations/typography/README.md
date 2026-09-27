@@ -1,1 +1,1 @@
-Reserved for typography foundation choices; see options/ when C2 content is authored.
+Typography options: [compact-ui](options/compact-ui/README.md), [default-ui](options/default-ui/README.md), [editorial](options/editorial/README.md); choose one and verify in a real consumer before adoption.

@@ -2,7 +2,7 @@
 
 Reusable records and CSS patterns for an agent helping a team establish or maintain a design system. Use this kit with **Design System Loop (`ds-loop`)** to connect measured findings to project decisions, implementation contracts, and verification.
 
-This local scaffold contains seven original templates. It has no foundation options, reference components, patterns, bundles, CLI, or installer yet. Examples use invented “Example DS” names; they are not client evidence or production recommendations.
+This local kit contains seven original templates, three typography options and two spacing options. It has no reference components, patterns, bundles, CLI, or installer yet. Examples use invented “Example DS” names; they are not client evidence or production recommendations.
 
 ## Use with ds-loop
 
@@ -24,19 +24,28 @@ This local scaffold contains seven original templates. It has no foundation opti
 | Work needs a clear disposition and next entry point | [Completion record](templates/completion-record.md) | `specs/completion/control-spacing.md` |
 | Discovery has surfaced problems to investigate | [Problem list](templates/problem-list.md) | the existing investigation or issue record |
 
-## Reserved content folders
+## Typography and spacing options
 
-[Foundations](foundations/README.md) reserves named `options/` folders. [Component references](components/reference/README.md), [patterns](patterns/README.md), and [bundles](bundles/README.md) contain only folder descriptions. None are ready-made options or product implementations.
+- Typography: [compact-ui](foundations/typography/options/compact-ui/README.md), [default-ui](foundations/typography/options/default-ui/README.md), [editorial](foundations/typography/options/editorial/README.md).
+- Spacing: [base-4](foundations/spacing/options/base-4/README.md), [base-8](foundations/spacing/options/base-8/README.md).
 
-Read [SOURCES.md](SOURCES.md) before deriving or importing third-party material. No third-party implementation or font files are included in this scaffold.
+Choose one option per foundation and adapt its spec to the project. Each contains exactly README.md, tokens.css, tokens.json and spec.md. CSS is layer-1 literal values; density mappings and text roles still need project aliases and real consumers. Values and sources are documented per option; Inter remains optional, with no bundled fonts.
+
+Run `node scripts/check-options.mjs` and `node --test scripts/check-options.test.mjs` (Node 22+; no dependencies). [Checker scope](scripts/README.md) separates numerical checks from rendered validation. Each option README contains its actual engine audit. Typography retains a HIGH naming/tier finding; no exceptions conceal it. Rendered web/native trials remain outstanding.
+
+## Content folders
+
+[Foundations](foundations/README.md) contains the twelve named categories; typography and spacing have the options above, while the other ten are reserved. [Component references](components/reference/README.md), [patterns](patterns/README.md), and [bundles](bundles/README.md) contain only folder descriptions. These reserved folders contain no product implementations.
+
+Read [SOURCES.md](SOURCES.md) before deriving or importing third-party material. Tailwind-derived token values carry a retained MIT notice; no third-party component implementations or font files are included.
 
 ## Plan alignment and remaining work
 
-Aligned to Workstream C1–C7 and B4/B5/B7 in the transformation plan dated 2026-09-27. C1's source register and C4's seven templates are present. The twelve C2 foundation folders and C3 reference folder are scaffold only; no option content is supplied.
+Aligned to Workstream C1–C7 and B4/B5/B7 in the transformation plan dated 2026-09-27. C1's source register and C4's seven templates are present. C2 typography and spacing now contain five options; the other ten foundations and C3 reference folder remain scaffold only.
 
 For a project without an existing spec layout, use `specs/foundations/`, `specs/tokens/`, `specs/components/{atoms,molecules,organisms}/`, and `specs/patterns/`. Create component specs only for components that exist. Both spec templates use metadata, overview, anatomy, tokens used, props/API, states, code example, and cross-references; record inapplicable fields explicitly.
 
-C2 options, C3 reference contracts, C5 bundles, C6 validation/specimens, and C7 release versioning/option changelogs/manifest remain future work. The A10 validation checks and shared A11 manifest are dependencies to verify when that work starts, not capabilities this scaffold supplies.
+The remaining C2 options, C3 reference contracts, C5 bundles, C6 engine validation/specimens (beyond the local self-check), and C7 release versioning/option changelogs/manifest remain future work. The A10 validation checks and shared A11 manifest are dependencies to verify when that work starts, not capabilities this scaffold supplies.
 
 Source checks qualify the plan: Material Web token code is Apache-2.0, but that does not licence the Material 3 guidelines website; reviewed Polaris files are restricted; Fluent fonts/icons have separate asset terms. APG is under the W3C Software and Document License; cite-only use is this kit's narrower policy. See [the source register](SOURCES.md) for pinned evidence and reuse boundaries.
 

@@ -1,0 +1,19 @@
+/* ds-kit base-4 — literal layer-1 steps; select one spacing option.
+ * Tailwind-derived, MIT: see ../../../../LICENSES/Tailwind-CSS-MIT.txt.
+ * Density mappings belong in project aliases, not global primitive overrides.
+ */
+:root {
+  --ds-space-0: 0rem;
+  --ds-space-1: 0.25rem;
+  --ds-space-2: 0.5rem;
+  --ds-space-3: 0.75rem;
+  --ds-space-4: 1rem;
+  --ds-space-5: 1.25rem;
+  --ds-space-6: 1.5rem;
+  --ds-space-8: 2rem;
+  --ds-space-10: 2.5rem;
+  --ds-space-12: 3rem;
+  --ds-space-16: 4rem;
+  --ds-space-20: 5rem;
+  --ds-space-24: 6rem;
+}
