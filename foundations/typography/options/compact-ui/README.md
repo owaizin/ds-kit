@@ -47,7 +47,7 @@ The size scale checks unique steps, not repeated roles. Code/tabular roles reuse
 
 **Web:** import one option per foundation. Options reuse token names and must not be loaded together. Keep the user's root font preference; px columns assume 16px only. Map these literal layer-1 values into the project's layer-2 aliases before component use. These files contain no aliases, component styles, resets or font downloads.
 
-**Native:** JSON is a kit interchange format, not a native stylesheet or a promise of engine JSON coverage. Convert rem to baseline logical points/dp with `rem × 16`, then apply the platform's text/content scaling policy. Convert em tracking using the role's font size; turn unitless line-height into a native line height if required. Map generic families to platform fonts and explicitly register Inter if chosen. Do not treat CSS px as physical device pixels or disable accessibility scaling. Native rendering is not checked.
+**Native:** Every rem token includes numeric `px` at a 16px reference root. Typography's `native.roles` contains numeric fontSize, lineHeight and letterSpacing; spacing's `native.steps` and `native.density` contain numeric values. These use logical units, not physical device pixels. Native styles omit fontFamily for the platform default; choose a platform monospace face for code and register Inter separately if used. Preserve accessibility text scaling. Numeric compatibility is checked; React Native rendering is not. This kit format does not claim engine JSON-adapter support.
 
 Cap the reading container at the available inline width as well as the supplied maximum; the rem cap is not a promise of 60–75 characters with every font.
 
@@ -61,16 +61,16 @@ All supplied values are independently derived as described above; no vendor toke
 
 ## Checks and adoption status
 
-`node scripts/check-options.mjs` from the kit root checks numerical constraints and JSON/CSS parity. See [the foundation spec](spec.md) for consumer responsibilities. Rendered web/native checks, actual font metrics, long translations, zoom and touch-target behavior: **not checked**. This option is ready for an adoption trial, not a claim of production validation.
+`node scripts/check-options.mjs` from the kit root checks numerical constraints and JSON/CSS parity. See [the foundation spec](spec.md) for consumer responsibilities. The [local specimens](../../../../specimens/README.md) record exercised web states. Native rendering, long translations, zoom and a full accessibility review remain **not checked**. This option is ready for an adoption trial, not a claim of production validation.
 
 <!-- audit:start -->
 ## Recorded engine audit
 
-Engine branch `codex/token-suggestions`, commit `92a51436b96682745333da23597111ab755cd2d8`; Node v22.17.1. Run 2026-09-27 against this uncommitted option snapshot; the report Git revision identifies the parent kit commit, not the content of these new files. No exceptions or custom severity filters applied.
+Engine branch `codex/token-suggestions`, commit `92a51436b96682745333da23597111ab755cd2d8`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. No suppression or custom config was applied: the engine has no upstream-tier namespace setting.
 
 Audited `tokens.css` SHA-256: `55dcbab41d216a01447ed11a845aadc7d85c56ce9d747f8041aaf9a6d4ca282b`.
 
-From the kit root, set `DS_LOOP_SOURCE` to that checked-out engine directory:
+From the kit root, set `DS_LOOP_SOURCE` to that checkout:
 
 ```sh
 node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/typography/options/compact-ui/tokens.css
@@ -81,7 +81,7 @@ Exit status: `1`. Standard output, verbatim:
 ```text
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:2eac58edc7a4   adapter css-custom-props@0.3.0   config 6b7f4662
+  version git:e69decfd7546   adapter css-custom-props@0.3.0   config 6b7f4662
   13 rules run
 
   [HIGH] token/raw-dimension-in-semantic

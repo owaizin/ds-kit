@@ -94,6 +94,27 @@ export function validate(data, css) {
       assert.ok(b > 0 && b <= a, `${slot}: compact mapping must be positive and no larger than comfortable`);
     }
   }
+  // Native numeric values must agree with the CSS source; they are reference
+  // logical units, not device pixels or a reason to disable font scaling.
+  assert.equal(data.native?.referenceRootPx, 16, 'Native reference root missing');
+  for (const [name, token] of Object.entries(data.tokens)) {
+    if (token.value.endsWith('rem')) assert.equal(token.px, rem(token.value) * 16, `${name}: numeric px differs`);
+  }
+  if (data.foundation === 'typography') {
+    for (const role of roles) {
+      const mapping = data.roles[role];
+      const size = data.tokens[mapping.size].px;
+      const tracking = Math.round(Number.parseFloat(value(mapping['letter-spacing'])) * size * 1e8) / 1e8;
+      assert.equal(data.tokens[mapping['letter-spacing']].px, tracking, `${role}: tracking px differs`);
+      const native = {fontSize: size, lineHeight: Math.round(size * Number(value(mapping['line-height'])) * 1e8) / 1e8, fontWeight: value(mapping.weight), letterSpacing: tracking};
+      if (role === 'tabular-numbers') native.fontVariant = ['tabular-nums'];
+      assert.deepEqual(data.native.roles[role], native, `${role}: native style differs`);
+    }
+    assert.equal(data.native.maxReadingWidth, data.tokens['--ds-type-max-reading-width'].px);
+  } else {
+    assert.deepEqual(data.native.steps, Object.fromEntries(Object.entries(data.tokens).map(([name, token]) => [name, token.px])), 'Native spacing differs');
+    assert.deepEqual(data.native.density, Object.fromEntries(Object.entries(data.density).map(([mode, slots]) => [mode, Object.fromEntries(Object.entries(slots).map(([slot, name]) => [slot, data.tokens[name].px]))])), 'Native density differs');
+  }
   return Object.keys(expected).length;
 }
 
@@ -119,7 +140,7 @@ export function checkAll(directory = root) {
       count++;
     }
   }
-  console.log(`PASS ${count} options. Rendered web/native behavior not checked.`);
+  console.log(`PASS ${count} options. Self-checks exclude rendered web/native behavior.`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) checkAll();

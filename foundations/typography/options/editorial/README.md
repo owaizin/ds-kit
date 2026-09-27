@@ -8,16 +8,16 @@ All pixel equivalents assume a 16px root; font sizes are rem, leading is unitles
 
 | Role | Size: rem / px at 16px | Line-height | Weight | Letter-spacing | Source per field |
 |---|---|---|---|---|---|
-| display | 3.8146972656rem / 61.03515625px | 1.1 | 700 | -0.02em | Independent formula; leading: Independent; weight/tracking/role: independent |
-| h1 | 3.0517578125rem / 48.828125px | 1.15 | 700 | -0.02em | Independent formula; leading: Independent; weight/tracking/role: independent |
-| h2 | 2.44140625rem / 39.0625px | 1.2 | 600 | -0.01em | Independent formula; leading: Independent; weight/tracking/role: independent |
-| h3 | 1.953125rem / 31.25px | 1.25 | 600 | -0.01em | Independent formula; leading: Independent; weight/tracking/role: independent |
-| h4 | 1.5625rem / 25px | 1.35 | 600 | -0.01em | Independent formula; leading: Independent; weight/tracking/role: independent |
-| body | 1.25rem / 20px | 1.6 | 400 | 0em | Independent formula; leading: Independent; weight/tracking/role: independent |
-| body-small | 1rem / 16px | 1.5 | 400 | 0em | Independent formula; leading: Independent; weight/tracking/role: independent |
-| caption | 0.8rem / 12.8px | 1.5 | 400 | 0em | Independent formula; leading: Independent; weight/tracking/role: independent |
-| code | 1rem / 16px | 1.5 | 400 | 0em | Independent formula; leading: Independent; weight/tracking/role: independent |
-| tabular-numbers | 1.25rem / 20px | 1.6 | 500 | 0em | Independent formula; leading: Independent; weight/tracking/role: independent |
+| display | 3.8125rem / 61px | 1.1 | 700 | -0.02em | Independent 20px × 1.25^n scale; 61.0352px rounded to nearest whole px = 61px; divide by 16 = 3.8125rem. Leading, weight and tracking: independent. |
+| h1 | 3.0625rem / 49px | 1.15 | 700 | -0.02em | Independent 20px × 1.25^n scale; 48.8281px rounded to nearest whole px = 49px; divide by 16 = 3.0625rem. Leading, weight and tracking: independent. |
+| h2 | 2.4375rem / 39px | 1.2 | 600 | -0.01em | Independent 20px × 1.25^n scale; 39.0625px rounded to nearest whole px = 39px; divide by 16 = 2.4375rem. Leading, weight and tracking: independent. |
+| h3 | 1.9375rem / 31px | 1.25 | 600 | -0.01em | Independent 20px × 1.25^n scale; 31.25px rounded to nearest whole px = 31px; divide by 16 = 1.9375rem. Leading, weight and tracking: independent. |
+| h4 | 1.5625rem / 25px | 1.35 | 600 | -0.01em | Independent 20px × 1.25^n scale; 25px rounded to nearest whole px = 25px; divide by 16 = 1.5625rem. Leading, weight and tracking: independent. |
+| body | 1.25rem / 20px | 1.6 | 400 | 0em | Independent 20px × 1.25^n scale; 20px rounded to nearest whole px = 20px; divide by 16 = 1.25rem. Leading, weight and tracking: independent. |
+| body-small | 1rem / 16px | 1.5 | 400 | 0em | Independent 20px × 1.25^n scale; 16px rounded to nearest whole px = 16px; divide by 16 = 1rem. Leading, weight and tracking: independent. |
+| caption | 0.8125rem / 13px | 1.5 | 400 | 0em | Independent 20px × 1.25^n scale; 12.8px rounded to nearest whole px = 13px; divide by 16 = 0.8125rem. Leading, weight and tracking: independent. |
+| code | 1rem / 16px | 1.5 | 400 | 0em | Independent 20px × 1.25^n scale; 16px rounded to nearest whole px = 16px; divide by 16 = 1rem. Leading, weight and tracking: independent. |
+| tabular-numbers | 1.25rem / 20px | 1.6 | 500 | 0em | Independent 20px × 1.25^n scale; 20px rounded to nearest whole px = 20px; divide by 16 = 1.25rem. Leading, weight and tracking: independent. |
 
 ### Families and shared values
 
@@ -31,7 +31,7 @@ All pixel equivalents assume a 16px root; font sizes are rem, leading is unitles
 
 ## Derivation and exceptions
 
-Independently derived: size(n) = 20px × 1.25^n. Caption n=-2, body-small/code n=-1, body/tabular n=0, h4 through display n=1…5. Divide by 16 for rem; serialize to at most ten decimals.
+Independently derived: size(n) = 20px × 1.25^n. Caption n=-2, body-small/code n=-1, body/tabular n=0, h4 through display n=1…5. Round each resulting size to the nearest whole pixel, then divide by 16 for rem. The per-value table records the rounding; adjacent unique ratios now range approximately 1.23–1.26. The 1.25 ratio is intent, not exact after rounding.
 
 Weights are independent role assignments: 700 for display/h1, 600 for h2–h4, 400 for text/code, 500 for numerical columns. Tracking is independently set to -0.02em for display/h1, -0.01em for h2–h4, and zero for body/supporting/code/numerical text. Short headings use tighter leading; body leading stays at least 1.4. Increase leading to at least 1.4 when any tighter role wraps into extended text.
 
@@ -47,7 +47,7 @@ The size scale checks unique steps, not repeated roles. Code/tabular roles reuse
 
 **Web:** import one option per foundation. Options reuse token names and must not be loaded together. Keep the user's root font preference; px columns assume 16px only. Map these literal layer-1 values into the project's layer-2 aliases before component use. These files contain no aliases, component styles, resets or font downloads.
 
-**Native:** JSON is a kit interchange format, not a native stylesheet or a promise of engine JSON coverage. Convert rem to baseline logical points/dp with `rem × 16`, then apply the platform's text/content scaling policy. Convert em tracking using the role's font size; turn unitless line-height into a native line height if required. Map generic families to platform fonts and explicitly register Inter if chosen. Do not treat CSS px as physical device pixels or disable accessibility scaling. Native rendering is not checked.
+**Native:** Every rem token includes numeric `px` at a 16px reference root. Typography's `native.roles` contains numeric fontSize, lineHeight and letterSpacing; spacing's `native.steps` and `native.density` contain numeric values. These use logical units, not physical device pixels. Native styles omit fontFamily for the platform default; choose a platform monospace face for code and register Inter separately if used. Preserve accessibility text scaling. Numeric compatibility is checked; React Native rendering is not. This kit format does not claim engine JSON-adapter support.
 
 Cap the reading container at the available inline width as well as the supplied maximum; the rem cap is not a promise of 60–75 characters with every font.
 
@@ -61,16 +61,16 @@ All supplied values are independently derived as described above; no vendor toke
 
 ## Checks and adoption status
 
-`node scripts/check-options.mjs` from the kit root checks numerical constraints and JSON/CSS parity. See [the foundation spec](spec.md) for consumer responsibilities. Rendered web/native checks, actual font metrics, long translations, zoom and touch-target behavior: **not checked**. This option is ready for an adoption trial, not a claim of production validation.
+`node scripts/check-options.mjs` from the kit root checks numerical constraints and JSON/CSS parity. See [the foundation spec](spec.md) for consumer responsibilities. The [local specimens](../../../../specimens/README.md) record exercised web states. Native rendering, long translations, zoom and a full accessibility review remain **not checked**. This option is ready for an adoption trial, not a claim of production validation.
 
 <!-- audit:start -->
 ## Recorded engine audit
 
-Engine branch `codex/token-suggestions`, commit `92a51436b96682745333da23597111ab755cd2d8`; Node v22.17.1. Run 2026-09-27 against this uncommitted option snapshot; the report Git revision identifies the parent kit commit, not the content of these new files. No exceptions or custom severity filters applied.
+Engine branch `codex/token-suggestions`, commit `92a51436b96682745333da23597111ab755cd2d8`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. No suppression or custom config was applied: the engine has no upstream-tier namespace setting.
 
-Audited `tokens.css` SHA-256: `205d86916bed83a7d7afab1854786d7783da592bde24abda84acf861a4ef76cf`.
+Audited `tokens.css` SHA-256: `fc6704233aee99272c771d77e1c379abffac878407b9ab41021ac6179e124a99`.
 
-From the kit root, set `DS_LOOP_SOURCE` to that checked-out engine directory:
+From the kit root, set `DS_LOOP_SOURCE` to that checkout:
 
 ```sh
 node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/typography/options/editorial/tokens.css
@@ -81,12 +81,12 @@ Exit status: `1`. Standard output, verbatim:
 ```text
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:2eac58edc7a4   adapter css-custom-props@0.3.0   config 6b7f4662
+  version git:e69decfd7546   adapter css-custom-props@0.3.0   config 6b7f4662
   13 rules run
 
   [HIGH] token/raw-dimension-in-semantic
   │ 21 token(s) hold a raw length / number instead of referencing a primitive
-  │ where: --ds-type-max-reading-width = 45rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:9); --ds-type-display-size = 3.8146972656rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:10); --ds-type-display-letter-spacing = -0.02em (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:13); --ds-type-h1-size = 3.0517578125rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:14); --ds-type-h1-letter-spacing = -0.02em (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:17); --ds-type-h2-size = 2.44140625rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:18); --ds-type-h2-letter-spacing = -0.01em (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:21); --ds-type-h3-size = 1.953125rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:22)
+  │ where: --ds-type-max-reading-width = 45rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:9); --ds-type-display-size = 3.8125rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:10); --ds-type-display-letter-spacing = -0.02em (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:13); --ds-type-h1-size = 3.0625rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:14); --ds-type-h1-letter-spacing = -0.02em (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:17); --ds-type-h2-size = 2.4375rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:18); --ds-type-h2-letter-spacing = -0.01em (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:21); --ds-type-h3-size = 1.9375rem (/Users/owais/Documents/GitHub/ds-kit/foundations/typography/options/editorial/tokens.css:22)
   │ risk:  A spacing or type change edits these tokens by hand instead of moving one scale step; the value drifts from the scale the moment anyone touches it.
   │ fix:   Point each at a spacing / size / type primitive: --token: var(--<ns>-space-4). If no primitive matches the value, add one to the scale first.
 

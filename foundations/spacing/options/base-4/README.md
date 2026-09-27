@@ -48,7 +48,7 @@ Choose mappings after checking actual consumers. No runtime mode switch or alias
 
 **Web:** import one option per foundation. Options reuse token names and must not be loaded together. Keep the user's root font preference; px columns assume 16px only. Map these literal layer-1 values into the project's layer-2 aliases before component use. These files contain no aliases, component styles, resets or font downloads.
 
-**Native:** JSON is a kit interchange format, not a native stylesheet or a promise of engine JSON coverage. Convert rem to baseline logical points/dp with `rem × 16`, then apply the platform's text/content scaling policy. Convert em tracking using the role's font size; turn unitless line-height into a native line height if required. Map generic families to platform fonts and explicitly register Inter if chosen. Do not treat CSS px as physical device pixels or disable accessibility scaling. Native rendering is not checked.
+**Native:** Every rem token includes numeric `px` at a 16px reference root. Typography's `native.roles` contains numeric fontSize, lineHeight and letterSpacing; spacing's `native.steps` and `native.density` contain numeric values. These use logical units, not physical device pixels. Native styles omit fontFamily for the platform default; choose a platform monospace face for code and register Inter separately if used. Preserve accessibility text scaling. Numeric compatibility is checked; React Native rendering is not. This kit format does not claim engine JSON-adapter support.
 
 ## Source and licence
 
@@ -58,16 +58,16 @@ No values or copy from principles-only sources were used. Every token records pr
 
 ## Checks and adoption status
 
-`node scripts/check-options.mjs` checks scale order, JSON/CSS parity and density references. [Spec](spec.md) describes adoption. Actual rendered density, wrapping, hit areas, web/native scaling and accessibility: **not checked**. Adopt through a representative consumer before wider migration.
+`node scripts/check-options.mjs` checks scale order, JSON/CSS parity and density references. [Spec](spec.md) describes adoption. The [local specimens](../../../../specimens/README.md) exercise both densities in web compositions. Product-specific wrapping, native scaling and a full accessibility review remain **not checked**. Adopt through a representative consumer before wider migration.
 
 <!-- audit:start -->
 ## Recorded engine audit
 
-Engine branch `codex/token-suggestions`, commit `92a51436b96682745333da23597111ab755cd2d8`; Node v22.17.1. Run 2026-09-27 against this uncommitted option snapshot; the report Git revision identifies the parent kit commit, not the content of these new files. No exceptions or custom severity filters applied.
+Engine branch `codex/token-suggestions`, commit `92a51436b96682745333da23597111ab755cd2d8`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. No suppression or custom config was applied: the engine has no upstream-tier namespace setting.
 
 Audited `tokens.css` SHA-256: `6ba4cc24e3fe5b6212260678a68726e8a1e9ef34868072b7b670676c394600f6`.
 
-From the kit root, set `DS_LOOP_SOURCE` to that checked-out engine directory:
+From the kit root, set `DS_LOOP_SOURCE` to that checkout:
 
 ```sh
 node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/spacing/options/base-4/tokens.css
@@ -78,7 +78,7 @@ Exit status: `0`. Standard output, verbatim:
 ```text
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:2eac58edc7a4   adapter css-custom-props@0.3.0   config 6b7f4662
+  version git:e69decfd7546   adapter css-custom-props@0.3.0   config 6b7f4662
   13 rules run
 
   ✓ clean — every rule that ran could judge this source, and found nothing

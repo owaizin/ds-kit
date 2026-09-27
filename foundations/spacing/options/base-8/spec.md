@@ -29,8 +29,8 @@ Review comfortable/compact layouts with wrapped text, icons, empty/loading/error
 Illustrative project alias mapping outside the layer-1 stylesheet:
 
 ```css
-:root { --app-group-gap: var(--ds-space-4); }
-[data-density="compact"] { --app-group-gap: var(--ds-space-3); }
+:root { --app-group-gap: var(--ds-space-3); }
+[data-density="compact"] { --app-group-gap: var(--ds-space-2); }
 .group { gap: var(--app-group-gap); }
 ```
 

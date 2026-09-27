@@ -31,7 +31,13 @@ This local kit contains seven original templates, three typography options and t
 
 Choose one option per foundation and adapt its spec to the project. Each contains exactly README.md, tokens.css, tokens.json and spec.md. CSS is layer-1 literal values; density mappings and text roles still need project aliases and real consumers. Values and sources are documented per option; Inter remains optional, with no bundled fonts.
 
-Run `node scripts/check-options.mjs` and `node --test scripts/check-options.test.mjs` (Node 22+; no dependencies). [Checker scope](scripts/README.md) separates numerical checks from rendered validation. Each option README contains its actual engine audit. Typography retains a HIGH naming/tier finding; no exceptions conceal it. Rendered web/native trials remain outstanding.
+Run `node scripts/check-options.mjs` and `node --test scripts/check-options.test.mjs` (Node 22+; no dependencies). [Checker scope](scripts/README.md) separates numerical checks from rendered validation. Each option README contains its actual engine audit. Typography retains a HIGH naming/tier finding; no exceptions conceal it. The engine cannot declare an upstream layer; see [the exact configuration gap](docs/upstream-layer-gap.md). No suppression is used.
+
+## Inspect the options
+
+Open [the self-contained specimen](specimens/index.html) locally. It offers real-size scales, side-by-side comparison, four applied compositions and per-option checks. Select typography, spacing, density, light/dark and a 375px sample width. No fonts or scripts are fetched. The palette is specimen chrome, not a colour foundation.
+
+Build with `node scripts/build-specimens.mjs`; verify with `node scripts/build-specimens.mjs --check`. [Browser verification and screenshots](specimens/README.md) cover the exercised web states. Native JSON is checked numerically; React Native rendering remains unverified.
 
 ## Content folders
 
@@ -45,7 +51,7 @@ Aligned to Workstream C1–C7 and B4/B5/B7 in the transformation plan dated 2026
 
 For a project without an existing spec layout, use `specs/foundations/`, `specs/tokens/`, `specs/components/{atoms,molecules,organisms}/`, and `specs/patterns/`. Create component specs only for components that exist. Both spec templates use metadata, overview, anatomy, tokens used, props/API, states, code example, and cross-references; record inapplicable fields explicitly.
 
-The remaining C2 options, C3 reference contracts, C5 bundles, C6 engine validation/specimens (beyond the local self-check), and C7 release versioning/option changelogs/manifest remain future work. The A10 validation checks and shared A11 manifest are dependencies to verify when that work starts, not capabilities this scaffold supplies.
+The remaining C2 options, C3 reference contracts, C5 bundles, C6 engine validation (beyond the local self-check and specimens), and C7 release versioning/option changelogs/manifest remain future work. The A10 validation checks and shared A11 manifest are dependencies to verify when that work starts, not capabilities this scaffold supplies.
 
 Source checks qualify the plan: Material Web token code is Apache-2.0, but that does not licence the Material 3 guidelines website; reviewed Polaris files are restricted; Fluent fonts/icons have separate asset terms. APG is under the W3C Software and Document License; cite-only use is this kit's narrower policy. See [the source register](SOURCES.md) for pinned evidence and reuse boundaries.
 

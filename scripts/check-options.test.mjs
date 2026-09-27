@@ -26,9 +26,15 @@ test('rejects weak size interval even if CSS agrees', () => {
 });
 test('rejects reversed scale, missing steps and invalid density references', () => {
   const d = load('spacing', 'base-8'); d.scale.reverse(); assert.throws(() => validate(d, css(d)), /strictly increase/);
-  const e = load('spacing', 'base-8'); e.scale.pop(); assert.throws(() => validate(e, css(e)), /12 positive/);
+  const e = load('spacing', 'base-8'); e.scale.splice(-2); assert.throws(() => validate(e, css(e)), /12 positive/);
   const f = load('spacing', 'base-8'); f.density.compact['control-inset'] = '--ds-space-99'; assert.throws(() => validate(f, css(f)), /Unknown token/);
 });
 test('rejects widening compact density', () => {
   const d = load('spacing', 'base-8'); d.density.compact['control-inset'] = '--ds-space-12'; assert.throws(() => validate(d, css(d)), /no larger/);
+});
+
+test('rejects stale native px and style values', () => {
+  const d = type(); d.tokens['--ds-type-body-size'].px = 99; assert.throws(() => validate(d, css(d)), /numeric px differs/);
+  const e = type(); e.native.roles.body.lineHeight = 99; assert.throws(() => validate(e, css(e)), /native style differs/);
+  const f = load('spacing', 'base-8'); f.native.density.compact['inline-gap'] = 99; assert.throws(() => validate(f, css(f)), /Native density differs/);
 });

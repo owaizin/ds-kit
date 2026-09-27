@@ -4,16 +4,16 @@
  */
 :root {
   --ds-space-0: 0rem;
+  --ds-space-0-25: 0.125rem;
+  --ds-space-0-5: 0.25rem;
   --ds-space-1: 0.5rem;
   --ds-space-2: 1rem;
   --ds-space-3: 1.5rem;
   --ds-space-4: 2rem;
   --ds-space-5: 2.5rem;
   --ds-space-6: 3rem;
-  --ds-space-7: 3.5rem;
   --ds-space-8: 4rem;
-  --ds-space-9: 4.5rem;
   --ds-space-10: 5rem;
-  --ds-space-11: 5.5rem;
   --ds-space-12: 6rem;
+  --ds-space-16: 8rem;
 }
