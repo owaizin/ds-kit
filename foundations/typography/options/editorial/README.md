@@ -66,7 +66,7 @@ All supplied values are independently derived as described above; no vendor toke
 <!-- audit:start -->
 ## Recorded engine audit
 
-Engine branch `codex/upstream-layer`, commit `07f3ce95214a84df22673c827d5b7adf7c0caa93`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
+Engine branch `codex/upstream-layer`, commit `e3274a502aa1bde70c316c8e761e5386efeb7ff7`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
 Audited `tokens.css` SHA-256: `fc6704233aee99272c771d77e1c379abffac878407b9ab41021ac6179e124a99`.
 
@@ -82,7 +82,7 @@ Exit status: `0`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:c48ef043cf06   adapter css-custom-props@0.3.0   config b158c121
+  version git:af9dbd1b7329   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   ✓ clean — every rule that ran could judge this source, and found nothing

@@ -1,0 +1,147 @@
+- heading "Shipped CSS theme checks" [level=1]
+- paragraph: "72 combinations: four options × three neutrals × two inherited OS schemes × auto/light/dark. Every role resolves through the actual neutral CSS file. No network requests."
+- status: 72/72 PASS
+- iframe:
+  - status: PASS radix-12-step / cool / OS light / auto; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / cool / OS light / light; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / cool / OS light / dark; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / cool / OS dark / auto; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / cool / OS dark / light; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / cool / OS dark / dark; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / warm / OS light / auto; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / warm / OS light / light; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / warm / OS light / dark; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / warm / OS dark / auto; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / warm / OS dark / light; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / warm / OS dark / dark; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / pure / OS light / auto; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / pure / OS light / light; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / pure / OS light / dark; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / pure / OS dark / auto; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / pure / OS dark / light; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS radix-12-step / pure / OS dark / dark; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / cool / OS light / auto; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / cool / OS light / light; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / cool / OS light / dark; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / cool / OS dark / auto; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / cool / OS dark / light; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / cool / OS dark / dark; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / warm / OS light / auto; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / warm / OS light / light; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / warm / OS light / dark; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / warm / OS dark / auto; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / warm / OS dark / light; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / warm / OS dark / dark; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / pure / OS light / auto; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / pure / OS light / light; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / pure / OS light / dark; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / pure / OS dark / auto; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / pure / OS dark / light; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS tailwind-11-step / pure / OS dark / dark; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS functional-roles / cool / OS light / auto; 65 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS functional-roles / cool / OS light / light; 65 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS functional-roles / cool / OS light / dark; 65 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS functional-roles / cool / OS dark / auto; 65 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS functional-roles / cool / OS dark / light; 65 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS functional-roles / cool / OS dark / dark; 65 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS functional-roles / warm / OS light / auto; 65 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS functional-roles / warm / OS light / light; 65 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS functional-roles / warm / OS light / dark; 65 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS functional-roles / warm / OS dark / auto; 65 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS functional-roles / warm / OS dark / light; 65 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS functional-roles / warm / OS dark / dark; 65 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS functional-roles / pure / OS light / auto; 65 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS functional-roles / pure / OS light / light; 65 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS functional-roles / pure / OS light / dark; 65 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS functional-roles / pure / OS dark / auto; 65 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS functional-roles / pure / OS dark / light; 65 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS functional-roles / pure / OS dark / dark; 65 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS simple-roles / cool / OS light / auto; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS simple-roles / cool / OS light / light; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS simple-roles / cool / OS light / dark; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS simple-roles / cool / OS dark / auto; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS simple-roles / cool / OS dark / light; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS simple-roles / cool / OS dark / dark; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS simple-roles / warm / OS light / auto; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS simple-roles / warm / OS light / light; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS simple-roles / warm / OS light / dark; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS simple-roles / warm / OS dark / auto; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS simple-roles / warm / OS dark / light; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS simple-roles / warm / OS dark / dark; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS simple-roles / pure / OS light / auto; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS simple-roles / pure / OS light / light; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS simple-roles / pure / OS light / dark; 20 computed colors; media=light; mismatches=0
+- iframe:
+  - status: PASS simple-roles / pure / OS dark / auto; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS simple-roles / pure / OS dark / light; 20 computed colors; media=dark; mismatches=0
+- iframe:
+  - status: PASS simple-roles / pure / OS dark / dark; 20 computed colors; media=dark; mismatches=0

@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
+import { tokenFiles,resolveColor } from './color-contract.mjs';
 import { contrast } from './color-math.mjs';
 import { readCurrentAudit } from './current-audit.mjs';
 import { validate } from './check-options.mjs';
@@ -13,18 +14,19 @@ for (const foundation of readdirSync(join(root, 'foundations'), { withFileTypes:
   for (const option of readdirSync(dir,{withFileTypes:true}).filter(e=>e.isDirectory()).sort((a,b)=>a.name.localeCompare(b.name))) {
     const folder = join(dir,option.name);
     const data = JSON.parse(readFileSync(join(folder,'tokens.json'),'utf8'));
-    const css = readFileSync(join(folder,'tokens.css'),'utf8');
+    const styles=Object.fromEntries(tokenFiles(data).map(f=>[f,readFileSync(join(folder,f),'utf8')]));
+    const css=data.foundation==='color'?styles:styles['tokens.css'];
     const doc = readFileSync(join(folder,'README.md'),'utf8');
-    const hash = createHash('sha256').update(css).digest('hex');
+    const hash = createHash('sha256').update(JSON.stringify(styles)).digest('hex');
     let checks;
     try {
       const count = validate(data,css);
-      if (!doc.includes(`Audited \`tokens.css\` SHA-256: \`${hash}\``)) throw new Error('Audit snapshot stale');
+      for(const [file,text] of Object.entries(styles))if(!doc.includes(`Audited \`${file}\` SHA-256: \`${createHash('sha256').update(text).digest('hex')}\``))throw new Error('Audit snapshot stale');
       checks = {pass:true, count, message:'Scale order, CSS/JSON parity, native numbers, role/density constraints, provenance fields and audit snapshot.'};
     } catch(error) { checks={pass:false,count:0,message:error.message};failed=true; }
-    const audit = doc.match(/```text\n([\s\S]*?)\n```/)?.[1] ?? 'No recorded audit';
-    if(data.foundation==='color') { data.contrastPairs=data.contrastPairs.map(p=>({...p,ratio:contrast(data.tokens[p.fg].value,data.tokens[p.bg].value)})); checks.message='CSS/JSON parity, source fields, six variants and '+data.contrastPairs.length+' declared contrast pairs.'; }
-    options.push({...data,checks,hash,audit,engineExit:Number(doc.match(/Exit status: `(\d+)`/)?.[1] ?? -1)});
+    const audit = [...doc.matchAll(/```text\n([\s\S]*?)\n```/g)].map(m=>m[1]).join('\n\n') || 'No recorded audit';
+    if(data.foundation==='color') { data.contrastPairs=data.contrastPairs.map(p=>({...p,ratio:contrast(resolveColor(data.variants[p.neutral][p.mode].tokens,p.fg),resolveColor(data.variants[p.neutral][p.mode].tokens,p.bg))})); if(checks.pass)checks.message='Theme CSS/JSON parity, palette aliases, stable names, source fields, six variants and '+data.contrastPairs.length+' declared contrast pairs.'; }
+    options.push({...data,checks,hash,audit,engineExit:Math.max(...[...doc.matchAll(/Exit status: `(\d+)`/g)].map(m=>Number(m[1])))});
   }
 }
 if (!options.length) throw new Error('No options found');

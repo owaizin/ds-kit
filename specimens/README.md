@@ -9,7 +9,7 @@
 - Applied: the same table/filter, validation form, settings and article compositions for every selected typography/spacing pair.
 - Checks: per-option numerical results, source hash and actual audit output. Engine findings remain visible alongside passing self-checks.
 
-Select option, comfortable/compact density, light/dark samples or a 375px sample width. Density changes the documented spacing alias slots; primitives stay unchanged. Controls retain a 44px minimum height. The specimen palette and surrounding UI are original demonstration chrome, not proposed colour tokens. Optional Inter is not loaded.
+Select option, comfortable/compact density, light/dark samples or a 375px sample width. Density changes the documented spacing alias slots; primitives stay unchanged. Controls retain a 44px minimum height. Samples use the selected colour tokens; the surrounding tool UI is separate demonstration chrome. Optional Inter is not loaded.
 
 ## Observed browser checks — 2026-09-28
 
@@ -35,7 +35,7 @@ Not checked: a native renderer, screen-reader behavior, all font fallbacks/langu
 
 Screenshots are browser captures, not generated previews. Applied uses compact-ui/base-4 at compact density; settings were toggled during interaction testing. The checks panel separates audit results from numerical validation. [Upstream configuration resolution](../docs/upstream-layer-gap.md).
 
-## Colour and Current additions — 2026-09-28
+## Colour and Current additions — af9dbd1, historical
 
 Four colour options add six neutral/mode variants each. The scale view shows step/role swatches and measured pairs; applied compositions consume the selected values. All 552 declared pairs pass full-precision WCAG 2 thresholds. Body/error text measured from rendered styles also passed in all 24 colour × neutral × mode combinations (minimum observed body contrast 15.881:1; error text 12.121:1). This does not certify every rendered pairing or full accessibility.
 
@@ -52,3 +52,23 @@ Fresh captures:
 - [Applied, dark](screenshots/colour-applied-dark.png)
 
 Previous captures above are historical evidence from before A13. Native rendering and screen-reader behavior remain unverified.
+
+
+## Stable colour aliases — 2026-09-28
+
+The current build uses one neutral CSS file per choice, stable public names, and palette references for every role. The scale shows the alias and its resolved value; the on-fill strip shows white labels on neutral/blue/green/red and black on amber. The applied view keeps `var()` references live rather than painting resolved role literals.
+
+Verified in the in-app browser over local HTTP:
+
+- **72/72 theme cases passed** using the actual shipped CSS in isolated documents: four options × three neutrals × OS light/dark × automatic/explicit light/explicit dark. The harness checked the effective media preference and all role/on-fill computed colours. Explicit light overrides OS dark. [Full results](screenshots/colour-aliases/theme-cascade.txt).
+- **672/672 declared pairs passed** numerical thresholds (body ≥4.5; large/UI ≥3). None of the selected fills fails 4.5 with both black and white. All source values still match the pinned subsets.
+- **12/12 colour-file audits have zero literal-duplicate findings**, with no exceptions or suppressions. Low palette diagnostics remain visible. The engine aggregates both theme blocks, so near-duplicate pairs can cross modes; this is not an active-theme contrast assessment.
+- Scale, Compare, Applied and Checks rendered with no warning/error console messages observed. The four applied compositions use the selected aliases in light/dark. Narrow sample width measured 375px within a 1280px viewport; the outer document did not overflow. A new 375px browser-viewport check is **not claimed**: the viewport control did not resize the specimen tab during this pass.
+- 18 script tests and all nine option checks passed. The generated page matches its inputs. React Native rendering, screen readers and complete accessibility remain unverified.
+
+Fresh browser captures:
+
+- [Scale, light](screenshots/colour-aliases/scale-light.png) · [Scale, dark](screenshots/colour-aliases/scale-dark.png)
+- [Applied, light](screenshots/colour-aliases/applied-light.png) · [Applied, dark](screenshots/colour-aliases/applied-dark.png)
+- [Compare](screenshots/colour-aliases/compare.png) · [Checks](screenshots/colour-aliases/checks.png)
+- [375px sample](screenshots/colour-aliases/narrow-sample.png) · [Theme cascade](screenshots/colour-aliases/theme-cascade.png)

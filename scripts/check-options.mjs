@@ -1,3 +1,4 @@
+import { tokenFiles } from './color-contract.mjs';
 import { validateColor } from './check-color.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -18,6 +19,7 @@ const rem = (value) => {
 export function validate(data, css) {
   assert.equal(data.format, 'ds-kit-option-v1');
   if(data.foundation !== 'color') assert.equal(data.rootFontSizePx, 16, 'px equivalence tables assume a 16px reference root');
+  if(data.foundation === 'color') return validateColor(data,css);
   const clean = css.replace(/\/\*[\s\S]*?\*\//g, '').trim();
   const block = /^:root\s*\{([^{}]*)\}$/.exec(clean);
   assert.ok(block, 'CSS must be a single :root literal-token block');
@@ -30,7 +32,6 @@ export function validate(data, css) {
     parsed[match[1]] = match[2].trim();
   }
   assert.ok(Object.keys(data.tokens).length > 0, 'No token values');
-  if(data.foundation === 'color') return validateColor(data,parsed);
   const expected = {};
   for (const [name, token] of Object.entries(data.tokens)) {
     assert.match(name, /^--ds-[a-z0-9-]+$/);
@@ -128,17 +129,18 @@ export function checkAll(directory = root) {
     assert.deepEqual(actual, [...names].sort(), 'Unexpected option inventory');
     for (const name of names) {
       const folder = join(options, name);
-      assert.deepEqual(readdirSync(folder).sort(), ['README.md', 'spec.md', 'tokens.css', 'tokens.json']);
       const data = JSON.parse(readFileSync(join(folder, 'tokens.json'), 'utf8'));
       assert.equal(data.option, name);
       assert.equal(data.foundation, foundation);
-      const stylesheet = readFileSync(join(folder, 'tokens.css'), 'utf8');
+      const files=tokenFiles(data);
+      assert.deepEqual(readdirSync(folder).sort(), ['README.md','spec.md','tokens.json',...files].sort());
+      const styles=Object.fromEntries(files.map(f=>[f,readFileSync(join(folder,f),'utf8')]));
+      const stylesheet = foundation==='color'?styles:styles['tokens.css'];
       const tokens = validate(data, stylesheet);
       const doc = readFileSync(join(folder, 'README.md'), 'utf8');
       for (const exception of data.ratioExceptions ?? []) assert.ok(doc.includes(exception.reason), 'Exception must be documented');
-      const recordedHash = /Audited `tokens\.css` SHA-256: `([0-9a-f]{64})`/.exec(doc)?.[1];
-      assert.equal(recordedHash, createHash('sha256').update(stylesheet).digest('hex'), 'Audit snapshot is absent or stale; rerun audit and record actual output');
-      console.log(`PASS ${foundation}/${name}: ${tokens} literal tokens; ordered scale, constraints, provenance and CSS/JSON parity`);
+      for(const [file,css] of Object.entries(styles))assert.ok(doc.includes(`Audited \`${file}\` SHA-256: \`${createHash('sha256').update(css).digest('hex')}\``),'Audit snapshot is absent or stale');
+      console.log(`PASS ${foundation}/${name}: ${tokens} declarations; constraints, provenance and CSS/JSON parity`);
       count++;
     }
   }

@@ -29,14 +29,14 @@ This local kit contains seven original templates, three typography options, two 
 - Typography: [compact-ui](foundations/typography/options/compact-ui/README.md), [default-ui](foundations/typography/options/default-ui/README.md), [editorial](foundations/typography/options/editorial/README.md).
 - Spacing: [base-4](foundations/spacing/options/base-4/README.md), [base-8](foundations/spacing/options/base-8/README.md).
 
-Choose one option per foundation and adapt its spec to the project. Each contains exactly README.md, tokens.css, tokens.json and spec.md. CSS is layer-1 literal values; density mappings and text roles still need project aliases and real consumers. Values and sources are documented per option; Inter remains optional, with no bundled fonts.
+Choose one option per foundation and adapt its spec to the project. Typography and spacing contain README.md, tokens.css, tokens.json and spec.md. Their CSS is layer-1 literal values; density mappings and text roles still need project aliases and real consumers. Values and sources are documented per option; Inter remains optional, with no bundled fonts.
 
 Run `node scripts/check-options.mjs` and `node --test scripts/check-options.test.mjs` (Node 22+; no dependencies). [Checker scope](scripts/README.md) separates numerical checks from rendered validation. Each option README contains its actual engine audit. The kit config declares `--ds-*` upstream; typography and spacing audits have no findings, without suppressions. See [the resolved configuration gap](docs/upstream-layer-gap.md).
 
 - Colour palettes: [radix-12-step](foundations/color/options/radix-12-step/README.md), [tailwind-11-step](foundations/color/options/tailwind-11-step/README.md).
 - Colour roles: [functional-roles](foundations/color/options/functional-roles/README.md), [simple-roles](foundations/color/options/simple-roles/README.md).
 
-Colour options include cool/warm/pure neutrals and light/dark variants. All declared contrast pairs are checked; palette duplication/proximity diagnostics remain in the actual audits.
+Colour options ship tokens.cool.css, tokens.warm.css and tokens.pure.css: import exactly one file, alongside its README.md, tokens.json and spec.md. Each neutral exposes stable names and both themes. Set data-theme="light" or "dark" on the document root, or omit it to follow the OS. Role tokens use var() aliases to palette steps. JSON resolves through variants[neutral][mode].tokens. All 672 declared contrast pairs pass; the 12 neutral-file audits have zero literal-duplicate findings, without suppressions. Low-severity palette diagnostics remain in the actual audits.
 
 ## Inspect the options
 

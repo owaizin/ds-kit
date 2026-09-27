@@ -14,11 +14,11 @@ Upstream literal → project alias with fallback → component consumer. This de
 
 ## 4. Tokens used
 
-[JSON](tokens.json) and [CSS](tokens.css) contain identical opaque values. Select cool, warm or pure neutrals and both modes. Keep step jobs intact; the example preview map is not the complete project contract.
+[JSON](tokens.json) and the three neutral CSS files contain matching palette values and alias references. Ship one neutral file; it contains both modes. Keep step jobs intact; the example preview map is not the complete project contract.
 
 ## 5. Props/API
 
-Import one colour option. Map the chosen variant to project aliases. JSON hex values are usable by native color props. No automatic theme manager or component is supplied.
+Import one colour option. Map the chosen variant to project aliases. Resolve JSON var() chains before passing hex strings to native color props. CSS follows the OS theme unless data-theme explicitly selects light or dark. No JavaScript theme manager or component is supplied.
 
 ## 6. States
 
@@ -27,8 +27,8 @@ Check light/dark, focus, hover, pressed, error and text scaling in real consumer
 ## 7. Code example
 
 ```css
-:root { --color-text: var(--ds-color-simple-roles-cool-light-text-default, #1c2024); }
-[data-theme="dark"] { --color-text: var(--ds-color-simple-roles-cool-dark-text-default, #edeef0); }
+:root { --color-text: var(--ds-text-default, #1c2024); }
+[data-theme="dark"] { --color-text: var(--ds-text-default, #edeef0); }
 p { color: var(--color-text, #202020); }
 ```
 

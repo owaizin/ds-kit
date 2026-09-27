@@ -1,12 +1,12 @@
 # functional-roles
 
-A named role contract with literal upstream snapshots; project aliases remain layer 2.
+A named role contract referencing source palette steps. Project aliases remain layer 2.
 
 ## Rationale
 
 Radix provides separate light and dark ramps. The 12 step jobs are retained; descriptive labels are paraphrased. Cool/warm/pure neutrals select slate/sand/gray. Accent/success/attention/danger use blue/green/amber/red. The fg/bg/border × default/muted/emphasis × neutral/accent/success/attention/danger names are our own contract, with Primer as role-separation influence. Equal control-edge values across emphasis slots are intentional: state differentiation needs more than color.
 
-Role selection chooses source steps that meet declared pairs; it does not alter imported ramp values. Example mappings are independently derived. Body text is checked at 4.5:1, large text and control edges at 3:1. Decorative borders in a raw ramp have no implicit contrast promise. Large text means at least 24 CSS px regular or about 18.67px bold; otherwise use the body requirement. Only listed opaque pairs are covered, not overlays, images, disabled controls, arbitrary combinations or full WCAG conformance.
+On-fill selection starts at Radix step 9 or Tailwind’s oriented middle step, checks candidates by distance in the ramp (higher index first on ties), and takes the first that meets 4.5:1 with the chosen label. This is an independently derived role assignment, not a change to the source step’s advertised job. Role selection chooses source steps that meet declared pairs; it does not alter imported ramp values. Example mappings are independently derived. Body text is checked at 4.5:1, large text and control edges at 3:1. Decorative borders in a raw ramp have no implicit contrast promise. Large text means at least 24 CSS px regular or about 18.67px bold; otherwise use the body requirement. Only listed opaque pairs are covered, not overlays, images, disabled controls, arbitrary combinations or full WCAG conformance.
 
 ## When to use / when not
 
@@ -14,344 +14,780 @@ Use when a team wants a concrete starting role vocabulary. Do not add a competin
 
 ## Platforms and source
 
-Web and native share opaque six-digit sRGB strings. CSS contains literal layer-1 --ds-* declarations; JSON names every mode/neutral explicitly. Select a variant through project aliases, with fallbacks, rather than importing all variants as component API. Native can consume the same hex strings; rendered native behavior is unverified.
+Import exactly one of tokens.cool.css, tokens.warm.css or tokens.pure.css. Each file provides the same public names and both themes. Set data-theme="light" or data-theme="dark" on the document root; remove the attribute to follow prefers-color-scheme. Explicit light overrides an OS dark preference. Do not import multiple neutral files together. Palette names preserve source steps (Radix 1–12; Tailwind 50–950); role names are independent of option, neutral and mode. Components consume project aliases with fallbacks. JSON stores tokens under variants[neutral][mode].tokens; roles contain var() references. Native callers resolve these chains to opaque sRGB strings with scripts/color-contract.mjs resolveColor; native rendering remains unverified. On-fill roles choose white for neutral/blue/green/red and black for amber, then select a source fill step meeting 4.5:1. No source value is repainted. All declared pairs pass; no selected fill fails both black and white.
 
 [Radix source](https://github.com/radix-ui/colors/tree/dbdb85470547c7d34b9001f48fddb08ded335979/src), revision dbdb85470547c7d34b9001f48fddb08ded335979, MIT; values unchanged from src/light.ts and src/dark.ts. [Notice](../../../../LICENSES/Radix-Colors-MIT.txt). [Primer influence](https://github.com/primer/primitives/blob/f48bc063f7bc0fb3e447386a8c259650ce46dea8/src/tokens/functional/color/fgColor.json5), MIT, no values/prose copied. [Notice](../../../../LICENSES/Primer-Primitives-MIT.txt). Checked 2026-09-28. Black/white endpoints, role naming and mappings independently derived.
 
+## Audit interpretation
+
+All three shipped neutral files have zero color/literal-duplicate-tokens findings. There are no deliberate duplicate exceptions and no suppressions. Low-severity palette proximity diagnostics remain in the verbatim audits below. The engine reads both theme blocks together; some proximity pairs cross light/dark contexts and are not evidence of a collision within one active theme. Source steps remain intact.
+
 ## Values
 
-| Token | sRGB | Role | Source per value |
-|---|---|---|---|
-| `--ds-color-functional-roles-cool-light-fg-default-neutral` | #1c2024 | fg-default / neutral | radix: slate12 |
-| `--ds-color-functional-roles-cool-light-fg-muted-neutral` | #60646c | fg-muted / neutral | radix: slate11 |
-| `--ds-color-functional-roles-cool-light-fg-emphasis-neutral` | #000000 | fg-emphasis / neutral | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-light-bg-default-neutral` | #f9f9fb | bg-default / neutral | radix: slate2 |
-| `--ds-color-functional-roles-cool-light-bg-muted-neutral` | #f0f0f3 | bg-muted / neutral | radix: slate3 |
-| `--ds-color-functional-roles-cool-light-bg-emphasis-neutral` | #8b8d98 | bg-emphasis / neutral | radix: slate9 |
-| `--ds-color-functional-roles-cool-light-border-default-neutral` | #80838d | border-default / neutral | radix: slate10 |
-| `--ds-color-functional-roles-cool-light-border-muted-neutral` | #80838d | border-muted / neutral | radix: slate10 |
-| `--ds-color-functional-roles-cool-light-border-emphasis-neutral` | #80838d | border-emphasis / neutral | radix: slate10 |
-| `--ds-color-functional-roles-cool-light-fg-default-accent` | #113264 | fg-default / accent | radix: blue12 |
-| `--ds-color-functional-roles-cool-light-fg-muted-accent` | #113264 | fg-muted / accent | radix: blue12 |
-| `--ds-color-functional-roles-cool-light-fg-emphasis-accent` | #000000 | fg-emphasis / accent | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-light-bg-default-accent` | #f4faff | bg-default / accent | radix: blue2 |
-| `--ds-color-functional-roles-cool-light-bg-muted-accent` | #e6f4fe | bg-muted / accent | radix: blue3 |
-| `--ds-color-functional-roles-cool-light-bg-emphasis-accent` | #0090ff | bg-emphasis / accent | radix: blue9 |
-| `--ds-color-functional-roles-cool-light-border-default-accent` | #0588f0 | border-default / accent | radix: blue10 |
-| `--ds-color-functional-roles-cool-light-border-muted-accent` | #0588f0 | border-muted / accent | radix: blue10 |
-| `--ds-color-functional-roles-cool-light-border-emphasis-accent` | #0588f0 | border-emphasis / accent | radix: blue10 |
-| `--ds-color-functional-roles-cool-light-fg-default-success` | #193b2d | fg-default / success | radix: green12 |
-| `--ds-color-functional-roles-cool-light-fg-muted-success` | #193b2d | fg-muted / success | radix: green12 |
-| `--ds-color-functional-roles-cool-light-fg-emphasis-success` | #000000 | fg-emphasis / success | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-light-bg-default-success` | #f4fbf6 | bg-default / success | radix: green2 |
-| `--ds-color-functional-roles-cool-light-bg-muted-success` | #e6f6eb | bg-muted / success | radix: green3 |
-| `--ds-color-functional-roles-cool-light-bg-emphasis-success` | #30a46c | bg-emphasis / success | radix: green9 |
-| `--ds-color-functional-roles-cool-light-border-default-success` | #2b9a66 | border-default / success | radix: green10 |
-| `--ds-color-functional-roles-cool-light-border-muted-success` | #2b9a66 | border-muted / success | radix: green10 |
-| `--ds-color-functional-roles-cool-light-border-emphasis-success` | #2b9a66 | border-emphasis / success | radix: green10 |
-| `--ds-color-functional-roles-cool-light-fg-default-attention` | #4f3422 | fg-default / attention | radix: amber12 |
-| `--ds-color-functional-roles-cool-light-fg-muted-attention` | #4f3422 | fg-muted / attention | radix: amber12 |
-| `--ds-color-functional-roles-cool-light-fg-emphasis-attention` | #000000 | fg-emphasis / attention | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-light-bg-default-attention` | #fefbe9 | bg-default / attention | radix: amber2 |
-| `--ds-color-functional-roles-cool-light-bg-muted-attention` | #fff7c2 | bg-muted / attention | radix: amber3 |
-| `--ds-color-functional-roles-cool-light-bg-emphasis-attention` | #ffc53d | bg-emphasis / attention | radix: amber9 |
-| `--ds-color-functional-roles-cool-light-border-default-attention` | #ab6400 | border-default / attention | radix: amber11 |
-| `--ds-color-functional-roles-cool-light-border-muted-attention` | #ab6400 | border-muted / attention | radix: amber11 |
-| `--ds-color-functional-roles-cool-light-border-emphasis-attention` | #ab6400 | border-emphasis / attention | radix: amber11 |
-| `--ds-color-functional-roles-cool-light-fg-default-danger` | #641723 | fg-default / danger | radix: red12 |
-| `--ds-color-functional-roles-cool-light-fg-muted-danger` | #ce2c31 | fg-muted / danger | radix: red11 |
-| `--ds-color-functional-roles-cool-light-fg-emphasis-danger` | #000000 | fg-emphasis / danger | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-light-bg-default-danger` | #fff7f7 | bg-default / danger | radix: red2 |
-| `--ds-color-functional-roles-cool-light-bg-muted-danger` | #feebec | bg-muted / danger | radix: red3 |
-| `--ds-color-functional-roles-cool-light-bg-emphasis-danger` | #e5484d | bg-emphasis / danger | radix: red9 |
-| `--ds-color-functional-roles-cool-light-border-default-danger` | #e5484d | border-default / danger | radix: red9 |
-| `--ds-color-functional-roles-cool-light-border-muted-danger` | #e5484d | border-muted / danger | radix: red9 |
-| `--ds-color-functional-roles-cool-light-border-emphasis-danger` | #e5484d | border-emphasis / danger | radix: red9 |
-| `--ds-color-functional-roles-cool-light-surface-default` | #fcfcfd | Example surface-default | radix: slate1 |
-| `--ds-color-functional-roles-cool-light-text-default` | #1c2024 | Example text-default | radix: slate12 |
-| `--ds-color-functional-roles-cool-light-text-muted` | #60646c | Example text-muted | radix: slate11 |
-| `--ds-color-functional-roles-cool-light-border-control` | #80838d | Example border-control | radix: slate10 |
-| `--ds-color-functional-roles-cool-light-surface-muted` | #f0f0f3 | Example surface-muted | radix: slate3 |
-| `--ds-color-functional-roles-cool-light-brand-fill` | #0090ff | Example brand-fill | radix: blue9 |
-| `--ds-color-functional-roles-cool-light-brand-on-fill` | #000000 | Example brand-on-fill | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-light-status-danger` | #641723 | Example status-danger | radix: red12 |
-| `--ds-color-functional-roles-cool-light-status-success` | #193b2d | Example status-success | radix: green12 |
-| `--ds-color-functional-roles-cool-light-status-attention` | #4f3422 | Example status-attention | radix: amber12 |
-| `--ds-color-functional-roles-cool-dark-fg-default-neutral` | #edeef0 | fg-default / neutral | radix: slate12 |
-| `--ds-color-functional-roles-cool-dark-fg-muted-neutral` | #b0b4ba | fg-muted / neutral | radix: slate11 |
-| `--ds-color-functional-roles-cool-dark-fg-emphasis-neutral` | #ffffff | fg-emphasis / neutral | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-dark-bg-default-neutral` | #18191b | bg-default / neutral | radix: slate2 |
-| `--ds-color-functional-roles-cool-dark-bg-muted-neutral` | #212225 | bg-muted / neutral | radix: slate3 |
-| `--ds-color-functional-roles-cool-dark-bg-emphasis-neutral` | #696e77 | bg-emphasis / neutral | radix: slate9 |
-| `--ds-color-functional-roles-cool-dark-border-default-neutral` | #696e77 | border-default / neutral | radix: slate9 |
-| `--ds-color-functional-roles-cool-dark-border-muted-neutral` | #696e77 | border-muted / neutral | radix: slate9 |
-| `--ds-color-functional-roles-cool-dark-border-emphasis-neutral` | #696e77 | border-emphasis / neutral | radix: slate9 |
-| `--ds-color-functional-roles-cool-dark-fg-default-accent` | #c2e6ff | fg-default / accent | radix: blue12 |
-| `--ds-color-functional-roles-cool-dark-fg-muted-accent` | #70b8ff | fg-muted / accent | radix: blue11 |
-| `--ds-color-functional-roles-cool-dark-fg-emphasis-accent` | #000000 | fg-emphasis / accent | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-dark-bg-default-accent` | #111927 | bg-default / accent | radix: blue2 |
-| `--ds-color-functional-roles-cool-dark-bg-muted-accent` | #0d2847 | bg-muted / accent | radix: blue3 |
-| `--ds-color-functional-roles-cool-dark-bg-emphasis-accent` | #0090ff | bg-emphasis / accent | radix: blue9 |
-| `--ds-color-functional-roles-cool-dark-border-default-accent` | #0090ff | border-default / accent | radix: blue9 |
-| `--ds-color-functional-roles-cool-dark-border-muted-accent` | #0090ff | border-muted / accent | radix: blue9 |
-| `--ds-color-functional-roles-cool-dark-border-emphasis-accent` | #0090ff | border-emphasis / accent | radix: blue9 |
-| `--ds-color-functional-roles-cool-dark-fg-default-success` | #b1f1cb | fg-default / success | radix: green12 |
-| `--ds-color-functional-roles-cool-dark-fg-muted-success` | #3dd68c | fg-muted / success | radix: green11 |
-| `--ds-color-functional-roles-cool-dark-fg-emphasis-success` | #000000 | fg-emphasis / success | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-dark-bg-default-success` | #121b17 | bg-default / success | radix: green2 |
-| `--ds-color-functional-roles-cool-dark-bg-muted-success` | #132d21 | bg-muted / success | radix: green3 |
-| `--ds-color-functional-roles-cool-dark-bg-emphasis-success` | #30a46c | bg-emphasis / success | radix: green9 |
-| `--ds-color-functional-roles-cool-dark-border-default-success` | #30a46c | border-default / success | radix: green9 |
-| `--ds-color-functional-roles-cool-dark-border-muted-success` | #30a46c | border-muted / success | radix: green9 |
-| `--ds-color-functional-roles-cool-dark-border-emphasis-success` | #30a46c | border-emphasis / success | radix: green9 |
-| `--ds-color-functional-roles-cool-dark-fg-default-attention` | #ffe7b3 | fg-default / attention | radix: amber12 |
-| `--ds-color-functional-roles-cool-dark-fg-muted-attention` | #ffca16 | fg-muted / attention | radix: amber11 |
-| `--ds-color-functional-roles-cool-dark-fg-emphasis-attention` | #000000 | fg-emphasis / attention | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-dark-bg-default-attention` | #1d180f | bg-default / attention | radix: amber2 |
-| `--ds-color-functional-roles-cool-dark-bg-muted-attention` | #302008 | bg-muted / attention | radix: amber3 |
-| `--ds-color-functional-roles-cool-dark-bg-emphasis-attention` | #ffc53d | bg-emphasis / attention | radix: amber9 |
-| `--ds-color-functional-roles-cool-dark-border-default-attention` | #8f6424 | border-default / attention | radix: amber8 |
-| `--ds-color-functional-roles-cool-dark-border-muted-attention` | #8f6424 | border-muted / attention | radix: amber8 |
-| `--ds-color-functional-roles-cool-dark-border-emphasis-attention` | #8f6424 | border-emphasis / attention | radix: amber8 |
-| `--ds-color-functional-roles-cool-dark-fg-default-danger` | #ffd1d9 | fg-default / danger | radix: red12 |
-| `--ds-color-functional-roles-cool-dark-fg-muted-danger` | #ff9592 | fg-muted / danger | radix: red11 |
-| `--ds-color-functional-roles-cool-dark-fg-emphasis-danger` | #000000 | fg-emphasis / danger | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-dark-bg-default-danger` | #201314 | bg-default / danger | radix: red2 |
-| `--ds-color-functional-roles-cool-dark-bg-muted-danger` | #3b1219 | bg-muted / danger | radix: red3 |
-| `--ds-color-functional-roles-cool-dark-bg-emphasis-danger` | #e5484d | bg-emphasis / danger | radix: red9 |
-| `--ds-color-functional-roles-cool-dark-border-default-danger` | #b54548 | border-default / danger | radix: red8 |
-| `--ds-color-functional-roles-cool-dark-border-muted-danger` | #b54548 | border-muted / danger | radix: red8 |
-| `--ds-color-functional-roles-cool-dark-border-emphasis-danger` | #b54548 | border-emphasis / danger | radix: red8 |
-| `--ds-color-functional-roles-cool-dark-surface-default` | #111113 | Example surface-default | radix: slate1 |
-| `--ds-color-functional-roles-cool-dark-text-default` | #edeef0 | Example text-default | radix: slate12 |
-| `--ds-color-functional-roles-cool-dark-text-muted` | #b0b4ba | Example text-muted | radix: slate11 |
-| `--ds-color-functional-roles-cool-dark-border-control` | #696e77 | Example border-control | radix: slate9 |
-| `--ds-color-functional-roles-cool-dark-surface-muted` | #212225 | Example surface-muted | radix: slate3 |
-| `--ds-color-functional-roles-cool-dark-brand-fill` | #0090ff | Example brand-fill | radix: blue9 |
-| `--ds-color-functional-roles-cool-dark-brand-on-fill` | #000000 | Example brand-on-fill | independent: sRGB endpoint |
-| `--ds-color-functional-roles-cool-dark-status-danger` | #ffd1d9 | Example status-danger | radix: red12 |
-| `--ds-color-functional-roles-cool-dark-status-success` | #b1f1cb | Example status-success | radix: green12 |
-| `--ds-color-functional-roles-cool-dark-status-attention` | #ffe7b3 | Example status-attention | radix: amber12 |
-| `--ds-color-functional-roles-warm-light-fg-default-neutral` | #21201c | fg-default / neutral | radix: sand12 |
-| `--ds-color-functional-roles-warm-light-fg-muted-neutral` | #63635e | fg-muted / neutral | radix: sand11 |
-| `--ds-color-functional-roles-warm-light-fg-emphasis-neutral` | #000000 | fg-emphasis / neutral | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-light-bg-default-neutral` | #f9f9f8 | bg-default / neutral | radix: sand2 |
-| `--ds-color-functional-roles-warm-light-bg-muted-neutral` | #f1f0ef | bg-muted / neutral | radix: sand3 |
-| `--ds-color-functional-roles-warm-light-bg-emphasis-neutral` | #8d8d86 | bg-emphasis / neutral | radix: sand9 |
-| `--ds-color-functional-roles-warm-light-border-default-neutral` | #82827c | border-default / neutral | radix: sand10 |
-| `--ds-color-functional-roles-warm-light-border-muted-neutral` | #82827c | border-muted / neutral | radix: sand10 |
-| `--ds-color-functional-roles-warm-light-border-emphasis-neutral` | #82827c | border-emphasis / neutral | radix: sand10 |
-| `--ds-color-functional-roles-warm-light-fg-default-accent` | #113264 | fg-default / accent | radix: blue12 |
-| `--ds-color-functional-roles-warm-light-fg-muted-accent` | #113264 | fg-muted / accent | radix: blue12 |
-| `--ds-color-functional-roles-warm-light-fg-emphasis-accent` | #000000 | fg-emphasis / accent | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-light-bg-default-accent` | #f4faff | bg-default / accent | radix: blue2 |
-| `--ds-color-functional-roles-warm-light-bg-muted-accent` | #e6f4fe | bg-muted / accent | radix: blue3 |
-| `--ds-color-functional-roles-warm-light-bg-emphasis-accent` | #0090ff | bg-emphasis / accent | radix: blue9 |
-| `--ds-color-functional-roles-warm-light-border-default-accent` | #0588f0 | border-default / accent | radix: blue10 |
-| `--ds-color-functional-roles-warm-light-border-muted-accent` | #0588f0 | border-muted / accent | radix: blue10 |
-| `--ds-color-functional-roles-warm-light-border-emphasis-accent` | #0588f0 | border-emphasis / accent | radix: blue10 |
-| `--ds-color-functional-roles-warm-light-fg-default-success` | #193b2d | fg-default / success | radix: green12 |
-| `--ds-color-functional-roles-warm-light-fg-muted-success` | #193b2d | fg-muted / success | radix: green12 |
-| `--ds-color-functional-roles-warm-light-fg-emphasis-success` | #000000 | fg-emphasis / success | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-light-bg-default-success` | #f4fbf6 | bg-default / success | radix: green2 |
-| `--ds-color-functional-roles-warm-light-bg-muted-success` | #e6f6eb | bg-muted / success | radix: green3 |
-| `--ds-color-functional-roles-warm-light-bg-emphasis-success` | #30a46c | bg-emphasis / success | radix: green9 |
-| `--ds-color-functional-roles-warm-light-border-default-success` | #2b9a66 | border-default / success | radix: green10 |
-| `--ds-color-functional-roles-warm-light-border-muted-success` | #2b9a66 | border-muted / success | radix: green10 |
-| `--ds-color-functional-roles-warm-light-border-emphasis-success` | #2b9a66 | border-emphasis / success | radix: green10 |
-| `--ds-color-functional-roles-warm-light-fg-default-attention` | #4f3422 | fg-default / attention | radix: amber12 |
-| `--ds-color-functional-roles-warm-light-fg-muted-attention` | #4f3422 | fg-muted / attention | radix: amber12 |
-| `--ds-color-functional-roles-warm-light-fg-emphasis-attention` | #000000 | fg-emphasis / attention | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-light-bg-default-attention` | #fefbe9 | bg-default / attention | radix: amber2 |
-| `--ds-color-functional-roles-warm-light-bg-muted-attention` | #fff7c2 | bg-muted / attention | radix: amber3 |
-| `--ds-color-functional-roles-warm-light-bg-emphasis-attention` | #ffc53d | bg-emphasis / attention | radix: amber9 |
-| `--ds-color-functional-roles-warm-light-border-default-attention` | #ab6400 | border-default / attention | radix: amber11 |
-| `--ds-color-functional-roles-warm-light-border-muted-attention` | #ab6400 | border-muted / attention | radix: amber11 |
-| `--ds-color-functional-roles-warm-light-border-emphasis-attention` | #ab6400 | border-emphasis / attention | radix: amber11 |
-| `--ds-color-functional-roles-warm-light-fg-default-danger` | #641723 | fg-default / danger | radix: red12 |
-| `--ds-color-functional-roles-warm-light-fg-muted-danger` | #ce2c31 | fg-muted / danger | radix: red11 |
-| `--ds-color-functional-roles-warm-light-fg-emphasis-danger` | #000000 | fg-emphasis / danger | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-light-bg-default-danger` | #fff7f7 | bg-default / danger | radix: red2 |
-| `--ds-color-functional-roles-warm-light-bg-muted-danger` | #feebec | bg-muted / danger | radix: red3 |
-| `--ds-color-functional-roles-warm-light-bg-emphasis-danger` | #e5484d | bg-emphasis / danger | radix: red9 |
-| `--ds-color-functional-roles-warm-light-border-default-danger` | #e5484d | border-default / danger | radix: red9 |
-| `--ds-color-functional-roles-warm-light-border-muted-danger` | #e5484d | border-muted / danger | radix: red9 |
-| `--ds-color-functional-roles-warm-light-border-emphasis-danger` | #e5484d | border-emphasis / danger | radix: red9 |
-| `--ds-color-functional-roles-warm-light-surface-default` | #fdfdfc | Example surface-default | radix: sand1 |
-| `--ds-color-functional-roles-warm-light-text-default` | #21201c | Example text-default | radix: sand12 |
-| `--ds-color-functional-roles-warm-light-text-muted` | #63635e | Example text-muted | radix: sand11 |
-| `--ds-color-functional-roles-warm-light-border-control` | #82827c | Example border-control | radix: sand10 |
-| `--ds-color-functional-roles-warm-light-surface-muted` | #f1f0ef | Example surface-muted | radix: sand3 |
-| `--ds-color-functional-roles-warm-light-brand-fill` | #0090ff | Example brand-fill | radix: blue9 |
-| `--ds-color-functional-roles-warm-light-brand-on-fill` | #000000 | Example brand-on-fill | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-light-status-danger` | #641723 | Example status-danger | radix: red12 |
-| `--ds-color-functional-roles-warm-light-status-success` | #193b2d | Example status-success | radix: green12 |
-| `--ds-color-functional-roles-warm-light-status-attention` | #4f3422 | Example status-attention | radix: amber12 |
-| `--ds-color-functional-roles-warm-dark-fg-default-neutral` | #eeeeec | fg-default / neutral | radix: sand12 |
-| `--ds-color-functional-roles-warm-dark-fg-muted-neutral` | #b5b3ad | fg-muted / neutral | radix: sand11 |
-| `--ds-color-functional-roles-warm-dark-fg-emphasis-neutral` | #ffffff | fg-emphasis / neutral | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-dark-bg-default-neutral` | #191918 | bg-default / neutral | radix: sand2 |
-| `--ds-color-functional-roles-warm-dark-bg-muted-neutral` | #222221 | bg-muted / neutral | radix: sand3 |
-| `--ds-color-functional-roles-warm-dark-bg-emphasis-neutral` | #6f6d66 | bg-emphasis / neutral | radix: sand9 |
-| `--ds-color-functional-roles-warm-dark-border-default-neutral` | #6f6d66 | border-default / neutral | radix: sand9 |
-| `--ds-color-functional-roles-warm-dark-border-muted-neutral` | #6f6d66 | border-muted / neutral | radix: sand9 |
-| `--ds-color-functional-roles-warm-dark-border-emphasis-neutral` | #6f6d66 | border-emphasis / neutral | radix: sand9 |
-| `--ds-color-functional-roles-warm-dark-fg-default-accent` | #c2e6ff | fg-default / accent | radix: blue12 |
-| `--ds-color-functional-roles-warm-dark-fg-muted-accent` | #70b8ff | fg-muted / accent | radix: blue11 |
-| `--ds-color-functional-roles-warm-dark-fg-emphasis-accent` | #000000 | fg-emphasis / accent | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-dark-bg-default-accent` | #111927 | bg-default / accent | radix: blue2 |
-| `--ds-color-functional-roles-warm-dark-bg-muted-accent` | #0d2847 | bg-muted / accent | radix: blue3 |
-| `--ds-color-functional-roles-warm-dark-bg-emphasis-accent` | #0090ff | bg-emphasis / accent | radix: blue9 |
-| `--ds-color-functional-roles-warm-dark-border-default-accent` | #0090ff | border-default / accent | radix: blue9 |
-| `--ds-color-functional-roles-warm-dark-border-muted-accent` | #0090ff | border-muted / accent | radix: blue9 |
-| `--ds-color-functional-roles-warm-dark-border-emphasis-accent` | #0090ff | border-emphasis / accent | radix: blue9 |
-| `--ds-color-functional-roles-warm-dark-fg-default-success` | #b1f1cb | fg-default / success | radix: green12 |
-| `--ds-color-functional-roles-warm-dark-fg-muted-success` | #3dd68c | fg-muted / success | radix: green11 |
-| `--ds-color-functional-roles-warm-dark-fg-emphasis-success` | #000000 | fg-emphasis / success | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-dark-bg-default-success` | #121b17 | bg-default / success | radix: green2 |
-| `--ds-color-functional-roles-warm-dark-bg-muted-success` | #132d21 | bg-muted / success | radix: green3 |
-| `--ds-color-functional-roles-warm-dark-bg-emphasis-success` | #30a46c | bg-emphasis / success | radix: green9 |
-| `--ds-color-functional-roles-warm-dark-border-default-success` | #30a46c | border-default / success | radix: green9 |
-| `--ds-color-functional-roles-warm-dark-border-muted-success` | #30a46c | border-muted / success | radix: green9 |
-| `--ds-color-functional-roles-warm-dark-border-emphasis-success` | #30a46c | border-emphasis / success | radix: green9 |
-| `--ds-color-functional-roles-warm-dark-fg-default-attention` | #ffe7b3 | fg-default / attention | radix: amber12 |
-| `--ds-color-functional-roles-warm-dark-fg-muted-attention` | #ffca16 | fg-muted / attention | radix: amber11 |
-| `--ds-color-functional-roles-warm-dark-fg-emphasis-attention` | #000000 | fg-emphasis / attention | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-dark-bg-default-attention` | #1d180f | bg-default / attention | radix: amber2 |
-| `--ds-color-functional-roles-warm-dark-bg-muted-attention` | #302008 | bg-muted / attention | radix: amber3 |
-| `--ds-color-functional-roles-warm-dark-bg-emphasis-attention` | #ffc53d | bg-emphasis / attention | radix: amber9 |
-| `--ds-color-functional-roles-warm-dark-border-default-attention` | #8f6424 | border-default / attention | radix: amber8 |
-| `--ds-color-functional-roles-warm-dark-border-muted-attention` | #8f6424 | border-muted / attention | radix: amber8 |
-| `--ds-color-functional-roles-warm-dark-border-emphasis-attention` | #8f6424 | border-emphasis / attention | radix: amber8 |
-| `--ds-color-functional-roles-warm-dark-fg-default-danger` | #ffd1d9 | fg-default / danger | radix: red12 |
-| `--ds-color-functional-roles-warm-dark-fg-muted-danger` | #ff9592 | fg-muted / danger | radix: red11 |
-| `--ds-color-functional-roles-warm-dark-fg-emphasis-danger` | #000000 | fg-emphasis / danger | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-dark-bg-default-danger` | #201314 | bg-default / danger | radix: red2 |
-| `--ds-color-functional-roles-warm-dark-bg-muted-danger` | #3b1219 | bg-muted / danger | radix: red3 |
-| `--ds-color-functional-roles-warm-dark-bg-emphasis-danger` | #e5484d | bg-emphasis / danger | radix: red9 |
-| `--ds-color-functional-roles-warm-dark-border-default-danger` | #b54548 | border-default / danger | radix: red8 |
-| `--ds-color-functional-roles-warm-dark-border-muted-danger` | #b54548 | border-muted / danger | radix: red8 |
-| `--ds-color-functional-roles-warm-dark-border-emphasis-danger` | #b54548 | border-emphasis / danger | radix: red8 |
-| `--ds-color-functional-roles-warm-dark-surface-default` | #111110 | Example surface-default | radix: sand1 |
-| `--ds-color-functional-roles-warm-dark-text-default` | #eeeeec | Example text-default | radix: sand12 |
-| `--ds-color-functional-roles-warm-dark-text-muted` | #b5b3ad | Example text-muted | radix: sand11 |
-| `--ds-color-functional-roles-warm-dark-border-control` | #6f6d66 | Example border-control | radix: sand9 |
-| `--ds-color-functional-roles-warm-dark-surface-muted` | #222221 | Example surface-muted | radix: sand3 |
-| `--ds-color-functional-roles-warm-dark-brand-fill` | #0090ff | Example brand-fill | radix: blue9 |
-| `--ds-color-functional-roles-warm-dark-brand-on-fill` | #000000 | Example brand-on-fill | independent: sRGB endpoint |
-| `--ds-color-functional-roles-warm-dark-status-danger` | #ffd1d9 | Example status-danger | radix: red12 |
-| `--ds-color-functional-roles-warm-dark-status-success` | #b1f1cb | Example status-success | radix: green12 |
-| `--ds-color-functional-roles-warm-dark-status-attention` | #ffe7b3 | Example status-attention | radix: amber12 |
-| `--ds-color-functional-roles-pure-light-fg-default-neutral` | #202020 | fg-default / neutral | radix: gray12 |
-| `--ds-color-functional-roles-pure-light-fg-muted-neutral` | #646464 | fg-muted / neutral | radix: gray11 |
-| `--ds-color-functional-roles-pure-light-fg-emphasis-neutral` | #000000 | fg-emphasis / neutral | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-light-bg-default-neutral` | #f9f9f9 | bg-default / neutral | radix: gray2 |
-| `--ds-color-functional-roles-pure-light-bg-muted-neutral` | #f0f0f0 | bg-muted / neutral | radix: gray3 |
-| `--ds-color-functional-roles-pure-light-bg-emphasis-neutral` | #8d8d8d | bg-emphasis / neutral | radix: gray9 |
-| `--ds-color-functional-roles-pure-light-border-default-neutral` | #838383 | border-default / neutral | radix: gray10 |
-| `--ds-color-functional-roles-pure-light-border-muted-neutral` | #838383 | border-muted / neutral | radix: gray10 |
-| `--ds-color-functional-roles-pure-light-border-emphasis-neutral` | #838383 | border-emphasis / neutral | radix: gray10 |
-| `--ds-color-functional-roles-pure-light-fg-default-accent` | #113264 | fg-default / accent | radix: blue12 |
-| `--ds-color-functional-roles-pure-light-fg-muted-accent` | #113264 | fg-muted / accent | radix: blue12 |
-| `--ds-color-functional-roles-pure-light-fg-emphasis-accent` | #000000 | fg-emphasis / accent | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-light-bg-default-accent` | #f4faff | bg-default / accent | radix: blue2 |
-| `--ds-color-functional-roles-pure-light-bg-muted-accent` | #e6f4fe | bg-muted / accent | radix: blue3 |
-| `--ds-color-functional-roles-pure-light-bg-emphasis-accent` | #0090ff | bg-emphasis / accent | radix: blue9 |
-| `--ds-color-functional-roles-pure-light-border-default-accent` | #0588f0 | border-default / accent | radix: blue10 |
-| `--ds-color-functional-roles-pure-light-border-muted-accent` | #0588f0 | border-muted / accent | radix: blue10 |
-| `--ds-color-functional-roles-pure-light-border-emphasis-accent` | #0588f0 | border-emphasis / accent | radix: blue10 |
-| `--ds-color-functional-roles-pure-light-fg-default-success` | #193b2d | fg-default / success | radix: green12 |
-| `--ds-color-functional-roles-pure-light-fg-muted-success` | #193b2d | fg-muted / success | radix: green12 |
-| `--ds-color-functional-roles-pure-light-fg-emphasis-success` | #000000 | fg-emphasis / success | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-light-bg-default-success` | #f4fbf6 | bg-default / success | radix: green2 |
-| `--ds-color-functional-roles-pure-light-bg-muted-success` | #e6f6eb | bg-muted / success | radix: green3 |
-| `--ds-color-functional-roles-pure-light-bg-emphasis-success` | #30a46c | bg-emphasis / success | radix: green9 |
-| `--ds-color-functional-roles-pure-light-border-default-success` | #2b9a66 | border-default / success | radix: green10 |
-| `--ds-color-functional-roles-pure-light-border-muted-success` | #2b9a66 | border-muted / success | radix: green10 |
-| `--ds-color-functional-roles-pure-light-border-emphasis-success` | #2b9a66 | border-emphasis / success | radix: green10 |
-| `--ds-color-functional-roles-pure-light-fg-default-attention` | #4f3422 | fg-default / attention | radix: amber12 |
-| `--ds-color-functional-roles-pure-light-fg-muted-attention` | #4f3422 | fg-muted / attention | radix: amber12 |
-| `--ds-color-functional-roles-pure-light-fg-emphasis-attention` | #000000 | fg-emphasis / attention | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-light-bg-default-attention` | #fefbe9 | bg-default / attention | radix: amber2 |
-| `--ds-color-functional-roles-pure-light-bg-muted-attention` | #fff7c2 | bg-muted / attention | radix: amber3 |
-| `--ds-color-functional-roles-pure-light-bg-emphasis-attention` | #ffc53d | bg-emphasis / attention | radix: amber9 |
-| `--ds-color-functional-roles-pure-light-border-default-attention` | #ab6400 | border-default / attention | radix: amber11 |
-| `--ds-color-functional-roles-pure-light-border-muted-attention` | #ab6400 | border-muted / attention | radix: amber11 |
-| `--ds-color-functional-roles-pure-light-border-emphasis-attention` | #ab6400 | border-emphasis / attention | radix: amber11 |
-| `--ds-color-functional-roles-pure-light-fg-default-danger` | #641723 | fg-default / danger | radix: red12 |
-| `--ds-color-functional-roles-pure-light-fg-muted-danger` | #ce2c31 | fg-muted / danger | radix: red11 |
-| `--ds-color-functional-roles-pure-light-fg-emphasis-danger` | #000000 | fg-emphasis / danger | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-light-bg-default-danger` | #fff7f7 | bg-default / danger | radix: red2 |
-| `--ds-color-functional-roles-pure-light-bg-muted-danger` | #feebec | bg-muted / danger | radix: red3 |
-| `--ds-color-functional-roles-pure-light-bg-emphasis-danger` | #e5484d | bg-emphasis / danger | radix: red9 |
-| `--ds-color-functional-roles-pure-light-border-default-danger` | #e5484d | border-default / danger | radix: red9 |
-| `--ds-color-functional-roles-pure-light-border-muted-danger` | #e5484d | border-muted / danger | radix: red9 |
-| `--ds-color-functional-roles-pure-light-border-emphasis-danger` | #e5484d | border-emphasis / danger | radix: red9 |
-| `--ds-color-functional-roles-pure-light-surface-default` | #fcfcfc | Example surface-default | radix: gray1 |
-| `--ds-color-functional-roles-pure-light-text-default` | #202020 | Example text-default | radix: gray12 |
-| `--ds-color-functional-roles-pure-light-text-muted` | #646464 | Example text-muted | radix: gray11 |
-| `--ds-color-functional-roles-pure-light-border-control` | #838383 | Example border-control | radix: gray10 |
-| `--ds-color-functional-roles-pure-light-surface-muted` | #f0f0f0 | Example surface-muted | radix: gray3 |
-| `--ds-color-functional-roles-pure-light-brand-fill` | #0090ff | Example brand-fill | radix: blue9 |
-| `--ds-color-functional-roles-pure-light-brand-on-fill` | #000000 | Example brand-on-fill | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-light-status-danger` | #641723 | Example status-danger | radix: red12 |
-| `--ds-color-functional-roles-pure-light-status-success` | #193b2d | Example status-success | radix: green12 |
-| `--ds-color-functional-roles-pure-light-status-attention` | #4f3422 | Example status-attention | radix: amber12 |
-| `--ds-color-functional-roles-pure-dark-fg-default-neutral` | #eeeeee | fg-default / neutral | radix: gray12 |
-| `--ds-color-functional-roles-pure-dark-fg-muted-neutral` | #b4b4b4 | fg-muted / neutral | radix: gray11 |
-| `--ds-color-functional-roles-pure-dark-fg-emphasis-neutral` | #ffffff | fg-emphasis / neutral | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-dark-bg-default-neutral` | #191919 | bg-default / neutral | radix: gray2 |
-| `--ds-color-functional-roles-pure-dark-bg-muted-neutral` | #222222 | bg-muted / neutral | radix: gray3 |
-| `--ds-color-functional-roles-pure-dark-bg-emphasis-neutral` | #6e6e6e | bg-emphasis / neutral | radix: gray9 |
-| `--ds-color-functional-roles-pure-dark-border-default-neutral` | #6e6e6e | border-default / neutral | radix: gray9 |
-| `--ds-color-functional-roles-pure-dark-border-muted-neutral` | #6e6e6e | border-muted / neutral | radix: gray9 |
-| `--ds-color-functional-roles-pure-dark-border-emphasis-neutral` | #6e6e6e | border-emphasis / neutral | radix: gray9 |
-| `--ds-color-functional-roles-pure-dark-fg-default-accent` | #c2e6ff | fg-default / accent | radix: blue12 |
-| `--ds-color-functional-roles-pure-dark-fg-muted-accent` | #70b8ff | fg-muted / accent | radix: blue11 |
-| `--ds-color-functional-roles-pure-dark-fg-emphasis-accent` | #000000 | fg-emphasis / accent | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-dark-bg-default-accent` | #111927 | bg-default / accent | radix: blue2 |
-| `--ds-color-functional-roles-pure-dark-bg-muted-accent` | #0d2847 | bg-muted / accent | radix: blue3 |
-| `--ds-color-functional-roles-pure-dark-bg-emphasis-accent` | #0090ff | bg-emphasis / accent | radix: blue9 |
-| `--ds-color-functional-roles-pure-dark-border-default-accent` | #0090ff | border-default / accent | radix: blue9 |
-| `--ds-color-functional-roles-pure-dark-border-muted-accent` | #0090ff | border-muted / accent | radix: blue9 |
-| `--ds-color-functional-roles-pure-dark-border-emphasis-accent` | #0090ff | border-emphasis / accent | radix: blue9 |
-| `--ds-color-functional-roles-pure-dark-fg-default-success` | #b1f1cb | fg-default / success | radix: green12 |
-| `--ds-color-functional-roles-pure-dark-fg-muted-success` | #3dd68c | fg-muted / success | radix: green11 |
-| `--ds-color-functional-roles-pure-dark-fg-emphasis-success` | #000000 | fg-emphasis / success | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-dark-bg-default-success` | #121b17 | bg-default / success | radix: green2 |
-| `--ds-color-functional-roles-pure-dark-bg-muted-success` | #132d21 | bg-muted / success | radix: green3 |
-| `--ds-color-functional-roles-pure-dark-bg-emphasis-success` | #30a46c | bg-emphasis / success | radix: green9 |
-| `--ds-color-functional-roles-pure-dark-border-default-success` | #30a46c | border-default / success | radix: green9 |
-| `--ds-color-functional-roles-pure-dark-border-muted-success` | #30a46c | border-muted / success | radix: green9 |
-| `--ds-color-functional-roles-pure-dark-border-emphasis-success` | #30a46c | border-emphasis / success | radix: green9 |
-| `--ds-color-functional-roles-pure-dark-fg-default-attention` | #ffe7b3 | fg-default / attention | radix: amber12 |
-| `--ds-color-functional-roles-pure-dark-fg-muted-attention` | #ffca16 | fg-muted / attention | radix: amber11 |
-| `--ds-color-functional-roles-pure-dark-fg-emphasis-attention` | #000000 | fg-emphasis / attention | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-dark-bg-default-attention` | #1d180f | bg-default / attention | radix: amber2 |
-| `--ds-color-functional-roles-pure-dark-bg-muted-attention` | #302008 | bg-muted / attention | radix: amber3 |
-| `--ds-color-functional-roles-pure-dark-bg-emphasis-attention` | #ffc53d | bg-emphasis / attention | radix: amber9 |
-| `--ds-color-functional-roles-pure-dark-border-default-attention` | #8f6424 | border-default / attention | radix: amber8 |
-| `--ds-color-functional-roles-pure-dark-border-muted-attention` | #8f6424 | border-muted / attention | radix: amber8 |
-| `--ds-color-functional-roles-pure-dark-border-emphasis-attention` | #8f6424 | border-emphasis / attention | radix: amber8 |
-| `--ds-color-functional-roles-pure-dark-fg-default-danger` | #ffd1d9 | fg-default / danger | radix: red12 |
-| `--ds-color-functional-roles-pure-dark-fg-muted-danger` | #ff9592 | fg-muted / danger | radix: red11 |
-| `--ds-color-functional-roles-pure-dark-fg-emphasis-danger` | #000000 | fg-emphasis / danger | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-dark-bg-default-danger` | #201314 | bg-default / danger | radix: red2 |
-| `--ds-color-functional-roles-pure-dark-bg-muted-danger` | #3b1219 | bg-muted / danger | radix: red3 |
-| `--ds-color-functional-roles-pure-dark-bg-emphasis-danger` | #e5484d | bg-emphasis / danger | radix: red9 |
-| `--ds-color-functional-roles-pure-dark-border-default-danger` | #b54548 | border-default / danger | radix: red8 |
-| `--ds-color-functional-roles-pure-dark-border-muted-danger` | #b54548 | border-muted / danger | radix: red8 |
-| `--ds-color-functional-roles-pure-dark-border-emphasis-danger` | #b54548 | border-emphasis / danger | radix: red8 |
-| `--ds-color-functional-roles-pure-dark-surface-default` | #111111 | Example surface-default | radix: gray1 |
-| `--ds-color-functional-roles-pure-dark-text-default` | #eeeeee | Example text-default | radix: gray12 |
-| `--ds-color-functional-roles-pure-dark-text-muted` | #b4b4b4 | Example text-muted | radix: gray11 |
-| `--ds-color-functional-roles-pure-dark-border-control` | #6e6e6e | Example border-control | radix: gray9 |
-| `--ds-color-functional-roles-pure-dark-surface-muted` | #222222 | Example surface-muted | radix: gray3 |
-| `--ds-color-functional-roles-pure-dark-brand-fill` | #0090ff | Example brand-fill | radix: blue9 |
-| `--ds-color-functional-roles-pure-dark-brand-on-fill` | #000000 | Example brand-on-fill | independent: sRGB endpoint |
-| `--ds-color-functional-roles-pure-dark-status-danger` | #ffd1d9 | Example status-danger | radix: red12 |
-| `--ds-color-functional-roles-pure-dark-status-success` | #b1f1cb | Example status-success | radix: green12 |
-| `--ds-color-functional-roles-pure-dark-status-attention` | #ffe7b3 | Example status-attention | radix: amber12 |
+| Variant | Token | CSS value or alias | Role | Source per value |
+|---|---|---|---|---|
+| cool/light | `--ds-neutral-1` | #fcfcfd | Canvas | radix: slate1 |
+| cool/light | `--ds-neutral-2` | #f9f9fb | Quiet surface | radix: slate2 |
+| cool/light | `--ds-neutral-3` | #f0f0f3 | Control surface | radix: slate3 |
+| cool/light | `--ds-neutral-4` | #e8e8ec | Hover surface | radix: slate4 |
+| cool/light | `--ds-neutral-5` | #e0e1e6 | Selected surface | radix: slate5 |
+| cool/light | `--ds-neutral-6` | #d9d9e0 | Decorative separator | radix: slate6 |
+| cool/light | `--ds-neutral-7` | #cdced6 | Control edge / focus candidate | radix: slate7 |
+| cool/light | `--ds-neutral-8` | #b9bbc6 | Stronger edge | radix: slate8 |
+| cool/light | `--ds-neutral-9` | #8b8d98 | Solid fill | radix: slate9 |
+| cool/light | `--ds-neutral-10` | #80838d | Solid hover | radix: slate10 |
+| cool/light | `--ds-neutral-11` | #60646c | Secondary text candidate | radix: slate11 |
+| cool/light | `--ds-neutral-12` | #1c2024 | Primary text | radix: slate12 |
+| cool/light | `--ds-accent-1` | #fbfdff | Canvas | radix: blue1 |
+| cool/light | `--ds-accent-2` | #f4faff | Quiet surface | radix: blue2 |
+| cool/light | `--ds-accent-3` | #e6f4fe | Control surface | radix: blue3 |
+| cool/light | `--ds-accent-4` | #d5efff | Hover surface | radix: blue4 |
+| cool/light | `--ds-accent-5` | #c2e5ff | Selected surface | radix: blue5 |
+| cool/light | `--ds-accent-6` | #acd8fc | Decorative separator | radix: blue6 |
+| cool/light | `--ds-accent-7` | #8ec8f6 | Control edge / focus candidate | radix: blue7 |
+| cool/light | `--ds-accent-8` | #5eb1ef | Stronger edge | radix: blue8 |
+| cool/light | `--ds-accent-9` | #0090ff | Solid fill | radix: blue9 |
+| cool/light | `--ds-accent-10` | #0588f0 | Solid hover | radix: blue10 |
+| cool/light | `--ds-accent-11` | #0d74ce | Secondary text candidate | radix: blue11 |
+| cool/light | `--ds-accent-12` | #113264 | Primary text | radix: blue12 |
+| cool/light | `--ds-success-1` | #fbfefc | Canvas | radix: green1 |
+| cool/light | `--ds-success-2` | #f4fbf6 | Quiet surface | radix: green2 |
+| cool/light | `--ds-success-3` | #e6f6eb | Control surface | radix: green3 |
+| cool/light | `--ds-success-4` | #d6f1df | Hover surface | radix: green4 |
+| cool/light | `--ds-success-5` | #c4e8d1 | Selected surface | radix: green5 |
+| cool/light | `--ds-success-6` | #adddc0 | Decorative separator | radix: green6 |
+| cool/light | `--ds-success-7` | #8eceaa | Control edge / focus candidate | radix: green7 |
+| cool/light | `--ds-success-8` | #5bb98b | Stronger edge | radix: green8 |
+| cool/light | `--ds-success-9` | #30a46c | Solid fill | radix: green9 |
+| cool/light | `--ds-success-10` | #2b9a66 | Solid hover | radix: green10 |
+| cool/light | `--ds-success-11` | #218358 | Secondary text candidate | radix: green11 |
+| cool/light | `--ds-success-12` | #193b2d | Primary text | radix: green12 |
+| cool/light | `--ds-attention-1` | #fefdfb | Canvas | radix: amber1 |
+| cool/light | `--ds-attention-2` | #fefbe9 | Quiet surface | radix: amber2 |
+| cool/light | `--ds-attention-3` | #fff7c2 | Control surface | radix: amber3 |
+| cool/light | `--ds-attention-4` | #ffee9c | Hover surface | radix: amber4 |
+| cool/light | `--ds-attention-5` | #fbe577 | Selected surface | radix: amber5 |
+| cool/light | `--ds-attention-6` | #f3d673 | Decorative separator | radix: amber6 |
+| cool/light | `--ds-attention-7` | #e9c162 | Control edge / focus candidate | radix: amber7 |
+| cool/light | `--ds-attention-8` | #e2a336 | Stronger edge | radix: amber8 |
+| cool/light | `--ds-attention-9` | #ffc53d | Solid fill | radix: amber9 |
+| cool/light | `--ds-attention-10` | #ffba18 | Solid hover | radix: amber10 |
+| cool/light | `--ds-attention-11` | #ab6400 | Secondary text candidate | radix: amber11 |
+| cool/light | `--ds-attention-12` | #4f3422 | Primary text | radix: amber12 |
+| cool/light | `--ds-danger-1` | #fffcfc | Canvas | radix: red1 |
+| cool/light | `--ds-danger-2` | #fff7f7 | Quiet surface | radix: red2 |
+| cool/light | `--ds-danger-3` | #feebec | Control surface | radix: red3 |
+| cool/light | `--ds-danger-4` | #ffdbdc | Hover surface | radix: red4 |
+| cool/light | `--ds-danger-5` | #ffcdce | Selected surface | radix: red5 |
+| cool/light | `--ds-danger-6` | #fdbdbe | Decorative separator | radix: red6 |
+| cool/light | `--ds-danger-7` | #f4a9aa | Control edge / focus candidate | radix: red7 |
+| cool/light | `--ds-danger-8` | #eb8e90 | Stronger edge | radix: red8 |
+| cool/light | `--ds-danger-9` | #e5484d | Solid fill | radix: red9 |
+| cool/light | `--ds-danger-10` | #dc3e42 | Solid hover | radix: red10 |
+| cool/light | `--ds-danger-11` | #ce2c31 | Secondary text candidate | radix: red11 |
+| cool/light | `--ds-danger-12` | #641723 | Primary text | radix: red12 |
+| cool/light | `--ds-white` | #ffffff | Opaque endpoint | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-black` | #000000 | Opaque endpoint | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-on-neutral` | var(--ds-white) | neutral emphasis label | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fill-neutral` | var(--ds-neutral-11) | neutral emphasis fill | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-default` | var(--ds-neutral-12) | fg-default / neutral | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-muted` | var(--ds-neutral-11) | fg-muted / neutral | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-emphasis` | var(--ds-white) | fg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-default` | var(--ds-neutral-2) | bg-default / neutral | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-muted` | var(--ds-neutral-3) | bg-muted / neutral | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-emphasis` | var(--ds-neutral-11) | bg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-default` | var(--ds-neutral-10) | border-default / neutral | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-muted` | var(--ds-neutral-10) | border-muted / neutral | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-emphasis` | var(--ds-neutral-10) | border-emphasis / neutral | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-on-accent` | var(--ds-white) | accent emphasis label | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fill-accent` | var(--ds-accent-11) | accent emphasis fill | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-default-accent` | var(--ds-accent-12) | fg-default / accent | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-muted-accent` | var(--ds-accent-12) | fg-muted / accent | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-emphasis-accent` | var(--ds-white) | fg-emphasis / accent | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-default-accent` | var(--ds-accent-2) | bg-default / accent | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-muted-accent` | var(--ds-accent-3) | bg-muted / accent | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-emphasis-accent` | var(--ds-accent-11) | bg-emphasis / accent | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-default-accent` | var(--ds-accent-10) | border-default / accent | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-muted-accent` | var(--ds-accent-10) | border-muted / accent | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-emphasis-accent` | var(--ds-accent-10) | border-emphasis / accent | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-on-success` | var(--ds-white) | success emphasis label | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fill-success` | var(--ds-success-11) | success emphasis fill | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-default-success` | var(--ds-success-12) | fg-default / success | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-muted-success` | var(--ds-success-12) | fg-muted / success | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-emphasis-success` | var(--ds-white) | fg-emphasis / success | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-default-success` | var(--ds-success-2) | bg-default / success | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-muted-success` | var(--ds-success-3) | bg-muted / success | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-emphasis-success` | var(--ds-success-11) | bg-emphasis / success | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-default-success` | var(--ds-success-10) | border-default / success | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-muted-success` | var(--ds-success-10) | border-muted / success | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-emphasis-success` | var(--ds-success-10) | border-emphasis / success | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-on-attention` | var(--ds-black) | attention emphasis label | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fill-attention` | var(--ds-attention-9) | attention emphasis fill | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-default-attention` | var(--ds-attention-12) | fg-default / attention | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-muted-attention` | var(--ds-attention-12) | fg-muted / attention | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-emphasis-attention` | var(--ds-black) | fg-emphasis / attention | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-default-attention` | var(--ds-attention-2) | bg-default / attention | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-muted-attention` | var(--ds-attention-3) | bg-muted / attention | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-emphasis-attention` | var(--ds-attention-9) | bg-emphasis / attention | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-default-attention` | var(--ds-attention-11) | border-default / attention | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-muted-attention` | var(--ds-attention-11) | border-muted / attention | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-emphasis-attention` | var(--ds-attention-11) | border-emphasis / attention | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-on-danger` | var(--ds-white) | danger emphasis label | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fill-danger` | var(--ds-danger-11) | danger emphasis fill | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-default-danger` | var(--ds-danger-12) | fg-default / danger | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-muted-danger` | var(--ds-danger-11) | fg-muted / danger | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-fg-emphasis-danger` | var(--ds-white) | fg-emphasis / danger | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-default-danger` | var(--ds-danger-2) | bg-default / danger | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-muted-danger` | var(--ds-danger-3) | bg-muted / danger | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-bg-emphasis-danger` | var(--ds-danger-11) | bg-emphasis / danger | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-default-danger` | var(--ds-danger-9) | border-default / danger | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-muted-danger` | var(--ds-danger-9) | border-muted / danger | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-emphasis-danger` | var(--ds-danger-9) | border-emphasis / danger | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-surface-default` | var(--ds-neutral-1) | Example surface-default | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-text-default` | var(--ds-neutral-12) | Example text-default | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-text-muted` | var(--ds-neutral-11) | Example text-muted | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-border-control` | var(--ds-neutral-10) | Example border-control | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-surface-muted` | var(--ds-neutral-3) | Example surface-muted | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-brand-fill` | var(--ds-accent-11) | Example brand-fill | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-brand-on-fill` | var(--ds-white) | Example brand-on-fill | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-status-danger` | var(--ds-danger-12) | Example status-danger | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-status-success` | var(--ds-success-12) | Example status-success | independent: independently derived mapping/endpoint |
+| cool/light | `--ds-status-attention` | var(--ds-attention-12) | Example status-attention | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-neutral-1` | #111113 | Canvas | radix: slate1 |
+| cool/dark | `--ds-neutral-2` | #18191b | Quiet surface | radix: slate2 |
+| cool/dark | `--ds-neutral-3` | #212225 | Control surface | radix: slate3 |
+| cool/dark | `--ds-neutral-4` | #272a2d | Hover surface | radix: slate4 |
+| cool/dark | `--ds-neutral-5` | #2e3135 | Selected surface | radix: slate5 |
+| cool/dark | `--ds-neutral-6` | #363a3f | Decorative separator | radix: slate6 |
+| cool/dark | `--ds-neutral-7` | #43484e | Control edge / focus candidate | radix: slate7 |
+| cool/dark | `--ds-neutral-8` | #5a6169 | Stronger edge | radix: slate8 |
+| cool/dark | `--ds-neutral-9` | #696e77 | Solid fill | radix: slate9 |
+| cool/dark | `--ds-neutral-10` | #777b84 | Solid hover | radix: slate10 |
+| cool/dark | `--ds-neutral-11` | #b0b4ba | Secondary text candidate | radix: slate11 |
+| cool/dark | `--ds-neutral-12` | #edeef0 | Primary text | radix: slate12 |
+| cool/dark | `--ds-accent-1` | #0d1520 | Canvas | radix: blue1 |
+| cool/dark | `--ds-accent-2` | #111927 | Quiet surface | radix: blue2 |
+| cool/dark | `--ds-accent-3` | #0d2847 | Control surface | radix: blue3 |
+| cool/dark | `--ds-accent-4` | #003362 | Hover surface | radix: blue4 |
+| cool/dark | `--ds-accent-5` | #004074 | Selected surface | radix: blue5 |
+| cool/dark | `--ds-accent-6` | #104d87 | Decorative separator | radix: blue6 |
+| cool/dark | `--ds-accent-7` | #205d9e | Control edge / focus candidate | radix: blue7 |
+| cool/dark | `--ds-accent-8` | #2870bd | Stronger edge | radix: blue8 |
+| cool/dark | `--ds-accent-9` | #0090ff | Solid fill | radix: blue9 |
+| cool/dark | `--ds-accent-10` | #3b9eff | Solid hover | radix: blue10 |
+| cool/dark | `--ds-accent-11` | #70b8ff | Secondary text candidate | radix: blue11 |
+| cool/dark | `--ds-accent-12` | #c2e6ff | Primary text | radix: blue12 |
+| cool/dark | `--ds-success-1` | #0e1512 | Canvas | radix: green1 |
+| cool/dark | `--ds-success-2` | #121b17 | Quiet surface | radix: green2 |
+| cool/dark | `--ds-success-3` | #132d21 | Control surface | radix: green3 |
+| cool/dark | `--ds-success-4` | #113b29 | Hover surface | radix: green4 |
+| cool/dark | `--ds-success-5` | #174933 | Selected surface | radix: green5 |
+| cool/dark | `--ds-success-6` | #20573e | Decorative separator | radix: green6 |
+| cool/dark | `--ds-success-7` | #28684a | Control edge / focus candidate | radix: green7 |
+| cool/dark | `--ds-success-8` | #2f7c57 | Stronger edge | radix: green8 |
+| cool/dark | `--ds-success-9` | #30a46c | Solid fill | radix: green9 |
+| cool/dark | `--ds-success-10` | #33b074 | Solid hover | radix: green10 |
+| cool/dark | `--ds-success-11` | #3dd68c | Secondary text candidate | radix: green11 |
+| cool/dark | `--ds-success-12` | #b1f1cb | Primary text | radix: green12 |
+| cool/dark | `--ds-attention-1` | #16120c | Canvas | radix: amber1 |
+| cool/dark | `--ds-attention-2` | #1d180f | Quiet surface | radix: amber2 |
+| cool/dark | `--ds-attention-3` | #302008 | Control surface | radix: amber3 |
+| cool/dark | `--ds-attention-4` | #3f2700 | Hover surface | radix: amber4 |
+| cool/dark | `--ds-attention-5` | #4d3000 | Selected surface | radix: amber5 |
+| cool/dark | `--ds-attention-6` | #5c3d05 | Decorative separator | radix: amber6 |
+| cool/dark | `--ds-attention-7` | #714f19 | Control edge / focus candidate | radix: amber7 |
+| cool/dark | `--ds-attention-8` | #8f6424 | Stronger edge | radix: amber8 |
+| cool/dark | `--ds-attention-9` | #ffc53d | Solid fill | radix: amber9 |
+| cool/dark | `--ds-attention-10` | #ffd60a | Solid hover | radix: amber10 |
+| cool/dark | `--ds-attention-11` | #ffca16 | Secondary text candidate | radix: amber11 |
+| cool/dark | `--ds-attention-12` | #ffe7b3 | Primary text | radix: amber12 |
+| cool/dark | `--ds-danger-1` | #191111 | Canvas | radix: red1 |
+| cool/dark | `--ds-danger-2` | #201314 | Quiet surface | radix: red2 |
+| cool/dark | `--ds-danger-3` | #3b1219 | Control surface | radix: red3 |
+| cool/dark | `--ds-danger-4` | #500f1c | Hover surface | radix: red4 |
+| cool/dark | `--ds-danger-5` | #611623 | Selected surface | radix: red5 |
+| cool/dark | `--ds-danger-6` | #72232d | Decorative separator | radix: red6 |
+| cool/dark | `--ds-danger-7` | #8c333a | Control edge / focus candidate | radix: red7 |
+| cool/dark | `--ds-danger-8` | #b54548 | Stronger edge | radix: red8 |
+| cool/dark | `--ds-danger-9` | #e5484d | Solid fill | radix: red9 |
+| cool/dark | `--ds-danger-10` | #ec5d5e | Solid hover | radix: red10 |
+| cool/dark | `--ds-danger-11` | #ff9592 | Secondary text candidate | radix: red11 |
+| cool/dark | `--ds-danger-12` | #ffd1d9 | Primary text | radix: red12 |
+| cool/dark | `--ds-white` | #ffffff | Opaque endpoint | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-black` | #000000 | Opaque endpoint | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-on-neutral` | var(--ds-white) | neutral emphasis label | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fill-neutral` | var(--ds-neutral-9) | neutral emphasis fill | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-default` | var(--ds-neutral-12) | fg-default / neutral | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-muted` | var(--ds-neutral-11) | fg-muted / neutral | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-emphasis` | var(--ds-white) | fg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-default` | var(--ds-neutral-2) | bg-default / neutral | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-muted` | var(--ds-neutral-3) | bg-muted / neutral | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-emphasis` | var(--ds-neutral-9) | bg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-default` | var(--ds-neutral-9) | border-default / neutral | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-muted` | var(--ds-neutral-9) | border-muted / neutral | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-emphasis` | var(--ds-neutral-9) | border-emphasis / neutral | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-on-accent` | var(--ds-white) | accent emphasis label | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fill-accent` | var(--ds-accent-8) | accent emphasis fill | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-default-accent` | var(--ds-accent-12) | fg-default / accent | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-muted-accent` | var(--ds-accent-11) | fg-muted / accent | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-emphasis-accent` | var(--ds-white) | fg-emphasis / accent | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-default-accent` | var(--ds-accent-2) | bg-default / accent | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-muted-accent` | var(--ds-accent-3) | bg-muted / accent | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-emphasis-accent` | var(--ds-accent-8) | bg-emphasis / accent | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-default-accent` | var(--ds-accent-9) | border-default / accent | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-muted-accent` | var(--ds-accent-9) | border-muted / accent | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-emphasis-accent` | var(--ds-accent-9) | border-emphasis / accent | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-on-success` | var(--ds-white) | success emphasis label | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fill-success` | var(--ds-success-8) | success emphasis fill | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-default-success` | var(--ds-success-12) | fg-default / success | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-muted-success` | var(--ds-success-11) | fg-muted / success | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-emphasis-success` | var(--ds-white) | fg-emphasis / success | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-default-success` | var(--ds-success-2) | bg-default / success | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-muted-success` | var(--ds-success-3) | bg-muted / success | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-emphasis-success` | var(--ds-success-8) | bg-emphasis / success | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-default-success` | var(--ds-success-9) | border-default / success | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-muted-success` | var(--ds-success-9) | border-muted / success | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-emphasis-success` | var(--ds-success-9) | border-emphasis / success | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-on-attention` | var(--ds-black) | attention emphasis label | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fill-attention` | var(--ds-attention-9) | attention emphasis fill | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-default-attention` | var(--ds-attention-12) | fg-default / attention | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-muted-attention` | var(--ds-attention-11) | fg-muted / attention | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-emphasis-attention` | var(--ds-black) | fg-emphasis / attention | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-default-attention` | var(--ds-attention-2) | bg-default / attention | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-muted-attention` | var(--ds-attention-3) | bg-muted / attention | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-emphasis-attention` | var(--ds-attention-9) | bg-emphasis / attention | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-default-attention` | var(--ds-attention-8) | border-default / attention | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-muted-attention` | var(--ds-attention-8) | border-muted / attention | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-emphasis-attention` | var(--ds-attention-8) | border-emphasis / attention | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-on-danger` | var(--ds-white) | danger emphasis label | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fill-danger` | var(--ds-danger-8) | danger emphasis fill | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-default-danger` | var(--ds-danger-12) | fg-default / danger | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-muted-danger` | var(--ds-danger-11) | fg-muted / danger | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-fg-emphasis-danger` | var(--ds-white) | fg-emphasis / danger | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-default-danger` | var(--ds-danger-2) | bg-default / danger | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-muted-danger` | var(--ds-danger-3) | bg-muted / danger | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-bg-emphasis-danger` | var(--ds-danger-8) | bg-emphasis / danger | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-default-danger` | var(--ds-danger-8) | border-default / danger | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-muted-danger` | var(--ds-danger-8) | border-muted / danger | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-emphasis-danger` | var(--ds-danger-8) | border-emphasis / danger | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-surface-default` | var(--ds-neutral-1) | Example surface-default | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-text-default` | var(--ds-neutral-12) | Example text-default | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-text-muted` | var(--ds-neutral-11) | Example text-muted | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-border-control` | var(--ds-neutral-9) | Example border-control | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-surface-muted` | var(--ds-neutral-3) | Example surface-muted | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-brand-fill` | var(--ds-accent-8) | Example brand-fill | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-brand-on-fill` | var(--ds-white) | Example brand-on-fill | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-status-danger` | var(--ds-danger-12) | Example status-danger | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-status-success` | var(--ds-success-12) | Example status-success | independent: independently derived mapping/endpoint |
+| cool/dark | `--ds-status-attention` | var(--ds-attention-12) | Example status-attention | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-neutral-1` | #fdfdfc | Canvas | radix: sand1 |
+| warm/light | `--ds-neutral-2` | #f9f9f8 | Quiet surface | radix: sand2 |
+| warm/light | `--ds-neutral-3` | #f1f0ef | Control surface | radix: sand3 |
+| warm/light | `--ds-neutral-4` | #e9e8e6 | Hover surface | radix: sand4 |
+| warm/light | `--ds-neutral-5` | #e2e1de | Selected surface | radix: sand5 |
+| warm/light | `--ds-neutral-6` | #dad9d6 | Decorative separator | radix: sand6 |
+| warm/light | `--ds-neutral-7` | #cfceca | Control edge / focus candidate | radix: sand7 |
+| warm/light | `--ds-neutral-8` | #bcbbb5 | Stronger edge | radix: sand8 |
+| warm/light | `--ds-neutral-9` | #8d8d86 | Solid fill | radix: sand9 |
+| warm/light | `--ds-neutral-10` | #82827c | Solid hover | radix: sand10 |
+| warm/light | `--ds-neutral-11` | #63635e | Secondary text candidate | radix: sand11 |
+| warm/light | `--ds-neutral-12` | #21201c | Primary text | radix: sand12 |
+| warm/light | `--ds-accent-1` | #fbfdff | Canvas | radix: blue1 |
+| warm/light | `--ds-accent-2` | #f4faff | Quiet surface | radix: blue2 |
+| warm/light | `--ds-accent-3` | #e6f4fe | Control surface | radix: blue3 |
+| warm/light | `--ds-accent-4` | #d5efff | Hover surface | radix: blue4 |
+| warm/light | `--ds-accent-5` | #c2e5ff | Selected surface | radix: blue5 |
+| warm/light | `--ds-accent-6` | #acd8fc | Decorative separator | radix: blue6 |
+| warm/light | `--ds-accent-7` | #8ec8f6 | Control edge / focus candidate | radix: blue7 |
+| warm/light | `--ds-accent-8` | #5eb1ef | Stronger edge | radix: blue8 |
+| warm/light | `--ds-accent-9` | #0090ff | Solid fill | radix: blue9 |
+| warm/light | `--ds-accent-10` | #0588f0 | Solid hover | radix: blue10 |
+| warm/light | `--ds-accent-11` | #0d74ce | Secondary text candidate | radix: blue11 |
+| warm/light | `--ds-accent-12` | #113264 | Primary text | radix: blue12 |
+| warm/light | `--ds-success-1` | #fbfefc | Canvas | radix: green1 |
+| warm/light | `--ds-success-2` | #f4fbf6 | Quiet surface | radix: green2 |
+| warm/light | `--ds-success-3` | #e6f6eb | Control surface | radix: green3 |
+| warm/light | `--ds-success-4` | #d6f1df | Hover surface | radix: green4 |
+| warm/light | `--ds-success-5` | #c4e8d1 | Selected surface | radix: green5 |
+| warm/light | `--ds-success-6` | #adddc0 | Decorative separator | radix: green6 |
+| warm/light | `--ds-success-7` | #8eceaa | Control edge / focus candidate | radix: green7 |
+| warm/light | `--ds-success-8` | #5bb98b | Stronger edge | radix: green8 |
+| warm/light | `--ds-success-9` | #30a46c | Solid fill | radix: green9 |
+| warm/light | `--ds-success-10` | #2b9a66 | Solid hover | radix: green10 |
+| warm/light | `--ds-success-11` | #218358 | Secondary text candidate | radix: green11 |
+| warm/light | `--ds-success-12` | #193b2d | Primary text | radix: green12 |
+| warm/light | `--ds-attention-1` | #fefdfb | Canvas | radix: amber1 |
+| warm/light | `--ds-attention-2` | #fefbe9 | Quiet surface | radix: amber2 |
+| warm/light | `--ds-attention-3` | #fff7c2 | Control surface | radix: amber3 |
+| warm/light | `--ds-attention-4` | #ffee9c | Hover surface | radix: amber4 |
+| warm/light | `--ds-attention-5` | #fbe577 | Selected surface | radix: amber5 |
+| warm/light | `--ds-attention-6` | #f3d673 | Decorative separator | radix: amber6 |
+| warm/light | `--ds-attention-7` | #e9c162 | Control edge / focus candidate | radix: amber7 |
+| warm/light | `--ds-attention-8` | #e2a336 | Stronger edge | radix: amber8 |
+| warm/light | `--ds-attention-9` | #ffc53d | Solid fill | radix: amber9 |
+| warm/light | `--ds-attention-10` | #ffba18 | Solid hover | radix: amber10 |
+| warm/light | `--ds-attention-11` | #ab6400 | Secondary text candidate | radix: amber11 |
+| warm/light | `--ds-attention-12` | #4f3422 | Primary text | radix: amber12 |
+| warm/light | `--ds-danger-1` | #fffcfc | Canvas | radix: red1 |
+| warm/light | `--ds-danger-2` | #fff7f7 | Quiet surface | radix: red2 |
+| warm/light | `--ds-danger-3` | #feebec | Control surface | radix: red3 |
+| warm/light | `--ds-danger-4` | #ffdbdc | Hover surface | radix: red4 |
+| warm/light | `--ds-danger-5` | #ffcdce | Selected surface | radix: red5 |
+| warm/light | `--ds-danger-6` | #fdbdbe | Decorative separator | radix: red6 |
+| warm/light | `--ds-danger-7` | #f4a9aa | Control edge / focus candidate | radix: red7 |
+| warm/light | `--ds-danger-8` | #eb8e90 | Stronger edge | radix: red8 |
+| warm/light | `--ds-danger-9` | #e5484d | Solid fill | radix: red9 |
+| warm/light | `--ds-danger-10` | #dc3e42 | Solid hover | radix: red10 |
+| warm/light | `--ds-danger-11` | #ce2c31 | Secondary text candidate | radix: red11 |
+| warm/light | `--ds-danger-12` | #641723 | Primary text | radix: red12 |
+| warm/light | `--ds-white` | #ffffff | Opaque endpoint | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-black` | #000000 | Opaque endpoint | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-on-neutral` | var(--ds-white) | neutral emphasis label | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fill-neutral` | var(--ds-neutral-11) | neutral emphasis fill | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-default` | var(--ds-neutral-12) | fg-default / neutral | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-muted` | var(--ds-neutral-11) | fg-muted / neutral | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-emphasis` | var(--ds-white) | fg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-default` | var(--ds-neutral-2) | bg-default / neutral | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-muted` | var(--ds-neutral-3) | bg-muted / neutral | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-emphasis` | var(--ds-neutral-11) | bg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-default` | var(--ds-neutral-10) | border-default / neutral | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-muted` | var(--ds-neutral-10) | border-muted / neutral | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-emphasis` | var(--ds-neutral-10) | border-emphasis / neutral | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-on-accent` | var(--ds-white) | accent emphasis label | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fill-accent` | var(--ds-accent-11) | accent emphasis fill | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-default-accent` | var(--ds-accent-12) | fg-default / accent | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-muted-accent` | var(--ds-accent-12) | fg-muted / accent | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-emphasis-accent` | var(--ds-white) | fg-emphasis / accent | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-default-accent` | var(--ds-accent-2) | bg-default / accent | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-muted-accent` | var(--ds-accent-3) | bg-muted / accent | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-emphasis-accent` | var(--ds-accent-11) | bg-emphasis / accent | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-default-accent` | var(--ds-accent-10) | border-default / accent | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-muted-accent` | var(--ds-accent-10) | border-muted / accent | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-emphasis-accent` | var(--ds-accent-10) | border-emphasis / accent | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-on-success` | var(--ds-white) | success emphasis label | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fill-success` | var(--ds-success-11) | success emphasis fill | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-default-success` | var(--ds-success-12) | fg-default / success | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-muted-success` | var(--ds-success-12) | fg-muted / success | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-emphasis-success` | var(--ds-white) | fg-emphasis / success | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-default-success` | var(--ds-success-2) | bg-default / success | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-muted-success` | var(--ds-success-3) | bg-muted / success | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-emphasis-success` | var(--ds-success-11) | bg-emphasis / success | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-default-success` | var(--ds-success-10) | border-default / success | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-muted-success` | var(--ds-success-10) | border-muted / success | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-emphasis-success` | var(--ds-success-10) | border-emphasis / success | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-on-attention` | var(--ds-black) | attention emphasis label | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fill-attention` | var(--ds-attention-9) | attention emphasis fill | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-default-attention` | var(--ds-attention-12) | fg-default / attention | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-muted-attention` | var(--ds-attention-12) | fg-muted / attention | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-emphasis-attention` | var(--ds-black) | fg-emphasis / attention | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-default-attention` | var(--ds-attention-2) | bg-default / attention | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-muted-attention` | var(--ds-attention-3) | bg-muted / attention | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-emphasis-attention` | var(--ds-attention-9) | bg-emphasis / attention | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-default-attention` | var(--ds-attention-11) | border-default / attention | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-muted-attention` | var(--ds-attention-11) | border-muted / attention | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-emphasis-attention` | var(--ds-attention-11) | border-emphasis / attention | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-on-danger` | var(--ds-white) | danger emphasis label | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fill-danger` | var(--ds-danger-11) | danger emphasis fill | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-default-danger` | var(--ds-danger-12) | fg-default / danger | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-muted-danger` | var(--ds-danger-11) | fg-muted / danger | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-fg-emphasis-danger` | var(--ds-white) | fg-emphasis / danger | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-default-danger` | var(--ds-danger-2) | bg-default / danger | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-muted-danger` | var(--ds-danger-3) | bg-muted / danger | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-bg-emphasis-danger` | var(--ds-danger-11) | bg-emphasis / danger | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-default-danger` | var(--ds-danger-9) | border-default / danger | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-muted-danger` | var(--ds-danger-9) | border-muted / danger | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-emphasis-danger` | var(--ds-danger-9) | border-emphasis / danger | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-surface-default` | var(--ds-neutral-1) | Example surface-default | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-text-default` | var(--ds-neutral-12) | Example text-default | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-text-muted` | var(--ds-neutral-11) | Example text-muted | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-border-control` | var(--ds-neutral-10) | Example border-control | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-surface-muted` | var(--ds-neutral-3) | Example surface-muted | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-brand-fill` | var(--ds-accent-11) | Example brand-fill | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-brand-on-fill` | var(--ds-white) | Example brand-on-fill | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-status-danger` | var(--ds-danger-12) | Example status-danger | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-status-success` | var(--ds-success-12) | Example status-success | independent: independently derived mapping/endpoint |
+| warm/light | `--ds-status-attention` | var(--ds-attention-12) | Example status-attention | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-neutral-1` | #111110 | Canvas | radix: sand1 |
+| warm/dark | `--ds-neutral-2` | #191918 | Quiet surface | radix: sand2 |
+| warm/dark | `--ds-neutral-3` | #222221 | Control surface | radix: sand3 |
+| warm/dark | `--ds-neutral-4` | #2a2a28 | Hover surface | radix: sand4 |
+| warm/dark | `--ds-neutral-5` | #31312e | Selected surface | radix: sand5 |
+| warm/dark | `--ds-neutral-6` | #3b3a37 | Decorative separator | radix: sand6 |
+| warm/dark | `--ds-neutral-7` | #494844 | Control edge / focus candidate | radix: sand7 |
+| warm/dark | `--ds-neutral-8` | #62605b | Stronger edge | radix: sand8 |
+| warm/dark | `--ds-neutral-9` | #6f6d66 | Solid fill | radix: sand9 |
+| warm/dark | `--ds-neutral-10` | #7c7b74 | Solid hover | radix: sand10 |
+| warm/dark | `--ds-neutral-11` | #b5b3ad | Secondary text candidate | radix: sand11 |
+| warm/dark | `--ds-neutral-12` | #eeeeec | Primary text | radix: sand12 |
+| warm/dark | `--ds-accent-1` | #0d1520 | Canvas | radix: blue1 |
+| warm/dark | `--ds-accent-2` | #111927 | Quiet surface | radix: blue2 |
+| warm/dark | `--ds-accent-3` | #0d2847 | Control surface | radix: blue3 |
+| warm/dark | `--ds-accent-4` | #003362 | Hover surface | radix: blue4 |
+| warm/dark | `--ds-accent-5` | #004074 | Selected surface | radix: blue5 |
+| warm/dark | `--ds-accent-6` | #104d87 | Decorative separator | radix: blue6 |
+| warm/dark | `--ds-accent-7` | #205d9e | Control edge / focus candidate | radix: blue7 |
+| warm/dark | `--ds-accent-8` | #2870bd | Stronger edge | radix: blue8 |
+| warm/dark | `--ds-accent-9` | #0090ff | Solid fill | radix: blue9 |
+| warm/dark | `--ds-accent-10` | #3b9eff | Solid hover | radix: blue10 |
+| warm/dark | `--ds-accent-11` | #70b8ff | Secondary text candidate | radix: blue11 |
+| warm/dark | `--ds-accent-12` | #c2e6ff | Primary text | radix: blue12 |
+| warm/dark | `--ds-success-1` | #0e1512 | Canvas | radix: green1 |
+| warm/dark | `--ds-success-2` | #121b17 | Quiet surface | radix: green2 |
+| warm/dark | `--ds-success-3` | #132d21 | Control surface | radix: green3 |
+| warm/dark | `--ds-success-4` | #113b29 | Hover surface | radix: green4 |
+| warm/dark | `--ds-success-5` | #174933 | Selected surface | radix: green5 |
+| warm/dark | `--ds-success-6` | #20573e | Decorative separator | radix: green6 |
+| warm/dark | `--ds-success-7` | #28684a | Control edge / focus candidate | radix: green7 |
+| warm/dark | `--ds-success-8` | #2f7c57 | Stronger edge | radix: green8 |
+| warm/dark | `--ds-success-9` | #30a46c | Solid fill | radix: green9 |
+| warm/dark | `--ds-success-10` | #33b074 | Solid hover | radix: green10 |
+| warm/dark | `--ds-success-11` | #3dd68c | Secondary text candidate | radix: green11 |
+| warm/dark | `--ds-success-12` | #b1f1cb | Primary text | radix: green12 |
+| warm/dark | `--ds-attention-1` | #16120c | Canvas | radix: amber1 |
+| warm/dark | `--ds-attention-2` | #1d180f | Quiet surface | radix: amber2 |
+| warm/dark | `--ds-attention-3` | #302008 | Control surface | radix: amber3 |
+| warm/dark | `--ds-attention-4` | #3f2700 | Hover surface | radix: amber4 |
+| warm/dark | `--ds-attention-5` | #4d3000 | Selected surface | radix: amber5 |
+| warm/dark | `--ds-attention-6` | #5c3d05 | Decorative separator | radix: amber6 |
+| warm/dark | `--ds-attention-7` | #714f19 | Control edge / focus candidate | radix: amber7 |
+| warm/dark | `--ds-attention-8` | #8f6424 | Stronger edge | radix: amber8 |
+| warm/dark | `--ds-attention-9` | #ffc53d | Solid fill | radix: amber9 |
+| warm/dark | `--ds-attention-10` | #ffd60a | Solid hover | radix: amber10 |
+| warm/dark | `--ds-attention-11` | #ffca16 | Secondary text candidate | radix: amber11 |
+| warm/dark | `--ds-attention-12` | #ffe7b3 | Primary text | radix: amber12 |
+| warm/dark | `--ds-danger-1` | #191111 | Canvas | radix: red1 |
+| warm/dark | `--ds-danger-2` | #201314 | Quiet surface | radix: red2 |
+| warm/dark | `--ds-danger-3` | #3b1219 | Control surface | radix: red3 |
+| warm/dark | `--ds-danger-4` | #500f1c | Hover surface | radix: red4 |
+| warm/dark | `--ds-danger-5` | #611623 | Selected surface | radix: red5 |
+| warm/dark | `--ds-danger-6` | #72232d | Decorative separator | radix: red6 |
+| warm/dark | `--ds-danger-7` | #8c333a | Control edge / focus candidate | radix: red7 |
+| warm/dark | `--ds-danger-8` | #b54548 | Stronger edge | radix: red8 |
+| warm/dark | `--ds-danger-9` | #e5484d | Solid fill | radix: red9 |
+| warm/dark | `--ds-danger-10` | #ec5d5e | Solid hover | radix: red10 |
+| warm/dark | `--ds-danger-11` | #ff9592 | Secondary text candidate | radix: red11 |
+| warm/dark | `--ds-danger-12` | #ffd1d9 | Primary text | radix: red12 |
+| warm/dark | `--ds-white` | #ffffff | Opaque endpoint | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-black` | #000000 | Opaque endpoint | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-on-neutral` | var(--ds-white) | neutral emphasis label | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fill-neutral` | var(--ds-neutral-9) | neutral emphasis fill | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-default` | var(--ds-neutral-12) | fg-default / neutral | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-muted` | var(--ds-neutral-11) | fg-muted / neutral | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-emphasis` | var(--ds-white) | fg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-default` | var(--ds-neutral-2) | bg-default / neutral | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-muted` | var(--ds-neutral-3) | bg-muted / neutral | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-emphasis` | var(--ds-neutral-9) | bg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-default` | var(--ds-neutral-9) | border-default / neutral | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-muted` | var(--ds-neutral-9) | border-muted / neutral | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-emphasis` | var(--ds-neutral-9) | border-emphasis / neutral | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-on-accent` | var(--ds-white) | accent emphasis label | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fill-accent` | var(--ds-accent-8) | accent emphasis fill | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-default-accent` | var(--ds-accent-12) | fg-default / accent | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-muted-accent` | var(--ds-accent-11) | fg-muted / accent | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-emphasis-accent` | var(--ds-white) | fg-emphasis / accent | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-default-accent` | var(--ds-accent-2) | bg-default / accent | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-muted-accent` | var(--ds-accent-3) | bg-muted / accent | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-emphasis-accent` | var(--ds-accent-8) | bg-emphasis / accent | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-default-accent` | var(--ds-accent-9) | border-default / accent | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-muted-accent` | var(--ds-accent-9) | border-muted / accent | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-emphasis-accent` | var(--ds-accent-9) | border-emphasis / accent | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-on-success` | var(--ds-white) | success emphasis label | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fill-success` | var(--ds-success-8) | success emphasis fill | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-default-success` | var(--ds-success-12) | fg-default / success | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-muted-success` | var(--ds-success-11) | fg-muted / success | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-emphasis-success` | var(--ds-white) | fg-emphasis / success | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-default-success` | var(--ds-success-2) | bg-default / success | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-muted-success` | var(--ds-success-3) | bg-muted / success | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-emphasis-success` | var(--ds-success-8) | bg-emphasis / success | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-default-success` | var(--ds-success-9) | border-default / success | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-muted-success` | var(--ds-success-9) | border-muted / success | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-emphasis-success` | var(--ds-success-9) | border-emphasis / success | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-on-attention` | var(--ds-black) | attention emphasis label | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fill-attention` | var(--ds-attention-9) | attention emphasis fill | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-default-attention` | var(--ds-attention-12) | fg-default / attention | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-muted-attention` | var(--ds-attention-11) | fg-muted / attention | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-emphasis-attention` | var(--ds-black) | fg-emphasis / attention | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-default-attention` | var(--ds-attention-2) | bg-default / attention | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-muted-attention` | var(--ds-attention-3) | bg-muted / attention | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-emphasis-attention` | var(--ds-attention-9) | bg-emphasis / attention | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-default-attention` | var(--ds-attention-8) | border-default / attention | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-muted-attention` | var(--ds-attention-8) | border-muted / attention | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-emphasis-attention` | var(--ds-attention-8) | border-emphasis / attention | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-on-danger` | var(--ds-white) | danger emphasis label | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fill-danger` | var(--ds-danger-8) | danger emphasis fill | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-default-danger` | var(--ds-danger-12) | fg-default / danger | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-muted-danger` | var(--ds-danger-11) | fg-muted / danger | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-fg-emphasis-danger` | var(--ds-white) | fg-emphasis / danger | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-default-danger` | var(--ds-danger-2) | bg-default / danger | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-muted-danger` | var(--ds-danger-3) | bg-muted / danger | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-bg-emphasis-danger` | var(--ds-danger-8) | bg-emphasis / danger | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-default-danger` | var(--ds-danger-8) | border-default / danger | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-muted-danger` | var(--ds-danger-8) | border-muted / danger | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-emphasis-danger` | var(--ds-danger-8) | border-emphasis / danger | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-surface-default` | var(--ds-neutral-1) | Example surface-default | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-text-default` | var(--ds-neutral-12) | Example text-default | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-text-muted` | var(--ds-neutral-11) | Example text-muted | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-border-control` | var(--ds-neutral-9) | Example border-control | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-surface-muted` | var(--ds-neutral-3) | Example surface-muted | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-brand-fill` | var(--ds-accent-8) | Example brand-fill | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-brand-on-fill` | var(--ds-white) | Example brand-on-fill | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-status-danger` | var(--ds-danger-12) | Example status-danger | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-status-success` | var(--ds-success-12) | Example status-success | independent: independently derived mapping/endpoint |
+| warm/dark | `--ds-status-attention` | var(--ds-attention-12) | Example status-attention | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-neutral-1` | #fcfcfc | Canvas | radix: gray1 |
+| pure/light | `--ds-neutral-2` | #f9f9f9 | Quiet surface | radix: gray2 |
+| pure/light | `--ds-neutral-3` | #f0f0f0 | Control surface | radix: gray3 |
+| pure/light | `--ds-neutral-4` | #e8e8e8 | Hover surface | radix: gray4 |
+| pure/light | `--ds-neutral-5` | #e0e0e0 | Selected surface | radix: gray5 |
+| pure/light | `--ds-neutral-6` | #d9d9d9 | Decorative separator | radix: gray6 |
+| pure/light | `--ds-neutral-7` | #cecece | Control edge / focus candidate | radix: gray7 |
+| pure/light | `--ds-neutral-8` | #bbbbbb | Stronger edge | radix: gray8 |
+| pure/light | `--ds-neutral-9` | #8d8d8d | Solid fill | radix: gray9 |
+| pure/light | `--ds-neutral-10` | #838383 | Solid hover | radix: gray10 |
+| pure/light | `--ds-neutral-11` | #646464 | Secondary text candidate | radix: gray11 |
+| pure/light | `--ds-neutral-12` | #202020 | Primary text | radix: gray12 |
+| pure/light | `--ds-accent-1` | #fbfdff | Canvas | radix: blue1 |
+| pure/light | `--ds-accent-2` | #f4faff | Quiet surface | radix: blue2 |
+| pure/light | `--ds-accent-3` | #e6f4fe | Control surface | radix: blue3 |
+| pure/light | `--ds-accent-4` | #d5efff | Hover surface | radix: blue4 |
+| pure/light | `--ds-accent-5` | #c2e5ff | Selected surface | radix: blue5 |
+| pure/light | `--ds-accent-6` | #acd8fc | Decorative separator | radix: blue6 |
+| pure/light | `--ds-accent-7` | #8ec8f6 | Control edge / focus candidate | radix: blue7 |
+| pure/light | `--ds-accent-8` | #5eb1ef | Stronger edge | radix: blue8 |
+| pure/light | `--ds-accent-9` | #0090ff | Solid fill | radix: blue9 |
+| pure/light | `--ds-accent-10` | #0588f0 | Solid hover | radix: blue10 |
+| pure/light | `--ds-accent-11` | #0d74ce | Secondary text candidate | radix: blue11 |
+| pure/light | `--ds-accent-12` | #113264 | Primary text | radix: blue12 |
+| pure/light | `--ds-success-1` | #fbfefc | Canvas | radix: green1 |
+| pure/light | `--ds-success-2` | #f4fbf6 | Quiet surface | radix: green2 |
+| pure/light | `--ds-success-3` | #e6f6eb | Control surface | radix: green3 |
+| pure/light | `--ds-success-4` | #d6f1df | Hover surface | radix: green4 |
+| pure/light | `--ds-success-5` | #c4e8d1 | Selected surface | radix: green5 |
+| pure/light | `--ds-success-6` | #adddc0 | Decorative separator | radix: green6 |
+| pure/light | `--ds-success-7` | #8eceaa | Control edge / focus candidate | radix: green7 |
+| pure/light | `--ds-success-8` | #5bb98b | Stronger edge | radix: green8 |
+| pure/light | `--ds-success-9` | #30a46c | Solid fill | radix: green9 |
+| pure/light | `--ds-success-10` | #2b9a66 | Solid hover | radix: green10 |
+| pure/light | `--ds-success-11` | #218358 | Secondary text candidate | radix: green11 |
+| pure/light | `--ds-success-12` | #193b2d | Primary text | radix: green12 |
+| pure/light | `--ds-attention-1` | #fefdfb | Canvas | radix: amber1 |
+| pure/light | `--ds-attention-2` | #fefbe9 | Quiet surface | radix: amber2 |
+| pure/light | `--ds-attention-3` | #fff7c2 | Control surface | radix: amber3 |
+| pure/light | `--ds-attention-4` | #ffee9c | Hover surface | radix: amber4 |
+| pure/light | `--ds-attention-5` | #fbe577 | Selected surface | radix: amber5 |
+| pure/light | `--ds-attention-6` | #f3d673 | Decorative separator | radix: amber6 |
+| pure/light | `--ds-attention-7` | #e9c162 | Control edge / focus candidate | radix: amber7 |
+| pure/light | `--ds-attention-8` | #e2a336 | Stronger edge | radix: amber8 |
+| pure/light | `--ds-attention-9` | #ffc53d | Solid fill | radix: amber9 |
+| pure/light | `--ds-attention-10` | #ffba18 | Solid hover | radix: amber10 |
+| pure/light | `--ds-attention-11` | #ab6400 | Secondary text candidate | radix: amber11 |
+| pure/light | `--ds-attention-12` | #4f3422 | Primary text | radix: amber12 |
+| pure/light | `--ds-danger-1` | #fffcfc | Canvas | radix: red1 |
+| pure/light | `--ds-danger-2` | #fff7f7 | Quiet surface | radix: red2 |
+| pure/light | `--ds-danger-3` | #feebec | Control surface | radix: red3 |
+| pure/light | `--ds-danger-4` | #ffdbdc | Hover surface | radix: red4 |
+| pure/light | `--ds-danger-5` | #ffcdce | Selected surface | radix: red5 |
+| pure/light | `--ds-danger-6` | #fdbdbe | Decorative separator | radix: red6 |
+| pure/light | `--ds-danger-7` | #f4a9aa | Control edge / focus candidate | radix: red7 |
+| pure/light | `--ds-danger-8` | #eb8e90 | Stronger edge | radix: red8 |
+| pure/light | `--ds-danger-9` | #e5484d | Solid fill | radix: red9 |
+| pure/light | `--ds-danger-10` | #dc3e42 | Solid hover | radix: red10 |
+| pure/light | `--ds-danger-11` | #ce2c31 | Secondary text candidate | radix: red11 |
+| pure/light | `--ds-danger-12` | #641723 | Primary text | radix: red12 |
+| pure/light | `--ds-white` | #ffffff | Opaque endpoint | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-black` | #000000 | Opaque endpoint | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-on-neutral` | var(--ds-white) | neutral emphasis label | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fill-neutral` | var(--ds-neutral-11) | neutral emphasis fill | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-default` | var(--ds-neutral-12) | fg-default / neutral | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-muted` | var(--ds-neutral-11) | fg-muted / neutral | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-emphasis` | var(--ds-white) | fg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-default` | var(--ds-neutral-2) | bg-default / neutral | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-muted` | var(--ds-neutral-3) | bg-muted / neutral | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-emphasis` | var(--ds-neutral-11) | bg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-default` | var(--ds-neutral-10) | border-default / neutral | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-muted` | var(--ds-neutral-10) | border-muted / neutral | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-emphasis` | var(--ds-neutral-10) | border-emphasis / neutral | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-on-accent` | var(--ds-white) | accent emphasis label | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fill-accent` | var(--ds-accent-11) | accent emphasis fill | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-default-accent` | var(--ds-accent-12) | fg-default / accent | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-muted-accent` | var(--ds-accent-12) | fg-muted / accent | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-emphasis-accent` | var(--ds-white) | fg-emphasis / accent | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-default-accent` | var(--ds-accent-2) | bg-default / accent | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-muted-accent` | var(--ds-accent-3) | bg-muted / accent | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-emphasis-accent` | var(--ds-accent-11) | bg-emphasis / accent | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-default-accent` | var(--ds-accent-10) | border-default / accent | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-muted-accent` | var(--ds-accent-10) | border-muted / accent | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-emphasis-accent` | var(--ds-accent-10) | border-emphasis / accent | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-on-success` | var(--ds-white) | success emphasis label | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fill-success` | var(--ds-success-11) | success emphasis fill | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-default-success` | var(--ds-success-12) | fg-default / success | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-muted-success` | var(--ds-success-12) | fg-muted / success | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-emphasis-success` | var(--ds-white) | fg-emphasis / success | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-default-success` | var(--ds-success-2) | bg-default / success | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-muted-success` | var(--ds-success-3) | bg-muted / success | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-emphasis-success` | var(--ds-success-11) | bg-emphasis / success | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-default-success` | var(--ds-success-10) | border-default / success | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-muted-success` | var(--ds-success-10) | border-muted / success | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-emphasis-success` | var(--ds-success-10) | border-emphasis / success | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-on-attention` | var(--ds-black) | attention emphasis label | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fill-attention` | var(--ds-attention-9) | attention emphasis fill | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-default-attention` | var(--ds-attention-12) | fg-default / attention | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-muted-attention` | var(--ds-attention-12) | fg-muted / attention | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-emphasis-attention` | var(--ds-black) | fg-emphasis / attention | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-default-attention` | var(--ds-attention-2) | bg-default / attention | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-muted-attention` | var(--ds-attention-3) | bg-muted / attention | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-emphasis-attention` | var(--ds-attention-9) | bg-emphasis / attention | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-default-attention` | var(--ds-attention-11) | border-default / attention | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-muted-attention` | var(--ds-attention-11) | border-muted / attention | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-emphasis-attention` | var(--ds-attention-11) | border-emphasis / attention | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-on-danger` | var(--ds-white) | danger emphasis label | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fill-danger` | var(--ds-danger-11) | danger emphasis fill | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-default-danger` | var(--ds-danger-12) | fg-default / danger | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-muted-danger` | var(--ds-danger-11) | fg-muted / danger | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-fg-emphasis-danger` | var(--ds-white) | fg-emphasis / danger | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-default-danger` | var(--ds-danger-2) | bg-default / danger | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-muted-danger` | var(--ds-danger-3) | bg-muted / danger | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-bg-emphasis-danger` | var(--ds-danger-11) | bg-emphasis / danger | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-default-danger` | var(--ds-danger-9) | border-default / danger | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-muted-danger` | var(--ds-danger-9) | border-muted / danger | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-emphasis-danger` | var(--ds-danger-9) | border-emphasis / danger | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-surface-default` | var(--ds-neutral-1) | Example surface-default | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-text-default` | var(--ds-neutral-12) | Example text-default | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-text-muted` | var(--ds-neutral-11) | Example text-muted | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-border-control` | var(--ds-neutral-10) | Example border-control | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-surface-muted` | var(--ds-neutral-3) | Example surface-muted | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-brand-fill` | var(--ds-accent-11) | Example brand-fill | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-brand-on-fill` | var(--ds-white) | Example brand-on-fill | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-status-danger` | var(--ds-danger-12) | Example status-danger | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-status-success` | var(--ds-success-12) | Example status-success | independent: independently derived mapping/endpoint |
+| pure/light | `--ds-status-attention` | var(--ds-attention-12) | Example status-attention | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-neutral-1` | #111111 | Canvas | radix: gray1 |
+| pure/dark | `--ds-neutral-2` | #191919 | Quiet surface | radix: gray2 |
+| pure/dark | `--ds-neutral-3` | #222222 | Control surface | radix: gray3 |
+| pure/dark | `--ds-neutral-4` | #2a2a2a | Hover surface | radix: gray4 |
+| pure/dark | `--ds-neutral-5` | #313131 | Selected surface | radix: gray5 |
+| pure/dark | `--ds-neutral-6` | #3a3a3a | Decorative separator | radix: gray6 |
+| pure/dark | `--ds-neutral-7` | #484848 | Control edge / focus candidate | radix: gray7 |
+| pure/dark | `--ds-neutral-8` | #606060 | Stronger edge | radix: gray8 |
+| pure/dark | `--ds-neutral-9` | #6e6e6e | Solid fill | radix: gray9 |
+| pure/dark | `--ds-neutral-10` | #7b7b7b | Solid hover | radix: gray10 |
+| pure/dark | `--ds-neutral-11` | #b4b4b4 | Secondary text candidate | radix: gray11 |
+| pure/dark | `--ds-neutral-12` | #eeeeee | Primary text | radix: gray12 |
+| pure/dark | `--ds-accent-1` | #0d1520 | Canvas | radix: blue1 |
+| pure/dark | `--ds-accent-2` | #111927 | Quiet surface | radix: blue2 |
+| pure/dark | `--ds-accent-3` | #0d2847 | Control surface | radix: blue3 |
+| pure/dark | `--ds-accent-4` | #003362 | Hover surface | radix: blue4 |
+| pure/dark | `--ds-accent-5` | #004074 | Selected surface | radix: blue5 |
+| pure/dark | `--ds-accent-6` | #104d87 | Decorative separator | radix: blue6 |
+| pure/dark | `--ds-accent-7` | #205d9e | Control edge / focus candidate | radix: blue7 |
+| pure/dark | `--ds-accent-8` | #2870bd | Stronger edge | radix: blue8 |
+| pure/dark | `--ds-accent-9` | #0090ff | Solid fill | radix: blue9 |
+| pure/dark | `--ds-accent-10` | #3b9eff | Solid hover | radix: blue10 |
+| pure/dark | `--ds-accent-11` | #70b8ff | Secondary text candidate | radix: blue11 |
+| pure/dark | `--ds-accent-12` | #c2e6ff | Primary text | radix: blue12 |
+| pure/dark | `--ds-success-1` | #0e1512 | Canvas | radix: green1 |
+| pure/dark | `--ds-success-2` | #121b17 | Quiet surface | radix: green2 |
+| pure/dark | `--ds-success-3` | #132d21 | Control surface | radix: green3 |
+| pure/dark | `--ds-success-4` | #113b29 | Hover surface | radix: green4 |
+| pure/dark | `--ds-success-5` | #174933 | Selected surface | radix: green5 |
+| pure/dark | `--ds-success-6` | #20573e | Decorative separator | radix: green6 |
+| pure/dark | `--ds-success-7` | #28684a | Control edge / focus candidate | radix: green7 |
+| pure/dark | `--ds-success-8` | #2f7c57 | Stronger edge | radix: green8 |
+| pure/dark | `--ds-success-9` | #30a46c | Solid fill | radix: green9 |
+| pure/dark | `--ds-success-10` | #33b074 | Solid hover | radix: green10 |
+| pure/dark | `--ds-success-11` | #3dd68c | Secondary text candidate | radix: green11 |
+| pure/dark | `--ds-success-12` | #b1f1cb | Primary text | radix: green12 |
+| pure/dark | `--ds-attention-1` | #16120c | Canvas | radix: amber1 |
+| pure/dark | `--ds-attention-2` | #1d180f | Quiet surface | radix: amber2 |
+| pure/dark | `--ds-attention-3` | #302008 | Control surface | radix: amber3 |
+| pure/dark | `--ds-attention-4` | #3f2700 | Hover surface | radix: amber4 |
+| pure/dark | `--ds-attention-5` | #4d3000 | Selected surface | radix: amber5 |
+| pure/dark | `--ds-attention-6` | #5c3d05 | Decorative separator | radix: amber6 |
+| pure/dark | `--ds-attention-7` | #714f19 | Control edge / focus candidate | radix: amber7 |
+| pure/dark | `--ds-attention-8` | #8f6424 | Stronger edge | radix: amber8 |
+| pure/dark | `--ds-attention-9` | #ffc53d | Solid fill | radix: amber9 |
+| pure/dark | `--ds-attention-10` | #ffd60a | Solid hover | radix: amber10 |
+| pure/dark | `--ds-attention-11` | #ffca16 | Secondary text candidate | radix: amber11 |
+| pure/dark | `--ds-attention-12` | #ffe7b3 | Primary text | radix: amber12 |
+| pure/dark | `--ds-danger-1` | #191111 | Canvas | radix: red1 |
+| pure/dark | `--ds-danger-2` | #201314 | Quiet surface | radix: red2 |
+| pure/dark | `--ds-danger-3` | #3b1219 | Control surface | radix: red3 |
+| pure/dark | `--ds-danger-4` | #500f1c | Hover surface | radix: red4 |
+| pure/dark | `--ds-danger-5` | #611623 | Selected surface | radix: red5 |
+| pure/dark | `--ds-danger-6` | #72232d | Decorative separator | radix: red6 |
+| pure/dark | `--ds-danger-7` | #8c333a | Control edge / focus candidate | radix: red7 |
+| pure/dark | `--ds-danger-8` | #b54548 | Stronger edge | radix: red8 |
+| pure/dark | `--ds-danger-9` | #e5484d | Solid fill | radix: red9 |
+| pure/dark | `--ds-danger-10` | #ec5d5e | Solid hover | radix: red10 |
+| pure/dark | `--ds-danger-11` | #ff9592 | Secondary text candidate | radix: red11 |
+| pure/dark | `--ds-danger-12` | #ffd1d9 | Primary text | radix: red12 |
+| pure/dark | `--ds-white` | #ffffff | Opaque endpoint | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-black` | #000000 | Opaque endpoint | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-on-neutral` | var(--ds-white) | neutral emphasis label | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fill-neutral` | var(--ds-neutral-9) | neutral emphasis fill | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-default` | var(--ds-neutral-12) | fg-default / neutral | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-muted` | var(--ds-neutral-11) | fg-muted / neutral | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-emphasis` | var(--ds-white) | fg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-default` | var(--ds-neutral-2) | bg-default / neutral | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-muted` | var(--ds-neutral-3) | bg-muted / neutral | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-emphasis` | var(--ds-neutral-9) | bg-emphasis / neutral | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-default` | var(--ds-neutral-9) | border-default / neutral | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-muted` | var(--ds-neutral-9) | border-muted / neutral | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-emphasis` | var(--ds-neutral-9) | border-emphasis / neutral | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-on-accent` | var(--ds-white) | accent emphasis label | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fill-accent` | var(--ds-accent-8) | accent emphasis fill | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-default-accent` | var(--ds-accent-12) | fg-default / accent | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-muted-accent` | var(--ds-accent-11) | fg-muted / accent | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-emphasis-accent` | var(--ds-white) | fg-emphasis / accent | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-default-accent` | var(--ds-accent-2) | bg-default / accent | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-muted-accent` | var(--ds-accent-3) | bg-muted / accent | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-emphasis-accent` | var(--ds-accent-8) | bg-emphasis / accent | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-default-accent` | var(--ds-accent-9) | border-default / accent | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-muted-accent` | var(--ds-accent-9) | border-muted / accent | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-emphasis-accent` | var(--ds-accent-9) | border-emphasis / accent | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-on-success` | var(--ds-white) | success emphasis label | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fill-success` | var(--ds-success-8) | success emphasis fill | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-default-success` | var(--ds-success-12) | fg-default / success | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-muted-success` | var(--ds-success-11) | fg-muted / success | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-emphasis-success` | var(--ds-white) | fg-emphasis / success | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-default-success` | var(--ds-success-2) | bg-default / success | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-muted-success` | var(--ds-success-3) | bg-muted / success | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-emphasis-success` | var(--ds-success-8) | bg-emphasis / success | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-default-success` | var(--ds-success-9) | border-default / success | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-muted-success` | var(--ds-success-9) | border-muted / success | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-emphasis-success` | var(--ds-success-9) | border-emphasis / success | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-on-attention` | var(--ds-black) | attention emphasis label | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fill-attention` | var(--ds-attention-9) | attention emphasis fill | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-default-attention` | var(--ds-attention-12) | fg-default / attention | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-muted-attention` | var(--ds-attention-11) | fg-muted / attention | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-emphasis-attention` | var(--ds-black) | fg-emphasis / attention | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-default-attention` | var(--ds-attention-2) | bg-default / attention | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-muted-attention` | var(--ds-attention-3) | bg-muted / attention | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-emphasis-attention` | var(--ds-attention-9) | bg-emphasis / attention | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-default-attention` | var(--ds-attention-8) | border-default / attention | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-muted-attention` | var(--ds-attention-8) | border-muted / attention | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-emphasis-attention` | var(--ds-attention-8) | border-emphasis / attention | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-on-danger` | var(--ds-white) | danger emphasis label | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fill-danger` | var(--ds-danger-8) | danger emphasis fill | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-default-danger` | var(--ds-danger-12) | fg-default / danger | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-muted-danger` | var(--ds-danger-11) | fg-muted / danger | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-fg-emphasis-danger` | var(--ds-white) | fg-emphasis / danger | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-default-danger` | var(--ds-danger-2) | bg-default / danger | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-muted-danger` | var(--ds-danger-3) | bg-muted / danger | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-bg-emphasis-danger` | var(--ds-danger-8) | bg-emphasis / danger | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-default-danger` | var(--ds-danger-8) | border-default / danger | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-muted-danger` | var(--ds-danger-8) | border-muted / danger | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-emphasis-danger` | var(--ds-danger-8) | border-emphasis / danger | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-surface-default` | var(--ds-neutral-1) | Example surface-default | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-text-default` | var(--ds-neutral-12) | Example text-default | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-text-muted` | var(--ds-neutral-11) | Example text-muted | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-border-control` | var(--ds-neutral-9) | Example border-control | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-surface-muted` | var(--ds-neutral-3) | Example surface-muted | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-brand-fill` | var(--ds-accent-8) | Example brand-fill | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-brand-on-fill` | var(--ds-white) | Example brand-on-fill | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-status-danger` | var(--ds-danger-12) | Example status-danger | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-status-success` | var(--ds-success-12) | Example status-success | independent: independently derived mapping/endpoint |
+| pure/dark | `--ds-status-attention` | var(--ds-attention-12) | Example status-attention | independent: independently derived mapping/endpoint |
 
 ## Declared contrast pairs
 
@@ -359,30 +795,34 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 
 | Variant | Pair | Ratio | Minimum |
 |---|---|---|---|
+| cool/light | neutral: on-fill label | 5.938 | 4.5 |
 | cool/light | neutral: default text / default surface | 15.585 | 4.5 |
 | cool/light | neutral: default text / muted surface | 14.408 | 4.5 |
 | cool/light | neutral: muted text / default surface | 5.647 | 4.5 |
 | cool/light | neutral: muted text / muted surface | 5.220 | 4.5 |
-| cool/light | neutral: text on emphasis | 6.361 | 4.5 |
+| cool/light | neutral: text on emphasis | 5.938 | 4.5 |
 | cool/light | neutral: default control edge | 3.599 | 3 |
 | cool/light | neutral: muted control edge | 3.599 | 3 |
 | cool/light | neutral: emphasis control edge | 3.599 | 3 |
+| cool/light | accent: on-fill label | 4.766 | 4.5 |
 | cool/light | accent: default text / default surface | 11.997 | 4.5 |
 | cool/light | accent: default text / muted surface | 11.259 | 4.5 |
 | cool/light | accent: muted text / default surface | 11.997 | 4.5 |
 | cool/light | accent: muted text / muted surface | 11.259 | 4.5 |
-| cool/light | accent: text on emphasis | 6.433 | 4.5 |
+| cool/light | accent: text on emphasis | 4.766 | 4.5 |
 | cool/light | accent: default control edge | 3.450 | 3 |
 | cool/light | accent: muted control edge | 3.450 | 3 |
 | cool/light | accent: emphasis control edge | 3.450 | 3 |
+| cool/light | success: on-fill label | 4.717 | 4.5 |
 | cool/light | success: default text / default surface | 11.718 | 4.5 |
 | cool/light | success: default text / muted surface | 10.996 | 4.5 |
 | cool/light | success: muted text / default surface | 11.718 | 4.5 |
 | cool/light | success: muted text / muted surface | 10.996 | 4.5 |
-| cool/light | success: text on emphasis | 6.652 | 4.5 |
+| cool/light | success: text on emphasis | 4.717 | 4.5 |
 | cool/light | success: default control edge | 3.376 | 3 |
 | cool/light | success: muted control edge | 3.376 | 3 |
 | cool/light | success: emphasis control edge | 3.376 | 3 |
+| cool/light | attention: on-fill label | 13.306 | 4.5 |
 | cool/light | attention: default text / default surface | 10.933 | 4.5 |
 | cool/light | attention: default text / muted surface | 10.470 | 4.5 |
 | cool/light | attention: muted text / default surface | 10.933 | 4.5 |
@@ -391,11 +831,12 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | cool/light | attention: default control edge | 4.433 | 3 |
 | cool/light | attention: muted control edge | 4.433 | 3 |
 | cool/light | attention: emphasis control edge | 4.433 | 3 |
+| cool/light | danger: on-fill label | 5.212 | 4.5 |
 | cool/light | danger: default text / default surface | 11.784 | 4.5 |
 | cool/light | danger: default text / muted surface | 10.842 | 4.5 |
 | cool/light | danger: muted text / default surface | 4.939 | 4.5 |
 | cool/light | danger: muted text / muted surface | 4.544 | 4.5 |
-| cool/light | danger: text on emphasis | 5.366 | 4.5 |
+| cool/light | danger: text on emphasis | 5.212 | 4.5 |
 | cool/light | danger: default control edge | 3.709 | 3 |
 | cool/light | danger: muted control edge | 3.709 | 3 |
 | cool/light | danger: emphasis control edge | 3.709 | 3 |
@@ -409,9 +850,10 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | cool/light | error on wash | 10.933 | 4.5 |
 | cool/light | success on wash | 10.830 | 4.5 |
 | cool/light | attention on wash | 9.998 | 4.5 |
-| cool/light | Action label | 6.433 | 4.5 |
+| cool/light | Action label | 4.766 | 4.5 |
 | cool/light | Control boundary | 3.691 | 3 |
 | cool/light | Large heading | 15.983 | 3 |
+| cool/dark | neutral: on-fill label | 5.125 | 4.5 |
 | cool/dark | neutral: default text / default surface | 15.153 | 4.5 |
 | cool/dark | neutral: default text / muted surface | 13.702 | 4.5 |
 | cool/dark | neutral: muted text / default surface | 8.447 | 4.5 |
@@ -420,22 +862,25 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | cool/dark | neutral: default control edge | 3.432 | 3 |
 | cool/dark | neutral: muted control edge | 3.432 | 3 |
 | cool/dark | neutral: emphasis control edge | 3.432 | 3 |
+| cool/dark | accent: on-fill label | 5.069 | 4.5 |
 | cool/dark | accent: default text / default surface | 13.468 | 4.5 |
 | cool/dark | accent: default text / muted surface | 11.375 | 4.5 |
 | cool/dark | accent: muted text / default surface | 8.379 | 4.5 |
 | cool/dark | accent: muted text / muted surface | 7.076 | 4.5 |
-| cool/dark | accent: text on emphasis | 6.433 | 4.5 |
+| cool/dark | accent: text on emphasis | 5.069 | 4.5 |
 | cool/dark | accent: default control edge | 5.396 | 3 |
 | cool/dark | accent: muted control edge | 5.396 | 3 |
 | cool/dark | accent: emphasis control edge | 5.396 | 3 |
+| cool/dark | success: on-fill label | 5.071 | 4.5 |
 | cool/dark | success: default text / default surface | 13.653 | 4.5 |
 | cool/dark | success: default text / muted surface | 11.448 | 4.5 |
 | cool/dark | success: muted text / default surface | 9.370 | 4.5 |
 | cool/dark | success: muted text / muted surface | 7.857 | 4.5 |
-| cool/dark | success: text on emphasis | 6.652 | 4.5 |
+| cool/dark | success: text on emphasis | 5.071 | 4.5 |
 | cool/dark | success: default control edge | 5.567 | 3 |
 | cool/dark | success: muted control edge | 5.567 | 3 |
 | cool/dark | success: emphasis control edge | 5.567 | 3 |
+| cool/dark | attention: on-fill label | 13.306 | 4.5 |
 | cool/dark | attention: default text / default surface | 14.568 | 4.5 |
 | cool/dark | attention: default text / muted surface | 12.976 | 4.5 |
 | cool/dark | attention: muted text / default surface | 11.525 | 4.5 |
@@ -444,11 +889,12 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | cool/dark | attention: default control edge | 3.376 | 3 |
 | cool/dark | attention: muted control edge | 3.376 | 3 |
 | cool/dark | attention: emphasis control edge | 3.376 | 3 |
+| cool/dark | danger: on-fill label | 5.371 | 4.5 |
 | cool/dark | danger: default text / default surface | 13.200 | 4.5 |
 | cool/dark | danger: default text / muted surface | 11.950 | 4.5 |
 | cool/dark | danger: muted text / default surface | 8.557 | 4.5 |
 | cool/dark | danger: muted text / muted surface | 7.747 | 4.5 |
-| cool/dark | danger: text on emphasis | 5.366 | 4.5 |
+| cool/dark | danger: text on emphasis | 5.371 | 4.5 |
 | cool/dark | danger: default control edge | 3.357 | 3 |
 | cool/dark | danger: muted control edge | 3.357 | 3 |
 | cool/dark | danger: emphasis control edge | 3.357 | 3 |
@@ -462,33 +908,37 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | cool/dark | error on wash | 11.645 | 4.5 |
 | cool/dark | success on wash | 12.357 | 4.5 |
 | cool/dark | attention on wash | 13.129 | 4.5 |
-| cool/dark | Action label | 6.433 | 4.5 |
+| cool/dark | Action label | 5.069 | 4.5 |
 | cool/dark | Control boundary | 3.680 | 3 |
 | cool/dark | Large heading | 16.246 | 3 |
+| warm/light | neutral: on-fill label | 6.040 | 4.5 |
 | warm/light | neutral: default text / default surface | 15.476 | 4.5 |
 | warm/light | neutral: default text / muted surface | 14.325 | 4.5 |
 | warm/light | neutral: muted text / default surface | 5.733 | 4.5 |
 | warm/light | neutral: muted text / muted surface | 5.307 | 4.5 |
-| warm/light | neutral: text on emphasis | 6.287 | 4.5 |
+| warm/light | neutral: text on emphasis | 6.040 | 4.5 |
 | warm/light | neutral: default control edge | 3.669 | 3 |
 | warm/light | neutral: muted control edge | 3.669 | 3 |
 | warm/light | neutral: emphasis control edge | 3.669 | 3 |
+| warm/light | accent: on-fill label | 4.766 | 4.5 |
 | warm/light | accent: default text / default surface | 11.997 | 4.5 |
 | warm/light | accent: default text / muted surface | 11.259 | 4.5 |
 | warm/light | accent: muted text / default surface | 11.997 | 4.5 |
 | warm/light | accent: muted text / muted surface | 11.259 | 4.5 |
-| warm/light | accent: text on emphasis | 6.433 | 4.5 |
+| warm/light | accent: text on emphasis | 4.766 | 4.5 |
 | warm/light | accent: default control edge | 3.450 | 3 |
 | warm/light | accent: muted control edge | 3.450 | 3 |
 | warm/light | accent: emphasis control edge | 3.450 | 3 |
+| warm/light | success: on-fill label | 4.717 | 4.5 |
 | warm/light | success: default text / default surface | 11.718 | 4.5 |
 | warm/light | success: default text / muted surface | 10.996 | 4.5 |
 | warm/light | success: muted text / default surface | 11.718 | 4.5 |
 | warm/light | success: muted text / muted surface | 10.996 | 4.5 |
-| warm/light | success: text on emphasis | 6.652 | 4.5 |
+| warm/light | success: text on emphasis | 4.717 | 4.5 |
 | warm/light | success: default control edge | 3.376 | 3 |
 | warm/light | success: muted control edge | 3.376 | 3 |
 | warm/light | success: emphasis control edge | 3.376 | 3 |
+| warm/light | attention: on-fill label | 13.306 | 4.5 |
 | warm/light | attention: default text / default surface | 10.933 | 4.5 |
 | warm/light | attention: default text / muted surface | 10.470 | 4.5 |
 | warm/light | attention: muted text / default surface | 10.933 | 4.5 |
@@ -497,11 +947,12 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | warm/light | attention: default control edge | 4.433 | 3 |
 | warm/light | attention: muted control edge | 4.433 | 3 |
 | warm/light | attention: emphasis control edge | 4.433 | 3 |
+| warm/light | danger: on-fill label | 5.212 | 4.5 |
 | warm/light | danger: default text / default surface | 11.784 | 4.5 |
 | warm/light | danger: default text / muted surface | 10.842 | 4.5 |
 | warm/light | danger: muted text / default surface | 4.939 | 4.5 |
 | warm/light | danger: muted text / muted surface | 4.544 | 4.5 |
-| warm/light | danger: text on emphasis | 5.366 | 4.5 |
+| warm/light | danger: text on emphasis | 5.212 | 4.5 |
 | warm/light | danger: default control edge | 3.709 | 3 |
 | warm/light | danger: muted control edge | 3.709 | 3 |
 | warm/light | danger: emphasis control edge | 3.709 | 3 |
@@ -515,9 +966,10 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | warm/light | error on wash | 10.926 | 4.5 |
 | warm/light | success on wash | 10.823 | 4.5 |
 | warm/light | attention on wash | 9.991 | 4.5 |
-| warm/light | Action label | 6.433 | 4.5 |
+| warm/light | Action label | 4.766 | 4.5 |
 | warm/light | Control boundary | 3.797 | 3 |
 | warm/light | Large heading | 16.018 | 3 |
+| warm/dark | neutral: on-fill label | 5.179 | 4.5 |
 | warm/dark | neutral: default text / default surface | 15.145 | 4.5 |
 | warm/dark | neutral: default text / muted surface | 13.707 | 4.5 |
 | warm/dark | neutral: muted text / default surface | 8.392 | 4.5 |
@@ -526,22 +978,25 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | warm/dark | neutral: default control edge | 3.398 | 3 |
 | warm/dark | neutral: muted control edge | 3.398 | 3 |
 | warm/dark | neutral: emphasis control edge | 3.398 | 3 |
+| warm/dark | accent: on-fill label | 5.069 | 4.5 |
 | warm/dark | accent: default text / default surface | 13.468 | 4.5 |
 | warm/dark | accent: default text / muted surface | 11.375 | 4.5 |
 | warm/dark | accent: muted text / default surface | 8.379 | 4.5 |
 | warm/dark | accent: muted text / muted surface | 7.076 | 4.5 |
-| warm/dark | accent: text on emphasis | 6.433 | 4.5 |
+| warm/dark | accent: text on emphasis | 5.069 | 4.5 |
 | warm/dark | accent: default control edge | 5.396 | 3 |
 | warm/dark | accent: muted control edge | 5.396 | 3 |
 | warm/dark | accent: emphasis control edge | 5.396 | 3 |
+| warm/dark | success: on-fill label | 5.071 | 4.5 |
 | warm/dark | success: default text / default surface | 13.653 | 4.5 |
 | warm/dark | success: default text / muted surface | 11.448 | 4.5 |
 | warm/dark | success: muted text / default surface | 9.370 | 4.5 |
 | warm/dark | success: muted text / muted surface | 7.857 | 4.5 |
-| warm/dark | success: text on emphasis | 6.652 | 4.5 |
+| warm/dark | success: text on emphasis | 5.071 | 4.5 |
 | warm/dark | success: default control edge | 5.567 | 3 |
 | warm/dark | success: muted control edge | 5.567 | 3 |
 | warm/dark | success: emphasis control edge | 5.567 | 3 |
+| warm/dark | attention: on-fill label | 13.306 | 4.5 |
 | warm/dark | attention: default text / default surface | 14.568 | 4.5 |
 | warm/dark | attention: default text / muted surface | 12.976 | 4.5 |
 | warm/dark | attention: muted text / default surface | 11.525 | 4.5 |
@@ -550,11 +1005,12 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | warm/dark | attention: default control edge | 3.376 | 3 |
 | warm/dark | attention: muted control edge | 3.376 | 3 |
 | warm/dark | attention: emphasis control edge | 3.376 | 3 |
+| warm/dark | danger: on-fill label | 5.371 | 4.5 |
 | warm/dark | danger: default text / default surface | 13.200 | 4.5 |
 | warm/dark | danger: default text / muted surface | 11.950 | 4.5 |
 | warm/dark | danger: muted text / default surface | 8.557 | 4.5 |
 | warm/dark | danger: muted text / muted surface | 7.747 | 4.5 |
-| warm/dark | danger: text on emphasis | 5.366 | 4.5 |
+| warm/dark | danger: text on emphasis | 5.371 | 4.5 |
 | warm/dark | danger: default control edge | 3.357 | 3 |
 | warm/dark | danger: muted control edge | 3.357 | 3 |
 | warm/dark | danger: emphasis control edge | 3.357 | 3 |
@@ -568,33 +1024,37 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | warm/dark | error on wash | 11.658 | 4.5 |
 | warm/dark | success on wash | 12.370 | 4.5 |
 | warm/dark | attention on wash | 13.143 | 4.5 |
-| warm/dark | Action label | 6.433 | 4.5 |
+| warm/dark | Action label | 5.069 | 4.5 |
 | warm/dark | Control boundary | 3.648 | 3 |
 | warm/dark | Large heading | 16.263 | 3 |
+| pure/light | neutral: on-fill label | 5.918 | 4.5 |
 | pure/light | neutral: default text / default surface | 15.476 | 4.5 |
 | pure/light | neutral: default text / muted surface | 14.297 | 4.5 |
 | pure/light | neutral: muted text / default surface | 5.621 | 4.5 |
 | pure/light | neutral: muted text / muted surface | 5.193 | 4.5 |
-| pure/light | neutral: text on emphasis | 6.327 | 4.5 |
+| pure/light | neutral: text on emphasis | 5.918 | 4.5 |
 | pure/light | neutral: default control edge | 3.601 | 3 |
 | pure/light | neutral: muted control edge | 3.601 | 3 |
 | pure/light | neutral: emphasis control edge | 3.601 | 3 |
+| pure/light | accent: on-fill label | 4.766 | 4.5 |
 | pure/light | accent: default text / default surface | 11.997 | 4.5 |
 | pure/light | accent: default text / muted surface | 11.259 | 4.5 |
 | pure/light | accent: muted text / default surface | 11.997 | 4.5 |
 | pure/light | accent: muted text / muted surface | 11.259 | 4.5 |
-| pure/light | accent: text on emphasis | 6.433 | 4.5 |
+| pure/light | accent: text on emphasis | 4.766 | 4.5 |
 | pure/light | accent: default control edge | 3.450 | 3 |
 | pure/light | accent: muted control edge | 3.450 | 3 |
 | pure/light | accent: emphasis control edge | 3.450 | 3 |
+| pure/light | success: on-fill label | 4.717 | 4.5 |
 | pure/light | success: default text / default surface | 11.718 | 4.5 |
 | pure/light | success: default text / muted surface | 10.996 | 4.5 |
 | pure/light | success: muted text / default surface | 11.718 | 4.5 |
 | pure/light | success: muted text / muted surface | 10.996 | 4.5 |
-| pure/light | success: text on emphasis | 6.652 | 4.5 |
+| pure/light | success: text on emphasis | 4.717 | 4.5 |
 | pure/light | success: default control edge | 3.376 | 3 |
 | pure/light | success: muted control edge | 3.376 | 3 |
 | pure/light | success: emphasis control edge | 3.376 | 3 |
+| pure/light | attention: on-fill label | 13.306 | 4.5 |
 | pure/light | attention: default text / default surface | 10.933 | 4.5 |
 | pure/light | attention: default text / muted surface | 10.470 | 4.5 |
 | pure/light | attention: muted text / default surface | 10.933 | 4.5 |
@@ -603,11 +1063,12 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | pure/light | attention: default control edge | 4.433 | 3 |
 | pure/light | attention: muted control edge | 4.433 | 3 |
 | pure/light | attention: emphasis control edge | 4.433 | 3 |
+| pure/light | danger: on-fill label | 5.212 | 4.5 |
 | pure/light | danger: default text / default surface | 11.784 | 4.5 |
 | pure/light | danger: default text / muted surface | 10.842 | 4.5 |
 | pure/light | danger: muted text / default surface | 4.939 | 4.5 |
 | pure/light | danger: muted text / muted surface | 4.544 | 4.5 |
-| pure/light | danger: text on emphasis | 5.366 | 4.5 |
+| pure/light | danger: text on emphasis | 5.212 | 4.5 |
 | pure/light | danger: default control edge | 3.709 | 3 |
 | pure/light | danger: muted control edge | 3.709 | 3 |
 | pure/light | danger: emphasis control edge | 3.709 | 3 |
@@ -621,9 +1082,10 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | pure/light | error on wash | 10.912 | 4.5 |
 | pure/light | success on wash | 10.809 | 4.5 |
 | pure/light | attention on wash | 9.978 | 4.5 |
-| pure/light | Action label | 6.433 | 4.5 |
+| pure/light | Action label | 4.766 | 4.5 |
 | pure/light | Control boundary | 3.695 | 3 |
 | pure/light | Large heading | 15.881 | 3 |
+| pure/dark | neutral: on-fill label | 5.099 | 4.5 |
 | pure/dark | neutral: default text / default surface | 15.154 | 4.5 |
 | pure/dark | neutral: default text / muted surface | 13.713 | 4.5 |
 | pure/dark | neutral: muted text / default surface | 8.480 | 4.5 |
@@ -632,22 +1094,25 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | pure/dark | neutral: default control edge | 3.448 | 3 |
 | pure/dark | neutral: muted control edge | 3.448 | 3 |
 | pure/dark | neutral: emphasis control edge | 3.448 | 3 |
+| pure/dark | accent: on-fill label | 5.069 | 4.5 |
 | pure/dark | accent: default text / default surface | 13.468 | 4.5 |
 | pure/dark | accent: default text / muted surface | 11.375 | 4.5 |
 | pure/dark | accent: muted text / default surface | 8.379 | 4.5 |
 | pure/dark | accent: muted text / muted surface | 7.076 | 4.5 |
-| pure/dark | accent: text on emphasis | 6.433 | 4.5 |
+| pure/dark | accent: text on emphasis | 5.069 | 4.5 |
 | pure/dark | accent: default control edge | 5.396 | 3 |
 | pure/dark | accent: muted control edge | 5.396 | 3 |
 | pure/dark | accent: emphasis control edge | 5.396 | 3 |
+| pure/dark | success: on-fill label | 5.071 | 4.5 |
 | pure/dark | success: default text / default surface | 13.653 | 4.5 |
 | pure/dark | success: default text / muted surface | 11.448 | 4.5 |
 | pure/dark | success: muted text / default surface | 9.370 | 4.5 |
 | pure/dark | success: muted text / muted surface | 7.857 | 4.5 |
-| pure/dark | success: text on emphasis | 6.652 | 4.5 |
+| pure/dark | success: text on emphasis | 5.071 | 4.5 |
 | pure/dark | success: default control edge | 5.567 | 3 |
 | pure/dark | success: muted control edge | 5.567 | 3 |
 | pure/dark | success: emphasis control edge | 5.567 | 3 |
+| pure/dark | attention: on-fill label | 13.306 | 4.5 |
 | pure/dark | attention: default text / default surface | 14.568 | 4.5 |
 | pure/dark | attention: default text / muted surface | 12.976 | 4.5 |
 | pure/dark | attention: muted text / default surface | 11.525 | 4.5 |
@@ -656,11 +1121,12 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | pure/dark | attention: default control edge | 3.376 | 3 |
 | pure/dark | attention: muted control edge | 3.376 | 3 |
 | pure/dark | attention: emphasis control edge | 3.376 | 3 |
+| pure/dark | danger: on-fill label | 5.371 | 4.5 |
 | pure/dark | danger: default text / default surface | 13.200 | 4.5 |
 | pure/dark | danger: default text / muted surface | 11.950 | 4.5 |
 | pure/dark | danger: muted text / default surface | 8.557 | 4.5 |
 | pure/dark | danger: muted text / muted surface | 7.747 | 4.5 |
-| pure/dark | danger: text on emphasis | 5.366 | 4.5 |
+| pure/dark | danger: text on emphasis | 5.371 | 4.5 |
 | pure/dark | danger: default control edge | 3.357 | 3 |
 | pure/dark | danger: muted control edge | 3.357 | 3 |
 | pure/dark | danger: emphasis control edge | 3.357 | 3 |
@@ -674,21 +1140,21 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 | pure/dark | error on wash | 11.648 | 4.5 |
 | pure/dark | success on wash | 12.360 | 4.5 |
 | pure/dark | attention on wash | 13.132 | 4.5 |
-| pure/dark | Action label | 6.433 | 4.5 |
+| pure/dark | Action label | 5.069 | 4.5 |
 | pure/dark | Control boundary | 3.703 | 3 |
 | pure/dark | Large heading | 16.275 | 3 |
 
 <!-- audit:start -->
 ## Recorded engine audit
 
-Engine branch `codex/upstream-layer`, commit `07f3ce95214a84df22673c827d5b7adf7c0caa93`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
+Engine branch `codex/upstream-layer`, commit `e3274a502aa1bde70c316c8e761e5386efeb7ff7`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
-Audited `tokens.css` SHA-256: `a1af5205c673cedf0fe96061b9e6aaeb7a6fabc5af01fea75fc39a041b76bb90`.
+Audited `tokens.cool.css` SHA-256: `4c83f641b18cf21174a5c6bbbcfedc73fb7e79f1beab85f853f62d4f4e137876`.
 
 From the kit root, set `DS_LOOP_SOURCE` to that checkout:
 
 ```sh
-node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/color/options/functional-roles/tokens.css
+node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/color/options/functional-roles/tokens.cool.css
 ```
 
 Exit status: `1`. Standard output, verbatim:
@@ -697,16 +1163,16 @@ Exit status: `1`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:c48ef043cf06   adapter css-custom-props@0.3.0   config b158c121
+  version git:af9dbd1b7329   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
-  [MEDIUM] color/literal-duplicate-tokens
-  │ 64 colour value(s) are declared by 315 different tokens
-  │ where: #1c2024 <- --ds-color-functional-roles-cool-light-fg-default-neutral, --ds-color-functional-roles-cool-light-text-default; #60646c <- --ds-color-functional-roles-cool-light-fg-muted-neutral, --ds-color-functional-roles-cool-light-text-muted; #000000 <- --ds-color-functional-roles-cool-light-fg-emphasis-neutral, --ds-color-functional-roles-cool-light-fg-emphasis-accent, --ds-color-functional-roles-cool-light-fg-emphasis-success, --ds-color-functional-roles-cool-light-fg-emphasis-attention, --ds-color-functional-roles-cool-light-fg-emphasis-danger, --ds-color-functional-roles-cool-light-brand-on-fill, --ds-color-functional-roles-cool-dark-fg-emphasis-accent, --ds-color-functional-roles-cool-dark-fg-emphasis-success, --ds-color-functional-roles-cool-dark-fg-emphasis-attention, --ds-color-functional-roles-cool-dark-fg-emphasis-danger, --ds-color-functional-roles-cool-dark-brand-on-fill, --ds-color-functional-roles-warm-light-fg-emphasis-neutral, --ds-color-functional-roles-warm-light-fg-emphasis-accent, --ds-color-functional-roles-warm-light-fg-emphasis-success, --ds-color-functional-roles-warm-light-fg-emphasis-attention, --ds-color-functional-roles-warm-light-fg-emphasis-danger, --ds-color-functional-roles-warm-light-brand-on-fill, --ds-color-functional-roles-warm-dark-fg-emphasis-accent, --ds-color-functional-roles-warm-dark-fg-emphasis-success, --ds-color-functional-roles-warm-dark-fg-emphasis-attention, --ds-color-functional-roles-warm-dark-fg-emphasis-danger, --ds-color-functional-roles-warm-dark-brand-on-fill, --ds-color-functional-roles-pure-light-fg-emphasis-neutral, --ds-color-functional-roles-pure-light-fg-emphasis-accent, --ds-color-functional-roles-pure-light-fg-emphasis-success, --ds-color-functional-roles-pure-light-fg-emphasis-attention, --ds-color-functional-roles-pure-light-fg-emphasis-danger, --ds-color-functional-roles-pure-light-brand-on-fill, --ds-color-functional-roles-pure-dark-fg-emphasis-accent, --ds-color-functional-roles-pure-dark-fg-emphasis-success, --ds-color-functional-roles-pure-dark-fg-emphasis-attention, --ds-color-functional-roles-pure-dark-fg-emphasis-danger, --ds-color-functional-roles-pure-dark-brand-on-fill; #f0f0f3 <- --ds-color-functional-roles-cool-light-bg-muted-neutral, --ds-color-functional-roles-cool-light-surface-muted; #80838d <- --ds-color-functional-roles-cool-light-border-default-neutral, --ds-color-functional-roles-cool-light-border-muted-neutral, --ds-color-functional-roles-cool-light-border-emphasis-neutral, --ds-color-functional-roles-cool-light-border-control; #113264 <- --ds-color-functional-roles-cool-light-fg-default-accent, --ds-color-functional-roles-cool-light-fg-muted-accent, --ds-color-functional-roles-warm-light-fg-default-accent, --ds-color-functional-roles-warm-light-fg-muted-accent, --ds-color-functional-roles-pure-light-fg-default-accent, --ds-color-functional-roles-pure-light-fg-muted-accent
-  │ risk:  The next person to change this colour changes one of the names and not the others, and the system carries two values for one decision.
-  │ fix:   Keep one canonical token per value; make the rest var() aliases of it.
+  [LOW] color/near-duplicate-primitives
+  │ 26 pair(s) of palette primitives are within ΔE 2.3 — below a reliable just-noticeable difference
+  │ where: --ds-neutral-1 ≈ --ds-neutral-2 (ΔE 0.790195); --ds-neutral-1 ≈ --ds-accent-1 (ΔE 0.99327); --ds-neutral-1 ≈ --ds-attention-1 (ΔE 1.563758); --ds-neutral-1 ≈ --ds-danger-1 (ΔE 1.435253); --ds-neutral-2 ≈ --ds-neutral-3 (ΔE 1.906944); --ds-neutral-2 ≈ --ds-accent-1 (ΔE 1.230024); --ds-neutral-2 ≈ --ds-attention-1 (ΔE 2.211239); --ds-neutral-2 ≈ --ds-danger-1 (ΔE 1.723104)
+  │ risk:  Nobody can tell these steps apart on screen, so authors pick between them at random and the ramp stops meaning anything.
+  │ fix:   Confirm each pair is a deliberate ramp step. Collapse the ones that are not.
 
-  1 findings — 0 blocking · 0 high · 1 medium · 0 low
+  1 findings — 0 blocking · 0 high · 0 medium · 1 low
 
   scope — what this audit read
     css-custom-props@0.3.0
@@ -714,14 +1180,111 @@ Exit status: `1`. Standard output, verbatim:
     every format in scope was read, every colour converted, every rule able to judge
 
   scorecard ratios  (a baseline for the next run, not a grade)
-    literal-colors-per-distinct  4.177
-    colors-per-distinct-in-scope 4.177
+    literal-colors-per-distinct  1.576
+    colors-per-distinct-in-scope 1.033
     ambiguous-share              0
 
   next
-    decide on the rest                                                        nothing here is mechanically provable — all 1 findings state their choice on the fix line
-    ds-loop scorecard foundations/color/options/functional-roles/tokens.css   pin these ratios as run 1 — a ratio only says something against a previous row
-    ds-loop guard on                                                          report high-severity findings after each Claude Code edit (never blocks)
+    ds-loop fix foundations/color/options/functional-roles/tokens.cool.css         195 mechanical edit(s) — provable from the code, dry run until --write
+    decide on the rest                                                             each remaining finding states its choice on its fix line
+    ds-loop scorecard foundations/color/options/functional-roles/tokens.cool.css   pin these ratios as run 1 — a ratio only says something against a previous row
+    ds-loop guard on                                                               report high-severity findings after each Claude Code edit (never blocks)
+```
+
+Standard error: empty.
+
+## Recorded engine audit
+
+Engine branch `codex/upstream-layer`, commit `e3274a502aa1bde70c316c8e761e5386efeb7ff7`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
+
+Audited `tokens.warm.css` SHA-256: `fb36b14e34b844fc0043b7254efe1c0370aa7c4d2f7aeb8c418fe2005a2fc9e8`.
+
+From the kit root, set `DS_LOOP_SOURCE` to that checkout:
+
+```sh
+node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/color/options/functional-roles/tokens.warm.css
+```
+
+Exit status: `1`. Standard output, verbatim:
+
+```text
+  config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
+
+  ds-loop audit — ds-kit  ·  target: all  ·  live scan
+  version git:af9dbd1b7329   adapter css-custom-props@0.3.0   config b158c121
+  14 rules run
+
+  [LOW] color/near-duplicate-primitives
+  │ 30 pair(s) of palette primitives are within ΔE 2.3 — below a reliable just-noticeable difference
+  │ where: --ds-neutral-1 ≈ --ds-neutral-2 (ΔE 0.801946); --ds-neutral-1 ≈ --ds-accent-1 (ΔE 1.643762); --ds-neutral-1 ≈ --ds-success-1 (ΔE 1.663711); --ds-neutral-1 ≈ --ds-attention-1 (ΔE 0.621813); --ds-neutral-1 ≈ --ds-danger-1 (ΔE 1.719339); --ds-neutral-2 ≈ --ds-neutral-3 (ΔE 1.875853); --ds-neutral-2 ≈ --ds-accent-1 (ΔE 1.812085); --ds-neutral-2 ≈ --ds-success-1 (ΔE 1.871343)
+  │ risk:  Nobody can tell these steps apart on screen, so authors pick between them at random and the ramp stops meaning anything.
+  │ fix:   Confirm each pair is a deliberate ramp step. Collapse the ones that are not.
+
+  1 findings — 0 blocking · 0 high · 0 medium · 1 low
+
+  scope — what this audit read
+    css-custom-props@0.3.0
+      reads .css — custom-property declarations (--token: value) — not rule bodies, not at-rules
+    every format in scope was read, every colour converted, every rule able to judge
+
+  scorecard ratios  (a baseline for the next run, not a grade)
+    literal-colors-per-distinct  1.576
+    colors-per-distinct-in-scope 1.033
+    ambiguous-share              0
+
+  next
+    ds-loop fix foundations/color/options/functional-roles/tokens.warm.css         195 mechanical edit(s) — provable from the code, dry run until --write
+    decide on the rest                                                             each remaining finding states its choice on its fix line
+    ds-loop scorecard foundations/color/options/functional-roles/tokens.warm.css   pin these ratios as run 1 — a ratio only says something against a previous row
+    ds-loop guard on                                                               report high-severity findings after each Claude Code edit (never blocks)
+```
+
+Standard error: empty.
+
+## Recorded engine audit
+
+Engine branch `codex/upstream-layer`, commit `e3274a502aa1bde70c316c8e761e5386efeb7ff7`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
+
+Audited `tokens.pure.css` SHA-256: `2669a6c92597f2db8ebcf4bf66bb87681f530d5b7fbf87c69cfffd1868eb7b8d`.
+
+From the kit root, set `DS_LOOP_SOURCE` to that checkout:
+
+```sh
+node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/color/options/functional-roles/tokens.pure.css
+```
+
+Exit status: `1`. Standard output, verbatim:
+
+```text
+  config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
+
+  ds-loop audit — ds-kit  ·  target: all  ·  live scan
+  version git:af9dbd1b7329   adapter css-custom-props@0.3.0   config b158c121
+  14 rules run
+
+  [LOW] color/near-duplicate-primitives
+  │ 32 pair(s) of palette primitives are within ΔE 2.3 — below a reliable just-noticeable difference
+  │ where: --ds-neutral-1 ≈ --ds-neutral-2 (ΔE 0.60243); --ds-neutral-1 ≈ --ds-accent-1 (ΔE 1.242452); --ds-neutral-1 ≈ --ds-success-1 (ΔE 2.017353); --ds-neutral-1 ≈ --ds-attention-1 (ΔE 1.067098); --ds-neutral-1 ≈ --ds-danger-1 (ΔE 1.482405); --ds-neutral-2 ≈ --ds-neutral-3 (ΔE 1.849308); --ds-neutral-2 ≈ --ds-accent-1 (ΔE 1.442227); --ds-neutral-2 ≈ --ds-success-1 (ΔE 2.173912)
+  │ risk:  Nobody can tell these steps apart on screen, so authors pick between them at random and the ramp stops meaning anything.
+  │ fix:   Confirm each pair is a deliberate ramp step. Collapse the ones that are not.
+
+  1 findings — 0 blocking · 0 high · 0 medium · 1 low
+
+  scope — what this audit read
+    css-custom-props@0.3.0
+      reads .css — custom-property declarations (--token: value) — not rule bodies, not at-rules
+    every format in scope was read, every colour converted, every rule able to judge
+
+  scorecard ratios  (a baseline for the next run, not a grade)
+    literal-colors-per-distinct  1.576
+    colors-per-distinct-in-scope 1.033
+    ambiguous-share              0
+
+  next
+    ds-loop fix foundations/color/options/functional-roles/tokens.pure.css         195 mechanical edit(s) — provable from the code, dry run until --write
+    decide on the rest                                                             each remaining finding states its choice on its fix line
+    ds-loop scorecard foundations/color/options/functional-roles/tokens.pure.css   pin these ratios as run 1 — a ratio only says something against a previous row
+    ds-loop guard on                                                               report high-severity findings after each Claude Code edit (never blocks)
 ```
 
 Standard error: empty.
