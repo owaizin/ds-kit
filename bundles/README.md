@@ -1,1 +1,1 @@
-Reserved for coherent selections of authored options with usage boundaries; no bundles are included.
+Reserved for operational-admin, consumer-app, content-site, and data-dense-analytics proposals adapted to each project; no bundles supplied yet.

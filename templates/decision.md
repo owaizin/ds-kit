@@ -1,12 +1,12 @@
-# Decision: control spacing in Example DS
+# Decision: control spacing — Example DS
 
-Copy for a consequential choice; adapt the fields to the team's existing record format. This filled example is fictional. Replace its claims and paths with project evidence.
+Fictional filled example. Replace claims and paths with project evidence; adapt to the team's existing record format.
 
-- **Status / owner:** proposed / component maintainer role; person unassigned.
-- **Problem:** the team reports inconsistent gaps between button icons and labels. Confirm in a real consumer before migration.
-- **Evidence:** proposed investigation of `src/components/Button.tsx`; rendered behavior not checked.
-- **Options:** retain local spacing; share a control-gap alias; introduce a new primitive. Recommend the alias if an existing primitive serves the role.
-- **Decision:** propose `--ds-control-gap: var(--ds-primitive-space-2, 0.5rem)` for the button's internal gap.
-- **Scope / cost:** one button implementation and its examples; no global scale change. Existing overrides need review.
-- **Verify / revisit:** render icon-only, icon-and-label, and long-label states at supported densities. Revisit if a second consumer needs a different gap.
-- **Record / next task:** save as `specs/decisions/control-spacing.md`; reference from the button spec. Next task resolves the evidence gap before applying the proposal.
+- **Status / owner:** proposed / component maintainer, person unassigned.
+- **Problem (with audit evidence):** inconsistent icon-to-label gaps reported in this fictional brief. Target: `src/components/Button.tsx`; audit command/version/config/result and rendered baseline: not checked. A scanner finding alone would not prove a usability problem.
+- **Options:** retain local values; share a control-gap alias; introduce a primitive.
+- **Chosen:** propose `--ds-control-gap: var(--ds-primitive-space-2, 0.5rem)` for one existing button, subject to verifying the primitive's role.
+- **Why:** an alias would give the project one place to adjust this role without changing unrelated consumers of the primitive. This benefit is inferred, not measured.
+- **Consequences:** review overrides and supported densities; one implementation and its examples in scope, no global scale change. Existing appearance must be compared before and after.
+- **Revisit when:** compact-density checks fail or another consumer needs a different gap. Next task establishes the rendered baseline before applying the proposal.
+- **Record:** `specs/decisions/control-spacing.md`, referenced from `specs/components/atoms/button.md`; record the actual reviewer and date when decided.

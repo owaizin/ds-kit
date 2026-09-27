@@ -1,22 +1,38 @@
 # Foundation: control spacing — Example DS
 
-Copy for one foundation the product uses. This fictional example describes a proposal, not a supplied scale or completed implementation.
+Fictional filled example for one foundation. This proposal is not a supplied scale or completed implementation.
 
-## Purpose and scope
+## 1. Metadata
 
-Provide a consistent icon-to-label gap in the existing button. Reported problem: local values are hard to maintain. Other layout spacing is outside this change.
+Status: proposed. Owner: foundations maintainer, person unassigned. Canonical source: `src/styles/aliases.css`; revision and last review: not checked.
 
-## Source and contract
+## 2. Overview
 
-- Proposed source: `src/styles/aliases.css`; one editable source, imported by app and reference.
-- Project role: `--ds-control-gap`; upstream reference: `--ds-primitive-space-2`; fallback: `0.5rem`.
-- Consumers use the project alias. Keep the upstream unit; rem follows the consumer's root size.
-- Modes/density: no mode override proposed; compact-density suitability remains unverified.
+Give the existing button a maintainable icon-to-label gap. Use for internal control spacing, not page gutters or text line-height; other layout spacing is outside scope.
 
-## Use and exceptions
+## 3. Anatomy
 
-Use for internal button icon-to-label spacing. Do not infer page gutters or text line-height from it. Record a consumer-specific exception with its reason and review date.
+Upstream token → project alias with fallback → component consumption. Arrows mean CSS value resolution, not migration order. Preserve the project's existing four-layer model when mapping this pattern.
 
-## Verification and maintenance
+## 4. Tokens used
 
-Not checked: computed values, compact density, zoom, long labels, and propagation after an alias edit. Run the relevant UI checks and an unfiltered `ds-loop audit`; preserve coverage limits. Maintainer role: foundations owner, person unassigned. Decision: `specs/decisions/control-spacing.md`; next consumer reads this spec before extending the role.
+Proposed role: `--ds-control-gap`; upstream: `--ds-primitive-space-2`; fallback: `0.5rem`. Actual declarations/use sites: not checked. Replace with source/audit file:line evidence before calling these observed tokens.
+
+## 5. Props/API
+
+CSS consumption API: `var(--ds-control-gap)`. No component props apply. Keep the upstream unit; rem follows the consumer's root size. Record overrides and exceptions in the project decision.
+
+## 6. States
+
+Default density proposed; compact density remains unresolved. No light/dark override proposed. Interaction states belong to the component contract. Computed values, zoom, long labels, and propagation after alias edits: not checked.
+
+## 7. Code example
+
+```css
+:root { --ds-control-gap: var(--ds-primitive-space-2, 0.5rem); }
+.example-button { gap: var(--ds-control-gap); }
+```
+
+## 8. Cross-references
+
+Project destinations: `specs/decisions/control-spacing.md`, `specs/components/atoms/button.md`, `specs/completion/control-spacing.md`. Link the rendered reference when available. Next task: establish the baseline and review supported densities before applying the proposal.

@@ -1,35 +1,39 @@
 # Component: Button — Example DS
 
-Eight-section filled example for an **existing** component; all paths and facts here are fictional. Replace with evidence from the consumer. Add sections only when the actual contract needs them.
+Fictional filled example for an existing component. Replace paths and proposals with source evidence; do not create a component to satisfy this template.
 
-## 1. Purpose and scope
+## 1. Metadata
 
-Trigger an action in the record editor. Navigation uses a link. Existing implementation to inspect: `src/components/Button.tsx`; status: proposed contract.
+Status: proposed contract. Owner: component maintainer, person unassigned. Source: `src/components/Button.tsx`; revision and last review: not checked.
 
-## 2. Anatomy
+## 2. Overview
 
-Native `button` root, visible label, optional leading icon, optional pending indicator. The visible label remains stable during submission.
+Trigger an action in the record editor; use a link for navigation. Label actions with a verb, such as “Save record”; allow long translated labels.
 
-## 3. API and composition
+## 3. Anatomy
 
-Proposed API: `children`, `type`, `disabled`, `pending`, `onClick`; default `type="button"`. Forward native button attributes and the ref. Example: `<Button type="submit" pending={saving}>Save record</Button>`.
+Native button root, visible label, optional leading icon, optional pending indicator. Icon-only usage needs an accessible name; preserve native keyboard semantics.
 
-## 4. States and interaction
+## 4. Tokens used
 
-Default, hover, focus-visible, active, disabled, pending. Native Enter/Space activation; pending prevents duplicate submission and preserves an accessible label. Check focus behavior when entering and leaving pending.
+Proposed aliases: `--ds-control-gap` and `--ds-control-radius`. Actual use sites and upstream mappings: not checked. Populate this section from source or audit evidence, including file:line; do not list proposed tokens as observed usage.
 
-## 5. Content
+## 5. Props/API
 
-Use a verb describing the action: “Save record.” Icon-only usage needs an accessible name. Verify long translated labels rather than truncating them by default.
+Proposed: `children`, `type` (default `button`), `disabled`, `pending`, `onClick`; native attributes and ref forwarded. Confirm against the existing API before adopting.
 
-## 6. Accessibility
+## 6. States
 
-Retain native semantics and keyboard behavior. Verify focus visibility, contrast, zoom, accessible name, and the app's submission-status announcement. All checks are pending; native markup alone is not an accessibility result.
+Default, hover, active, focus-visible, disabled, loading/pending. Error belongs to the associated form; empty is not applicable to this button. Verify Enter/Space activation, focus visibility, contrast, zoom, long labels, and duplicate-submission prevention. All checks remain not checked.
 
-## 7. Tokens and variants
+## 7. Code example
 
-Propose project aliases `--ds-control-gap` and `--ds-control-radius`; components consume aliases, not upstream primitives. Preserve existing appearance variants until their consumers are inspected. Proposed reference: `specs/foundations/control-spacing.md`.
+Illustrative call to verify against the existing implementation:
 
-## 8. Verification and ownership
+```tsx
+<Button type="submit" pending={saving}>Save record</Button>
+```
 
-Not checked: rendered states, keyboard/pending behavior, second consumer, and audit coverage. Reference example: `src/components/Button.stories.tsx` if Storybook already exists; otherwise use the team's reference environment. Maintainer: component owner role, person unassigned. Done when agreed checks and remaining gaps are recorded in the completion record; a green audit alone is insufficient.
+## 8. Cross-references
+
+Project destinations: `specs/foundations/control-spacing.md`, `specs/decisions/control-spacing.md`, `specs/completion/control-spacing.md`. Link the actual Storybook story if one exists; otherwise link the team's rendered reference. Next task: verify the API and states in a real consumer. Retrieval and rendered review: not checked.

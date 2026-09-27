@@ -1,1 +1,1 @@
-Reserved for licensed, attributed component reference material; no reference content has been added.
+Reserved for eight-section reference contracts to adapt to existing components; no implementations or contracts supplied yet.

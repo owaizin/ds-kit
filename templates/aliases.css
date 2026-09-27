@@ -5,15 +5,19 @@
  * Put mode overrides on these aliases using the project's actual theme mechanism.
  */
 :root {
+  --ds-color-text: var(--ds-text, #333333);
   --ds-control-gap: var(--ds-primitive-space-2, 0.5rem);
   --ds-control-radius: var(--ds-primitive-radius-2, 0.25rem);
 }
 
 /* Filled consumer example: component styles consume project aliases only.
 .example-button {
+  color: var(--ds-color-text);
   gap: var(--ds-control-gap);
   border-radius: var(--ds-control-radius);
 }
  * Verify computed values with upstream present/absent and in supported modes.
- * Keep the existing tier model; map this alias layer onto it in the decision.
+ * Layer 2 maps a project role to an upstream token with a fallback.
+ * The text alias is the plan's --color-text pattern with the fictional --ds- prefix.
+ * Keep the existing four-layer tier model; map this alias layer onto it in the decision.
  */

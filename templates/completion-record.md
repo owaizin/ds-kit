@@ -1,12 +1,13 @@
 # Completion record: control spacing — Example DS
 
-Fictional filled example. Replace every entry with actual evidence; keep “not checked” when verification did not run.
+Fictional filled example. Replace entries with evidence; “not checked” is not passing.
 
-- **Requested outcome:** make the button's icon-to-label gap maintainable through one project alias.
-- **Disposition:** proposal documented; implementation and rendered verification remain open. No claim that the design system is complete.
-- **Deliverables:** proposed decision at `specs/decisions/control-spacing.md`, foundation at `specs/foundations/control-spacing.md`, component contract at `specs/components/button.md`. Existence in a target repo: not checked.
-- **Checks:** audit/build/keyboard/rendered states/second consumer: not run in this example. Record actual commands, versions, results, and coverage when run.
-- **Exceptions / remaining problems:** no exception approved; compact-density fit and upstream integration remain unknown.
-- **Decision owner:** component maintainer role; person unassigned.
-- **Next session:** read the decision and inspect the existing button consumer; establish a rendered baseline before applying the proposal.
-- **Retrieval check:** not run. A fresh session must locate the record and explain scope, rationale, and pending verification without relying on this conversation.
+- **Outcome / disposition:** propose one alias for the button's icon-to-label gap. Proposal documented; implementation and verification remain open.
+- **Before/after tokenization by category:** spacing before: not measured; after: not measured. Record numerator/denominator, audit revision, adapter versions, scope and config hash for both; do not compare changed instruments as a delta. Other categories: not checked.
+- **Remaining findings and reasons:** unfiltered audit not run; no finding count or exception approval claimed. Compact-density fit remains unresolved.
+- **Decisions and locations:** proposed `specs/decisions/control-spacing.md`; foundation `specs/foundations/control-spacing.md`; component `specs/components/atoms/button.md`. Target-file existence: not checked.
+- **Migration slices done / not done:** done: proposal only. Not done: alias, button consumer, reference example, second-consumer verification.
+- **Rendered screens/states / reviewer:** record-editor button at default/hover/active/focus/disabled/pending and long-label states: not checked; reviewer: none. Record actual viewport, mode, density and evidence location when checked.
+- **Other checks / coverage gaps:** audit, build, keyboard, unsupported storage, excluded files and unjudged rules: not checked. Record actual commands and results. CI thresholds are the team's decision.
+- **Owner / next session:** component maintainer, person unassigned. Read the decision; inspect the real consumer and establish the rendered baseline.
+- **Retrieval check:** not run. A fresh session must locate the record and explain rationale, scope and pending work without this conversation.

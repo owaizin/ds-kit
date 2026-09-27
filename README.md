@@ -18,7 +18,7 @@ This local scaffold contains seven original templates. It has no foundation opti
 |---|---|---|
 | A consequential choice needs a rationale | [Decision](templates/decision.md) | `specs/decisions/control-spacing.md` |
 | A foundation needs a source and usage contract | [Foundation spec](templates/spec-foundation.md) | `specs/foundations/control-spacing.md` |
-| An existing component needs an explicit contract | [Component spec: eight sections](templates/spec-component.md) | `specs/components/button.md` |
+| An existing component needs an explicit contract | [Component spec: eight sections](templates/spec-component.md) | `specs/components/atoms/button.md` |
 | A project role needs an upstream alias with fallback | [Layer-2 CSS pattern](templates/aliases.css) | the existing canonical alias stylesheet |
 | Future agent sessions need entry points and working rules | [Agent instructions](templates/agent-instructions.md) | a section in the existing instruction file |
 | Work needs a clear disposition and next entry point | [Completion record](templates/completion-record.md) | `specs/completion/control-spacing.md` |
@@ -30,6 +30,14 @@ This local scaffold contains seven original templates. It has no foundation opti
 
 Read [SOURCES.md](SOURCES.md) before deriving or importing third-party material. No third-party implementation or font files are included in this scaffold.
 
-## Plan alignment still to verify
+## Plan alignment and remaining work
 
-The requested `ds-loop-calibration/plans/TRANSFORMATION-PLAN-2026-09-27.md` was absent from the local checkout, local branches, and refreshed `origin/main` on 2026-09-27. This scaffold follows the explicit C1/C4 brief. The source inventory, foundation folder names, and component-section labels need comparison with that plan when available; they are not asserted to be its exact contents. Original-template distribution licensing is not assigned by this source-reuse policy.
+Aligned to Workstream C1–C7 and B4/B5/B7 in the transformation plan dated 2026-09-27. C1's source register and C4's seven templates are present. The twelve C2 foundation folders and C3 reference folder are scaffold only; no option content is supplied.
+
+For a project without an existing spec layout, use `specs/foundations/`, `specs/tokens/`, `specs/components/{atoms,molecules,organisms}/`, and `specs/patterns/`. Create component specs only for components that exist. Both spec templates use metadata, overview, anatomy, tokens used, props/API, states, code example, and cross-references; record inapplicable fields explicitly.
+
+C2 options, C3 reference contracts, C5 bundles, C6 validation/specimens, and C7 release versioning/option changelogs/manifest remain future work. The A10 validation checks and shared A11 manifest are dependencies to verify when that work starts, not capabilities this scaffold supplies.
+
+Source checks qualify the plan: Material Web token code is Apache-2.0, but that does not licence the Material 3 guidelines website; reviewed Polaris files are restricted; Fluent fonts/icons have separate asset terms. APG is under the W3C Software and Document License; cite-only use is this kit's narrower policy. See [the source register](SOURCES.md) for pinned evidence and reuse boundaries.
+
+This is the owner's private consulting kit. No public distribution licence or GitHub remote is configured. Keep it separate from the public ds-loop engine and skill; they must work without this kit.
