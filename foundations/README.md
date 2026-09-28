@@ -1,6 +1,6 @@
 # Foundations
 
-21 options across ten categories. Each option has a README, CSS tokens, matching JSON and an eight-section spec. Colour uses one CSS file per neutral instead of a combined file.
+22 options across ten categories. Each option has a README, CSS tokens, matching JSON and an eight-section spec. Colour uses one CSS file per neutral instead of a combined file.
 
 | Foundation | Options |
 |---|---|
@@ -13,7 +13,7 @@
 | [Z-index](z-index/options/) | named-layers |
 | [Breakpoints/grid](breakpoints-grid/options/) | content-first, app-shell |
 | [Borders/opacity](borders-opacity/options/) | functional |
-| [Focus/accessibility](focus-accessibility/options/) | visible-ring |
+| [Focus/accessibility](focus-accessibility/options/) | visible-ring, brand-blue |
 | Iconography | Reserved; no option content yet |
 | Layout/composition | Reserved; no option content yet |
 

@@ -102,3 +102,12 @@ Screenshots:
 - [Borders/opacity](screenshots/foundations/borders-compare.png)
 - [Focus comparison](screenshots/foundations/focus-compare.png) · [Keyboard focus](screenshots/foundations/focus-keyboard.png) · [320px focus](screenshots/foundations/focus-narrow.png)
 - [All 21 checks](screenshots/foundations/checks.png)
+
+## Focus and stacking update — 2026-09-28
+
+Added `brand-blue` alongside `visible-ring`, bringing the kit to 22 options. Both blue ring colours pass all four declared surfaces; minimum unrounded ratio is 3.6654887711388713:1. Tab navigation showed the alternate blue outline at 2px on both light and dark samples. Numerical checks cover all eight blue pairs; forced-colours and native rendering were not re-tested.
+
+Sticky is now 100 and dropdown 200 in the shared-root specimen, so a menu can appear above a sticky header. Ancestor stacking contexts still constrain both. Rebuilt the standalone specimen; 26 script tests and 22 option checks pass. Re-audited all 30 CSS files; the new focus option and revised stack have zero findings.
+
+- [Blue focus ring](screenshots/foundations/focus-brand-blue.png)
+- [Dropdown above sticky](screenshots/foundations/z-index-reordered.png)

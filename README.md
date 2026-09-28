@@ -2,7 +2,7 @@
 
 Reusable records and CSS patterns for an agent helping a team establish or maintain a design system. Use this kit with **Design System Loop (`ds-loop`)** to connect measured findings to project decisions, implementation contracts, and verification.
 
-This local kit contains seven original templates, 21 foundation options across ten categories. It has no reference components, patterns, bundles, CLI, or installer yet. Examples use invented “Example DS” names; they are not client evidence or production recommendations.
+This local kit contains seven original templates, 22 foundation options across ten categories. It has no reference components, patterns, bundles, CLI, or installer yet. Examples use invented “Example DS” names; they are not client evidence or production recommendations.
 
 ## Use with ds-loop
 
@@ -46,7 +46,7 @@ Additional foundations (all values independently derived):
 - Z-index: named-layers.
 - Breakpoints/grid: content-first, app-shell.
 - Borders/opacity: functional.
-- Focus/accessibility: visible-ring; both ring colours pass 3:1 against all four declared light/dark surfaces.
+- Focus/accessibility: visible-ring and brand-blue; both ring colours pass 3:1 against all four declared light/dark surfaces.
 
 Each uses the original four-file option layout, with native reference data, usage decisions, self-checks and recorded audits. [Browse the foundations](foundations/README.md). Zero audit findings describe the checks that ran, not full product or accessibility validation.
 

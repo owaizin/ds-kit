@@ -625,7 +625,7 @@ Exit status: `1`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:4204ec9a4d54   adapter css-custom-props@0.3.0   config b158c121
+  version git:ddb475356e0b   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   [LOW] color/near-duplicate-primitives
@@ -672,7 +672,7 @@ Exit status: `1`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:4204ec9a4d54   adapter css-custom-props@0.3.0   config b158c121
+  version git:ddb475356e0b   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   [LOW] color/near-duplicate-primitives
@@ -719,7 +719,7 @@ Exit status: `1`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:4204ec9a4d54   adapter css-custom-props@0.3.0   config b158c121
+  version git:ddb475356e0b   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   [LOW] color/near-duplicate-primitives

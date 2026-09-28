@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {contrast,rgb} from './color-math.mjs';
-export const foundationInventory={radius:['sharp','soft','round'],elevation:['shadow-led','border-led'],motion:['productive','expressive'],'z-index':['named-layers'],'breakpoints-grid':['content-first','app-shell'],'borders-opacity':['functional'],'focus-accessibility':['visible-ring']};
+export const foundationInventory={radius:['sharp','soft','round'],elevation:['shadow-led','border-led'],motion:['productive','expressive'],'z-index':['named-layers'],'breakpoints-grid':['content-first','app-shell'],'borders-opacity':['functional'],'focus-accessibility':['visible-ring','brand-blue']};
 export function validateFoundation(d,css){
  assert.equal(d.contract,'foundation-v1');assert.equal(d.rootFontSizePx,16);
  const clean=css.replace(/\/\*[\s\S]*?\*\//g,'').trim();
@@ -41,7 +41,7 @@ export function validateFoundation(d,css){
    assert.deepEqual(d.native.durations,Object.fromEntries(rs.map((r,i)=>[r,ms[i]])));assert.deepEqual(d.native.reducedDurations,{fast:0,standard:0,deliberate:0});assert.equal(d.native.distance,v('--ds-motion-distance').px);assert.deepEqual(d.native.easing,{enter:v('--ds-motion-ease-enter').bezier,exit:v('--ds-motion-ease-exit').bezier});break;
   }
   case 'z-index':{
-   assert.deepEqual(Object.keys(d.roles),['base','dropdown','sticky','overlay','modal','toast','tooltip']);const xs=Object.values(d.roles).map(n=>v(n).number);increasing(xs);assert.equal(xs[0],0);assert.ok(xs.every(Number.isInteger));assert.deepEqual(d.native.layers,Object.fromEntries(Object.entries(d.roles).map(([r,n])=>[r,v(n).number])));break;
+   assert.deepEqual(Object.keys(d.roles),['base','sticky','dropdown','overlay','modal','toast','tooltip']);const xs=Object.values(d.roles).map(n=>v(n).number);increasing(xs);assert.equal(xs[0],0);assert.ok(xs.every(Number.isInteger));assert.deepEqual(d.native.layers,Object.fromEntries(Object.entries(d.roles).map(([r,n])=>[r,v(n).number])));break;
   }
   case 'breakpoints-grid':{
    const xs=d.breakpoints.map(n=>v(n).px);assert.equal(xs.length,3);increasing(xs);assert.equal(d.columns.length,4);increasing(d.columns);assert.ok(d.columns.every(Number.isInteger));assert.equal(d.columns[0],1);assert.deepEqual(d.native.breakpoints,xs);assert.deepEqual(d.native.columns,d.columns);

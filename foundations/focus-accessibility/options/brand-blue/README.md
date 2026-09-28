@@ -1,6 +1,6 @@
-# focus-accessibility: visible-ring
+# focus-accessibility: brand-blue
 
-Two independently selected middle greys each pass 3:1 against the declared light and dark surfaces. A 2px outline and 2px offset expose the indicator outside the control.
+Two independently selected brand blues each pass 3:1 against the declared light and dark surfaces. A 2px outline and 2px offset expose the indicator outside the control.
 
 ## When to use / when not
 
@@ -24,8 +24,8 @@ Every value is independently derived; its derivation is recorded in the table an
 
 | Token | CSS value | Reference px / numeric | Derivation and source |
 |---|---|---|---|
-| `--ds-focus-ring` | `#777777` | — | Independently derived: Independent middle greys: adjust luminance until contrast clears 3:1 against all four reference surfaces. |
-| `--ds-focus-ring-alternate` | `#808080` | — | Independently derived: Independent alternate middle greys; validated against the same four surfaces. |
+| `--ds-focus-ring` | `#3979c6` | — | Independently derived: Independent brand blues: adjust luminance until contrast clears 3:1 against all four reference surfaces. |
+| `--ds-focus-ring-alternate` | `#477fc4` | — | Independently derived: Independent alternate brand blues; validated against the same four surfaces. |
 | `--ds-focus-width` | `0.125rem` | 2 | Independently derived: Original kit target: 2px ring and offset, 44px minimum control target. |
 | `--ds-focus-offset` | `0.125rem` | 2 | Independently derived: Original kit target: 2px ring and offset, 44px minimum control target. |
 | `--ds-focus-target-min` | `2.75rem` | 44 | Independently derived: Original kit target: 2px ring and offset, 44px minimum control target. |
@@ -38,21 +38,21 @@ Every value is independently derived; its derivation is recorded in the table an
 
 | Ring | Surface | Ratio | Minimum |
 |---|---|---|---|
-| --ds-focus-ring | --ds-focus-surface-light | 4.4781 | 3 |
-| --ds-focus-ring | --ds-focus-surface-light-muted | 4.0691 | 3 |
-| --ds-focus-ring | --ds-focus-surface-dark | 4.2168 | 3 |
-| --ds-focus-ring | --ds-focus-surface-dark-muted | 3.6384 | 3 |
-| --ds-focus-ring-alternate | --ds-focus-surface-light | 3.9494 | 3 |
-| --ds-focus-ring-alternate | --ds-focus-surface-light-muted | 3.5887 | 3 |
-| --ds-focus-ring-alternate | --ds-focus-surface-dark | 4.7812 | 3 |
-| --ds-focus-ring-alternate | --ds-focus-surface-dark-muted | 4.1255 | 3 |
+| --ds-focus-ring | --ds-focus-surface-light | 4.4450 | 3 |
+| --ds-focus-ring | --ds-focus-surface-light-muted | 4.0391 | 3 |
+| --ds-focus-ring | --ds-focus-surface-dark | 4.2481 | 3 |
+| --ds-focus-ring | --ds-focus-surface-dark-muted | 3.6655 | 3 |
+| --ds-focus-ring-alternate | --ds-focus-surface-light | 4.1170 | 3 |
+| --ds-focus-ring-alternate | --ds-focus-surface-light-muted | 3.7410 | 3 |
+| --ds-focus-ring-alternate | --ds-focus-surface-dark | 4.5866 | 3 |
+| --ds-focus-ring-alternate | --ds-focus-surface-dark-muted | 3.9575 | 3 |
 
 ## Consumer recipe
 
 Map upstream values to project aliases with fallbacks before consuming them. The following uses project alias names; it does not install components or define team policy.
 
 ```css
-.example-control:focus-visible { outline: var(--focus-width,2px) solid var(--focus-color,#777777); outline-offset: var(--focus-offset,2px); }
+.example-control:focus-visible { outline: var(--focus-width,2px) solid var(--focus-color,#3979c6); outline-offset: var(--focus-offset,2px); }
 @media (forced-colors: active) { .example-control:focus-visible { outline: 2px solid Highlight; } }
 ```
 
@@ -61,12 +61,12 @@ Map upstream values to project aliases with fallbacks before consuming them. The
 
 Engine branch `codex/upstream-layer`, commit `d43bda48e0af36ddd606b684b023eeac10dcda1b`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
-Audited `tokens.css` SHA-256: `0313332a3a9cc380730c56e2685ed641d3fd505a878e02ca9446011c9dfefce5`.
+Audited `tokens.css` SHA-256: `3a94aaf9f99c621b8bedfc97818224b2c314aa75c3bce271271549181b1e1b8b`.
 
 From the kit root, set `DS_LOOP_SOURCE` to that checkout:
 
 ```sh
-node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/focus-accessibility/options/visible-ring/tokens.css
+node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/focus-accessibility/options/brand-blue/tokens.css
 ```
 
 Exit status: `0`. Standard output, verbatim:
@@ -92,8 +92,8 @@ Exit status: `0`. Standard output, verbatim:
     ambiguous-share              0
 
   next
-    ds-loop scorecard foundations/focus-accessibility/options/visible-ring/tokens.css   pin these ratios as run 1 — a ratio only says something against a previous row
-    ds-loop guard on                                                                    report high-severity findings after each Claude Code edit (never blocks)
+    ds-loop scorecard foundations/focus-accessibility/options/brand-blue/tokens.css   pin these ratios as run 1 — a ratio only says something against a previous row
+    ds-loop guard on                                                                  report high-severity findings after each Claude Code edit (never blocks)
 ```
 
 Standard error: empty.

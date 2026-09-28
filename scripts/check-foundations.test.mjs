@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import {validateFoundation,foundationInventory} from './check-foundations.mjs';
 const load=(f,o)=>JSON.parse(readFileSync(`foundations/${f}/options/${o}/tokens.json`,'utf8'));
 const css=d=>':root{'+Object.entries(d.tokens).map(([n,t])=>`${n}:${t.value};`).join('')+'}'+(d.reducedMotion?'@media (prefers-reduced-motion: reduce){:root{'+Object.entries(d.reducedMotion).map(([n,v])=>`${n}:${v};`).join('')+'}}':'');
-test('all 12 new options satisfy their independent contracts and actual CSS',()=>{
+test('all foundation options satisfy their independent contracts and actual CSS',()=>{
  for(const [f,options] of Object.entries(foundationInventory))for(const o of options)assert.ok(validateFoundation(load(f,o),readFileSync(`foundations/${f}/options/${o}/tokens.css`,'utf8'))>0);
 });
 test('radius and stacking reject inversions and stale native mappings',()=>{
@@ -30,4 +30,14 @@ test('focus rejects failed contrast, missing dark pairs and an undersized ring',
  let d=load('focus-accessibility','visible-ring');d.tokens['--ds-focus-ring'].value='#ffffff';assert.throws(()=>validateFoundation(d,css(d)),/contrast/);
  d=load('focus-accessibility','visible-ring');d.contrastPairs=d.contrastPairs.filter(p=>!p.bg.endsWith('dark'));assert.throws(()=>validateFoundation(d,css(d)));
  d=load('focus-accessibility','visible-ring');d.tokens['--ds-focus-width'].value='0.0625rem';d.tokens['--ds-focus-width'].px=1;assert.throws(()=>validateFoundation(d,css(d)));
+});
+
+test('brand-blue rings clear both modes and dropdown stays above sticky',()=>{
+ const d=load('focus-accessibility','brand-blue');
+ validateFoundation(d,css(d));
+ for(const n of ['--ds-focus-ring','--ds-focus-ring-alternate']) {
+  const c=d.tokens[n].value; assert.notEqual(c.slice(1,3),c.slice(5,7),'Ring must be coloured');
+ }
+ const stack=load('z-index','named-layers');
+ assert.ok(stack.native.layers.dropdown>stack.native.layers.sticky);
 });

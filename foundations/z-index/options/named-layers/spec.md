@@ -22,7 +22,7 @@ Use when overlays share a known root and a documented portal policy. Native mapp
 
 ## 6. States
 
-- Base < dropdown < sticky < overlay < modal < toast < tooltip is one proposed policy. A dropdown inside a modal must stay in the modal context.
+- Base < sticky < dropdown < overlay < modal < toast < tooltip keeps open menus above sticky headers in the shared root stack. A dropdown inside a modal must stay in the modal context.
 - Keep tooltips noninteractive and do not let toasts obscure dialog controls. Top-layer popovers/dialogs do not participate in this numeric scale.
 
 ## 7. Code example

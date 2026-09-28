@@ -82,7 +82,7 @@ Exit status: `0`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:4204ec9a4d54   adapter css-custom-props@0.3.0   config b158c121
+  version git:ddb475356e0b   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   ✓ clean — every rule that ran could judge this source, and found nothing

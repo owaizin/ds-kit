@@ -10,7 +10,7 @@ A bigger number cannot escape an ancestor stacking context; native ordering and 
 
 ## Usage decisions
 
-- Base < dropdown < sticky < overlay < modal < toast < tooltip is one proposed policy. A dropdown inside a modal must stay in the modal context.
+- Base < sticky < dropdown < overlay < modal < toast < tooltip keeps open menus above sticky headers in the shared root stack. A dropdown inside a modal must stay in the modal context.
 - Keep tooltips noninteractive and do not let toasts obscure dialog controls. Top-layer popovers/dialogs do not participate in this numeric scale.
 
 ## Platforms and source
@@ -24,8 +24,8 @@ Every value is independently derived; its derivation is recorded in the table an
 | Token | CSS value | Reference px / numeric | Derivation and source |
 |---|---|---|---|
 | `--ds-z-base` | `0` | 0 | Independently derived: Original ordering by role; the 100-step gap is bookkeeping, not visual elevation. |
-| `--ds-z-dropdown` | `100` | 100 | Independently derived: Original ordering by role; the 100-step gap is bookkeeping, not visual elevation. |
-| `--ds-z-sticky` | `200` | 200 | Independently derived: Original ordering by role; the 100-step gap is bookkeeping, not visual elevation. |
+| `--ds-z-sticky` | `100` | 100 | Independently derived: Original ordering by role; the 100-step gap is bookkeeping, not visual elevation. |
+| `--ds-z-dropdown` | `200` | 200 | Independently derived: Original ordering by role; the 100-step gap is bookkeeping, not visual elevation. |
 | `--ds-z-overlay` | `300` | 300 | Independently derived: Original ordering by role; the 100-step gap is bookkeeping, not visual elevation. |
 | `--ds-z-modal` | `400` | 400 | Independently derived: Original ordering by role; the 100-step gap is bookkeeping, not visual elevation. |
 | `--ds-z-toast` | `500` | 500 | Independently derived: Original ordering by role; the 100-step gap is bookkeeping, not visual elevation. |
@@ -45,7 +45,7 @@ Map upstream values to project aliases with fallbacks before consuming them. The
 
 Engine branch `codex/upstream-layer`, commit `d43bda48e0af36ddd606b684b023eeac10dcda1b`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
-Audited `tokens.css` SHA-256: `e1901072b0814e6ecb0ff5ea3aa64234543ed7bbf35ea36c0d6d12089bc0592e`.
+Audited `tokens.css` SHA-256: `e17b1cf46f4949ccb8d044d439a16c3860c10a5a63ee961fad0ccc429804261d`.
 
 From the kit root, set `DS_LOOP_SOURCE` to that checkout:
 
@@ -59,7 +59,7 @@ Exit status: `0`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:4204ec9a4d54   adapter css-custom-props@0.3.0   config b158c121
+  version git:ddb475356e0b   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   ✓ clean — every rule that ran could judge this source, and found nothing

@@ -7,7 +7,7 @@ node scripts/check-options.mjs
 node --test scripts/*.test.mjs
 ```
 
-The checker verifies the 21-option inventory, four-file typography/spacing layout and six-file colour layout, `--ds-*` literals for type/spacing and palette aliases for colour, complete CSS/JSON value parity, current CSS hash against the recorded audit, source/derivation fields, strictly increasing scales, type intervals of at least 1.125 (with named and documented exceptions if needed), ten typography roles, heading order, body leading of at least 1.4, reading width, spacing density references, and native values against their source units. Negative tests deliberately break constraints to show failures are detected.
+The checker verifies the 22-option inventory, four-file typography/spacing layout and six-file colour layout, `--ds-*` literals for type/spacing and palette aliases for colour, complete CSS/JSON value parity, current CSS hash against the recorded audit, source/derivation fields, strictly increasing scales, type intervals of at least 1.125 (with named and documented exceptions if needed), ten typography roles, heading order, body leading of at least 1.4, reading width, spacing density references, and native values against their source units. Negative tests deliberately break constraints to show failures are detected.
 
 `tokens.json` uses a small kit-local interchange shape (`ds-kit-option-v1`), not DTCG and not the future `.ds-kit.json` manifest. For typography and spacing, `tokens` contains the exact CSS string values with type/source/derivation; `roles`, `scale`, and `density` reference those tokens. Every rem token also has numeric `px` at the 16px reference root. `native.roles` contains numeric text styles; `native.steps` and `native.density` contain numeric spacing. Native consumers still choose platform fonts and preserve user text scaling. No current ds-loop JSON-adapter compatibility is claimed.
 
@@ -21,7 +21,7 @@ Use the inspected local engine branch; this command does not install or publish 
 DS_LOOP_SOURCE=/absolute/path/to/ds-loop node scripts/record-audits.mjs
 ```
 
-The recorder checks for `codex/upstream-layer` and clean tracked engine sources, audits each typography/spacing `tokens.css` and each colour `tokens.{cool,warm,pure}.css`, and stores real stdout, exit status, engine revision and the CSS hash. Review findings; a nonzero audit is not automatically an invalid kit option. See [the upstream model gap](../docs/upstream-layer-gap.md).
+The recorder accepts `codex/upstream-layer` or merged `main` and checks for clean tracked engine sources, audits each non-colour `tokens.css` and each colour `tokens.{cool,warm,pure}.css`, and stores real stdout, exit status, engine revision and the CSS hash. Review findings; a nonzero audit is not automatically an invalid kit option. See [the upstream model gap](../docs/upstream-layer-gap.md).
 
 ## Build specimens
 
@@ -60,7 +60,7 @@ Open the local HTTP page. It checks 72 iframe cases with actual neutral-file CSS
 
 ## Additional foundations
 
-`node scripts/generate-foundation-options.mjs` writes the 12 options for radius, elevation, motion, z-index, breakpoints-grid, borders-opacity and focus-accessibility. Values are independently derived and recorded per token. This generator retains audit fences; re-record if the CSS changes.
+`node scripts/generate-foundation-options.mjs` writes the 13 options for radius, elevation, motion, z-index, breakpoints-grid, borders-opacity and focus-accessibility. Values are independently derived and recorded per token. This generator retains audit fences; re-record if the CSS changes.
 
 `check-foundations.mjs` validates ordered radius/stack/grid scales, native shadow geometry, motion durations and Bezier coordinates, complete zero-duration/zero-travel reduced-motion overrides, opacity bounds, 2px focus geometry, 44px kit targets, and both focus colours against every declared light/dark surface at an unrounded 3:1 threshold. The negative tests corrupt these contracts while keeping CSS and JSON synchronized so failures are not just syntax/parity failures.
 
