@@ -4,9 +4,11 @@ Your product has fourteen font sizes, forty greys and no one who remembers why. 
 
 ds-kit is a set of foundation options, templates and a specimen page for teams that are establishing or repairing a design system. It pairs with **[Design System Loop (`ds-loop`)](https://github.com/owaizin/ds-loop)**, which audits what your code actually uses.
 
+**[Open the specimen page →](https://owaizin.github.io/ds-kit/specimens/)** Compare every option on real-looking screens in your browser, or run it offline:
+
 ```sh
 git clone https://github.com/owaizin/ds-kit.git
-open ds-kit/specimens/index.html   # compare every option on real-looking screens, offline
+open ds-kit/specimens/index.html
 ```
 
 ## What's inside
