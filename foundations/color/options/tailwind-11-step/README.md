@@ -619,10 +619,10 @@ From the kit root, set `DS_LOOP_SOURCE` to that checkout:
 node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/color/options/tailwind-11-step/tokens.cool.css
 ```
 
-Exit status: `1`. Standard output, verbatim:
+Exit status: `1`. Standard output, verbatim except the kit's absolute root path, which is removed:
 
 ```text
-  config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
+  config: ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
   version git:ddb475356e0b   adapter css-custom-props@0.3.0   config b158c121
@@ -666,10 +666,10 @@ From the kit root, set `DS_LOOP_SOURCE` to that checkout:
 node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/color/options/tailwind-11-step/tokens.warm.css
 ```
 
-Exit status: `1`. Standard output, verbatim:
+Exit status: `1`. Standard output, verbatim except the kit's absolute root path, which is removed:
 
 ```text
-  config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
+  config: ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
   version git:ddb475356e0b   adapter css-custom-props@0.3.0   config b158c121
@@ -713,10 +713,10 @@ From the kit root, set `DS_LOOP_SOURCE` to that checkout:
 node --experimental-strip-types --disable-warning=ExperimentalWarning "$DS_LOOP_SOURCE/src/cli.ts" audit foundations/color/options/tailwind-11-step/tokens.pure.css
 ```
 
-Exit status: `1`. Standard output, verbatim:
+Exit status: `1`. Standard output, verbatim except the kit's absolute root path, which is removed:
 
 ```text
-  config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
+  config: ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
   version git:ddb475356e0b   adapter css-custom-props@0.3.0   config b158c121

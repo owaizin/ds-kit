@@ -1,75 +1,76 @@
 # ds-kit
 
-Reusable records and CSS patterns for an agent helping a team establish or maintain a design system. Use this kit with **Design System Loop (`ds-loop`)** to connect measured findings to project decisions, implementation contracts, and verification.
+Your product has fourteen font sizes, forty greys and no one who remembers why. You don't need to invent a design system from scratch to fix that. Start from a vetted option, adapt it, and record why.
 
-This local kit contains seven original templates, 22 foundation options across ten categories. It has no reference components, patterns, bundles, CLI, or installer yet. Examples use invented “Example DS” names; they are not client evidence or production recommendations.
+ds-kit is a set of foundation options, templates and a specimen page for teams that are establishing or repairing a design system. It pairs with **[Design System Loop (`ds-loop`)](https://github.com/owaizin/ds-loop)**, which audits what your code actually uses.
 
-## Use with ds-loop
+```sh
+git clone https://github.com/owaizin/ds-kit.git
+open ds-kit/specimens/index.html   # compare every option on real-looking screens, offline
+```
 
-1. In the target project, install `ds-loop` using the team's package manager. For npm: `npm install --save-dev ds-loop`. Ask the agent to read the installed `node_modules/ds-loop/skill/SKILL.md` and this kit's README; installing a package does not itself activate its skill.
-2. Establish the user's problem, intended outcome, existing commitments, and scope. Use `npx --no-install ds-loop context .` and `npx --no-install ds-loop audit .` for measured facts and coverage limits.
-3. Select the relevant template below. Adapt it to the team's existing document layout instead of creating a competing registry. Replace fictional facts and example paths with actual evidence. Ask about decisions the code cannot answer.
-4. Implement within the agreed scope. Token suggestions require judgment about role, mode, and consumer behavior; a numerical match does not authorize a replacement.
-5. Run applicable engine and product checks. Save the completion record with unrun checks and remaining work, then verify that another session can retrieve and explain the decision. A clean audit alone does not establish completion.
+## What's inside
 
-## Choose a template
+**22 foundation options across ten foundations.** Each option is a folder with `tokens.css`, `tokens.json` (including native numbers), `spec.md` and a README explaining when to use it, when not to, and where each value came from.
 
-| When | Template | Example project destination |
-|---|---|---|
-| A consequential choice needs a rationale | [Decision](templates/decision.md) | `specs/decisions/control-spacing.md` |
-| A foundation needs a source and usage contract | [Foundation spec](templates/spec-foundation.md) | `specs/foundations/control-spacing.md` |
-| An existing component needs an explicit contract | [Component spec: eight sections](templates/spec-component.md) | `specs/components/atoms/button.md` |
-| A project role needs an upstream alias with fallback | [Layer-2 CSS pattern](templates/aliases.css) | the existing canonical alias stylesheet |
-| Future agent sessions need entry points and working rules | [Agent instructions](templates/agent-instructions.md) | a section in the existing instruction file |
-| Work needs a clear disposition and next entry point | [Completion record](templates/completion-record.md) | `specs/completion/control-spacing.md` |
-| Discovery has surfaced problems to investigate | [Problem list](templates/problem-list.md) | the existing investigation or issue record |
+| Foundation | Options |
+|---|---|
+| Typography | compact-ui (14px body, dense tools) · default-ui (16px body) · editorial (20px body, reading-heavy) |
+| Spacing | base-4 · base-8, each with comfortable and compact density |
+| Colour | radix-12-step · tailwind-11-step palettes; functional-roles · simple-roles semantics; cool, warm and pure neutrals; light and dark |
+| Radius | sharp · soft · round |
+| Elevation | shadow-led · border-led |
+| Motion | productive · expressive; movement removed under reduced motion |
+| Z-index | named-layers |
+| Breakpoints and grid | content-first · app-shell |
+| Borders and opacity | functional |
+| Focus and accessibility | visible-ring · brand-blue |
 
-## Foundation options
+Every option passes its self-checks: scales that increase, CSS and JSON that agree, 672 declared colour contrast pairs, focus rings at 3:1 or better on light and dark surfaces. Each README also records a real `ds-loop audit` of its CSS.
 
-- Typography: [compact-ui](foundations/typography/options/compact-ui/README.md), [default-ui](foundations/typography/options/default-ui/README.md), [editorial](foundations/typography/options/editorial/README.md).
-- Spacing: [base-4](foundations/spacing/options/base-4/README.md), [base-8](foundations/spacing/options/base-8/README.md).
+**Seven templates** for the records a design-system change needs:
 
-Choose one option per foundation and adapt its spec to the project. Typography and spacing contain README.md, tokens.css, tokens.json and spec.md. Their CSS is layer-1 literal values; density mappings and text roles still need project aliases and real consumers. Values and sources are documented per option; Inter remains optional, with no bundled fonts.
+| When | Template |
+|---|---|
+| A consequential choice needs a rationale | [Decision](templates/decision.md) |
+| A foundation needs a source and usage contract | [Foundation spec](templates/spec-foundation.md) |
+| An existing component needs an explicit contract | [Component spec, eight sections](templates/spec-component.md) |
+| A project role needs an alias with a fallback | [Layer-2 CSS pattern](templates/aliases.css) |
+| Agents need entry points and working rules | [Agent instructions](templates/agent-instructions.md) |
+| Work needs an honest finish | [Completion record](templates/completion-record.md) |
+| Discovery surfaced problems to investigate | [Problem list](templates/problem-list.md) |
 
-Run `node scripts/check-options.mjs` and `node --test scripts/check-options.test.mjs` (Node 22+; no dependencies). [Checker scope](scripts/README.md) separates numerical checks from rendered validation. Each option README contains its actual engine audit. The kit config declares `--ds-*` upstream; typography and spacing audits have no findings, without suppressions. See [the resolved configuration gap](docs/upstream-layer-gap.md).
+**A specimen page** (`specimens/index.html`): real-size scales, side-by-side comparison, four applied screens (a data table, a form with an error, settings, an article), density, light/dark and a 375px width. Drop a `ds-loop audit --json` report into its Current column to see a project's real values next to the options. Nothing is sent anywhere.
 
-- Colour palettes: [radix-12-step](foundations/color/options/radix-12-step/README.md), [tailwind-11-step](foundations/color/options/tailwind-11-step/README.md).
-- Colour roles: [functional-roles](foundations/color/options/functional-roles/README.md), [simple-roles](foundations/color/options/simple-roles/README.md).
+## Use it with ds-loop
 
-Colour options ship tokens.cool.css, tokens.warm.css and tokens.pure.css: import exactly one file, alongside its README.md, tokens.json and spec.md. Each neutral exposes stable names and both themes. Set data-theme="light" or "dark" on the document root, or omit it to follow the OS. Role tokens use var() aliases to palette steps. JSON resolves through variants[neutral][mode].tokens. All 672 declared contrast pairs pass; the 12 neutral-file audits have zero literal-duplicate findings, without suppressions. Low-severity palette diagnostics remain in the actual audits.
+1. In your project: `npm install --save-dev ds-loop`, then `npx ds-loop audit .` to see what your code actually uses.
+2. Pick one option per foundation with the specimen page. Keeping your existing system is a valid choice.
+3. Import the option's CSS as your upstream layer, and point your project aliases at it with fallbacks ([pattern](templates/aliases.css)). Add `"taxonomy": {"upstreamPattern": "^--ds-"}` to your `ds-loop.config.json` so the audit judges the layers correctly.
+4. Record each choice with the [decision template](templates/decision.md), migrate one slice at a time, and finish with a [completion record](templates/completion-record.md).
 
-Additional foundations (all values independently derived):
+The ds-loop skill (`node_modules/ds-loop/skill/SKILL.md`, playbooks `foundations` and `transform`) walks an agent through the same steps.
 
-- Radius: sharp, soft, round.
-- Elevation: shadow-led, border-led.
-- Motion: productive, expressive; duration and travel are removed under reduced motion.
-- Z-index: named-layers.
-- Breakpoints/grid: content-first, app-shell.
-- Borders/opacity: functional.
-- Focus/accessibility: visible-ring and brand-blue; both ring colours pass 3:1 against all four declared light/dark surfaces.
+## Check it yourself
 
-Each uses the original four-file option layout, with native reference data, usage decisions, self-checks and recorded audits. [Browse the foundations](foundations/README.md). Zero audit findings describe the checks that ran, not full product or accessibility validation.
+Node 22 or later, no dependencies:
 
-## Inspect the options
+```sh
+node scripts/check-options.mjs
+node --test scripts/*.test.mjs
+node scripts/build-specimens.mjs --check
+```
 
-Open [the self-contained specimen](specimens/index.html) locally. It offers real-size scales, side-by-side comparison, four applied compositions and per-option checks. Select typography, spacing, density, light/dark and a 375px sample width. No fonts or scripts are fetched. Samples use the selected colour option. The Current column accepts an audit JSON locally; the committed build includes invented Example DS evidence only.
+[What the checks cover](scripts/README.md), and what they don't: rendered typography, native rendering, screen readers and product fit are not certified by a passing check.
 
-Build with `node scripts/build-specimens.mjs`; verify with `node scripts/build-specimens.mjs --check`. [Browser verification and screenshots](specimens/README.md) cover the exercised web states. Native JSON is checked numerically; React Native rendering remains unverified.
+## Limits
 
-## Content folders
+- Iconography and layout-composition have folders but no options yet. Component reference contracts, patterns and preset bundles are not written yet.
+- Numbers pass checks; they don't prove an option suits your product. That's a decision for your team.
+- React Native values are checked numerically, not rendered.
 
-[Foundations](foundations/README.md) contains the twelve named categories; ten foundations have options, while iconography and layout-composition are reserved. [Component references](components/reference/README.md), [patterns](patterns/README.md), and [bundles](bundles/README.md) contain only folder descriptions. These reserved folders contain no product implementations.
+## Sources and licence
 
-Read [SOURCES.md](SOURCES.md) before deriving or importing third-party material. Tailwind-derived token values carry a retained MIT notice; no third-party component implementations or font files are included.
+Values are independently derived or taken from permissively licensed systems (Tailwind CSS, Radix Colors, Primer Primitives), each pinned to a revision in [SOURCES.md](SOURCES.md). Other systems informed principles only; no values, text or assets were copied from them. No fonts are bundled.
 
-## Plan alignment and remaining work
-
-Aligned to Workstream C1–C7 and B4/B5/B7 in the transformation plan dated 2026-09-27. C1's source register and C4's seven templates are present. C2 typography, spacing and colour now contain nine options; the other nine foundations and C3 reference folder remain scaffold only.
-
-For a project without an existing spec layout, use `specs/foundations/`, `specs/tokens/`, `specs/components/{atoms,molecules,organisms}/`, and `specs/patterns/`. Create component specs only for components that exist. Both spec templates use metadata, overview, anatomy, tokens used, props/API, states, code example, and cross-references; record inapplicable fields explicitly.
-
-The remaining C2 options, C3 reference contracts, C5 bundles, C6 engine validation (beyond the local self-check and specimens), and C7 release versioning/option changelogs/manifest remain future work. The A10 validation checks and shared A11 manifest are dependencies to verify when that work starts, not capabilities this scaffold supplies.
-
-Source checks qualify the plan: Material Web token code is Apache-2.0, but that does not licence the Material 3 guidelines website; reviewed Polaris files are restricted; Fluent fonts/icons have separate asset terms. APG is under the W3C Software and Document License; cite-only use is this kit's narrower policy. See [the source register](SOURCES.md) for pinned evidence and reuse boundaries.
-
-This is the owner's private consulting kit. No public distribution licence or GitHub remote is configured. Keep it separate from the public ds-loop engine and skill; they must work without this kit.
+ds-kit is released under the [MIT licence](LICENSE). Third-party notices are in [NOTICE](NOTICE) and [LICENSES/](LICENSES/).

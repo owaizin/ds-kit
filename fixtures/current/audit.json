@@ -58,7 +58,7 @@
       "excluded": 0,
       "topFiles": [
         {
-          "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+          "file": "fixtures/current/example.css",
           "occurrences": 7
         }
       ],
@@ -118,7 +118,7 @@
       "excluded": 0,
       "topFiles": [
         {
-          "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+          "file": "fixtures/current/example.css",
           "occurrences": 7
         }
       ],
@@ -160,7 +160,7 @@
       "excluded": 0,
       "topFiles": [
         {
-          "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+          "file": "fixtures/current/example.css",
           "occurrences": 5
         }
       ],
@@ -188,7 +188,7 @@
       "ruleId": "token/raw-value-in-style",
       "severity": "high",
       "summary": "7 color property value(s) contain literals in ordinary CSS (6 distinct); project permission not judged",
-      "where": "color: #333333 at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:3; background: #ffffff at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:3; color: #333333 at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:4; background: #f8fafc at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:4; color: #b91c1c at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:5; color: #111827 at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:6; color: #64748b at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:7",
+      "where": "color: #333333 at fixtures/current/example.css:3; background: #ffffff at fixtures/current/example.css:3; color: #333333 at fixtures/current/example.css:4; background: #f8fafc at fixtures/current/example.css:4; color: #b91c1c at fixtures/current/example.css:5; color: #111827 at fixtures/current/example.css:6; color: #64748b at fixtures/current/example.css:7",
       "fix": "Review these values against the project token contract. Where a shared role applies, choose its token and verify affected states. Retain intentional literals with a recorded reason; this finding does not establish a policy violation.",
       "data": {
         "category": "color",
@@ -197,7 +197,7 @@
           {
             "value": "#333333",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 3,
             "selector": ".example-table",
             "property": "color",
@@ -213,7 +213,7 @@
           {
             "value": "#ffffff",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 3,
             "selector": ".example-table",
             "property": "background",
@@ -229,7 +229,7 @@
           {
             "value": "#333333",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 4,
             "selector": ".example-form",
             "property": "color",
@@ -245,7 +245,7 @@
           {
             "value": "#f8fafc",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 4,
             "selector": ".example-form",
             "property": "background",
@@ -261,7 +261,7 @@
           {
             "value": "#b91c1c",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 5,
             "selector": ".example-error",
             "property": "color",
@@ -277,7 +277,7 @@
           {
             "value": "#111827",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 6,
             "selector": ".example-title",
             "property": "color",
@@ -293,7 +293,7 @@
           {
             "value": "#64748b",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 7,
             "selector": ".example-note",
             "property": "color",
@@ -313,7 +313,7 @@
         "values": [
           {
             "value": "#333333",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 3,
             "property": "color",
             "status": "no-token",
@@ -322,7 +322,7 @@
           },
           {
             "value": "#ffffff",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 3,
             "property": "background",
             "status": "no-token",
@@ -331,7 +331,7 @@
           },
           {
             "value": "#333333",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 4,
             "property": "color",
             "status": "no-token",
@@ -340,7 +340,7 @@
           },
           {
             "value": "#f8fafc",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 4,
             "property": "background",
             "status": "no-token",
@@ -349,7 +349,7 @@
           },
           {
             "value": "#b91c1c",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 5,
             "property": "color",
             "status": "no-token",
@@ -358,7 +358,7 @@
           },
           {
             "value": "#111827",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 6,
             "property": "color",
             "status": "no-token",
@@ -367,7 +367,7 @@
           },
           {
             "value": "#64748b",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 7,
             "property": "color",
             "status": "no-token",
@@ -383,7 +383,7 @@
       "ruleId": "token/raw-value-in-style",
       "severity": "high",
       "summary": "6 spacing property value(s) contain literals in ordinary CSS (4 distinct); project permission not judged",
-      "where": "padding: 12px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:3; gap: 8px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:3; padding: 16px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:4; gap: 12px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:4; margin: 4px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:5; margin: 16px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:6",
+      "where": "padding: 12px at fixtures/current/example.css:3; gap: 8px at fixtures/current/example.css:3; padding: 16px at fixtures/current/example.css:4; gap: 12px at fixtures/current/example.css:4; margin: 4px at fixtures/current/example.css:5; margin: 16px at fixtures/current/example.css:6",
       "fix": "Review these values against the project token contract. Where a shared role applies, choose its token and verify affected states. Retain intentional literals with a recorded reason; this finding does not establish a policy violation.",
       "data": {
         "category": "spacing",
@@ -392,7 +392,7 @@
           {
             "value": "12px",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 3,
             "selector": ".example-table",
             "property": "padding",
@@ -408,7 +408,7 @@
           {
             "value": "8px",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 3,
             "selector": ".example-table",
             "property": "gap",
@@ -424,7 +424,7 @@
           {
             "value": "16px",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 4,
             "selector": ".example-form",
             "property": "padding",
@@ -440,7 +440,7 @@
           {
             "value": "12px",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 4,
             "selector": ".example-form",
             "property": "gap",
@@ -456,7 +456,7 @@
           {
             "value": "4px",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 5,
             "selector": ".example-error",
             "property": "margin",
@@ -472,7 +472,7 @@
           {
             "value": "16px",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 6,
             "selector": ".example-title",
             "property": "margin",
@@ -492,7 +492,7 @@
         "values": [
           {
             "value": "12px",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 3,
             "property": "padding",
             "status": "no-token",
@@ -501,7 +501,7 @@
           },
           {
             "value": "8px",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 3,
             "property": "gap",
             "status": "no-token",
@@ -510,7 +510,7 @@
           },
           {
             "value": "16px",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 4,
             "property": "padding",
             "status": "exact",
@@ -527,7 +527,7 @@
                 ],
                 "declarations": [
                   {
-                    "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+                    "file": "fixtures/current/example.css",
                     "line": 2,
                     "selector": ":root",
                     "property": "--example-scale-4",
@@ -550,7 +550,7 @@
           },
           {
             "value": "12px",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 4,
             "property": "gap",
             "status": "no-token",
@@ -559,7 +559,7 @@
           },
           {
             "value": "4px",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 5,
             "property": "margin",
             "status": "no-token",
@@ -568,7 +568,7 @@
           },
           {
             "value": "16px",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 6,
             "property": "margin",
             "status": "exact",
@@ -585,7 +585,7 @@
                 ],
                 "declarations": [
                   {
-                    "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+                    "file": "fixtures/current/example.css",
                     "line": 2,
                     "selector": ":root",
                     "property": "--example-scale-4",
@@ -615,7 +615,7 @@
       "ruleId": "token/raw-value-in-style",
       "severity": "medium",
       "summary": "5 typography property value(s) contain literals in ordinary CSS (4 distinct); project permission not judged",
-      "where": "font-size: 14px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:3; font-size: 16px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:4; font-size: 13px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:5; font-size: 24px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:6; font-size: 14px at /Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css:7",
+      "where": "font-size: 14px at fixtures/current/example.css:3; font-size: 16px at fixtures/current/example.css:4; font-size: 13px at fixtures/current/example.css:5; font-size: 24px at fixtures/current/example.css:6; font-size: 14px at fixtures/current/example.css:7",
       "fix": "Review these values against the project token contract. Where a shared role applies, choose its token and verify affected states. Retain intentional literals with a recorded reason; this finding does not establish a policy violation.",
       "data": {
         "category": "typography",
@@ -624,7 +624,7 @@
           {
             "value": "14px",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 3,
             "selector": ".example-table",
             "property": "font-size",
@@ -640,7 +640,7 @@
           {
             "value": "16px",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 4,
             "selector": ".example-form",
             "property": "font-size",
@@ -656,7 +656,7 @@
           {
             "value": "13px",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 5,
             "selector": ".example-error",
             "property": "font-size",
@@ -672,7 +672,7 @@
           {
             "value": "24px",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 6,
             "selector": ".example-title",
             "property": "font-size",
@@ -688,7 +688,7 @@
           {
             "value": "14px",
             "refs": [],
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 7,
             "selector": ".example-note",
             "property": "font-size",
@@ -708,7 +708,7 @@
         "values": [
           {
             "value": "14px",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 3,
             "property": "font-size",
             "status": "no-token",
@@ -717,7 +717,7 @@
           },
           {
             "value": "16px",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 4,
             "property": "font-size",
             "status": "exact",
@@ -734,7 +734,7 @@
                 ],
                 "declarations": [
                   {
-                    "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+                    "file": "fixtures/current/example.css",
                     "line": 2,
                     "selector": ":root",
                     "property": "--example-scale-4",
@@ -757,7 +757,7 @@
           },
           {
             "value": "13px",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 5,
             "property": "font-size",
             "status": "no-token",
@@ -766,7 +766,7 @@
           },
           {
             "value": "24px",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 6,
             "property": "font-size",
             "status": "no-token",
@@ -775,7 +775,7 @@
           },
           {
             "value": "14px",
-            "file": "/Users/owais/Documents/GitHub/ds-kit/fixtures/current/example.css",
+            "file": "fixtures/current/example.css",
             "line": 7,
             "property": "font-size",
             "status": "no-token",

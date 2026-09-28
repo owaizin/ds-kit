@@ -1,0 +1,16 @@
+ds-kit
+Copyright (c) 2026 Mohammad Owaiz. Released under the MIT licence (see LICENSE).
+
+This kit includes values derived from the following MIT-licensed projects.
+Their licence texts are reproduced in LICENSES/. Pinned revisions and the exact
+files used are recorded in SOURCES.md.
+
+- Tailwind CSS (Tailwind Labs, Inc.) — spacing and type scale values, the
+  tailwind-11-step colour ramps. LICENSES/Tailwind-CSS-MIT.txt
+- Radix Colors (Modulz) — the radix-12-step colour ramps.
+  LICENSES/Radix-Colors-MIT.txt
+- Primer Primitives (GitHub, Inc.) — informed the role separation of the
+  functional-roles colour option; no values copied. LICENSES/Primer-Primitives-MIT.txt
+
+Other systems named in SOURCES.md informed principles only. No values, text,
+code, fonts or assets were copied from them.
