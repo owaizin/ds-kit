@@ -1,0 +1,37 @@
+[
+  {
+    "heading": "Radius in use",
+    "viewport": 320,
+    "width": 320
+  },
+  {
+    "heading": "Elevation in use",
+    "viewport": 320,
+    "width": 320
+  },
+  {
+    "heading": "Motion in use",
+    "viewport": 320,
+    "width": 320
+  },
+  {
+    "heading": "Z-index in use",
+    "viewport": 320,
+    "width": 320
+  },
+  {
+    "heading": "Breakpoints & grid in use",
+    "viewport": 320,
+    "width": 320
+  },
+  {
+    "heading": "Borders & opacity in use",
+    "viewport": 320,
+    "width": 320
+  },
+  {
+    "heading": "Focus & accessibility in use",
+    "viewport": 320,
+    "width": 320
+  }
+]

@@ -1,0 +1,13 @@
+/* Example DS — independently derived; see README for use and limits. */
+:root {
+  --ds-breakpoint-small: 40rem;
+  --ds-breakpoint-medium: 64rem;
+  --ds-breakpoint-large: 88rem;
+  --ds-grid-max: 72rem;
+  --ds-grid-gap: 1rem;
+  --ds-grid-gutter: 1.5rem;
+  --ds-grid-columns-0: 1;
+  --ds-grid-columns-1: 2;
+  --ds-grid-columns-2: 3;
+  --ds-grid-columns-3: 4;
+}

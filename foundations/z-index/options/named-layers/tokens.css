@@ -1,0 +1,10 @@
+/* Example DS — independently derived; see README for use and limits. */
+:root {
+  --ds-z-base: 0;
+  --ds-z-dropdown: 100;
+  --ds-z-sticky: 200;
+  --ds-z-overlay: 300;
+  --ds-z-modal: 400;
+  --ds-z-toast: 500;
+  --ds-z-tooltip: 600;
+}

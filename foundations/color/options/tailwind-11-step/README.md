@@ -20,6 +20,8 @@ Import exactly one of tokens.cool.css, tokens.warm.css or tokens.pure.css. Each 
 
 ## Audit interpretation
 
+Known exception: --ds-neutral-50 and --ds-neutral-100 remain separate. Measured CIEDE2000 is 1.589671 (cool/slate), 1.015859 (warm/stone), and 1.015578 (pure/neutral) in the kit’s sRGB derivative. They preserve the pinned Tailwind 50/100 steps and their independent selection roles; they are not collapsed. This is a documented proximity exception, not a literal duplicate or an engine suppression.
+
 All three shipped neutral files have zero color/literal-duplicate-tokens findings. There are no deliberate duplicate exceptions and no suppressions. Low-severity palette proximity diagnostics remain in the verbatim audits below. The engine reads both theme blocks together; some proximity pairs cross light/dark contexts and are not evidence of a collision within one active theme. Source steps remain intact.
 
 ## Values
@@ -607,7 +609,7 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 <!-- audit:start -->
 ## Recorded engine audit
 
-Engine branch `codex/upstream-layer`, commit `e3274a502aa1bde70c316c8e761e5386efeb7ff7`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
+Engine branch `codex/upstream-layer`, commit `d43bda48e0af36ddd606b684b023eeac10dcda1b`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
 Audited `tokens.cool.css` SHA-256: `632324f50dd35ebddf5a9d420696cc1400699aaa054008ef3145ddbaeccc8606`.
 
@@ -623,7 +625,7 @@ Exit status: `1`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:af9dbd1b7329   adapter css-custom-props@0.3.0   config b158c121
+  version git:4204ec9a4d54   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   [LOW] color/near-duplicate-primitives
@@ -645,8 +647,7 @@ Exit status: `1`. Standard output, verbatim:
     ambiguous-share              0
 
   next
-    ds-loop fix foundations/color/options/tailwind-11-step/tokens.cool.css         60 mechanical edit(s) — provable from the code, dry run until --write
-    decide on the rest                                                             each remaining finding states its choice on its fix line
+    decide on the rest                                                             nothing here is mechanically provable — all 1 findings state their choice on the fix line
     ds-loop scorecard foundations/color/options/tailwind-11-step/tokens.cool.css   pin these ratios as run 1 — a ratio only says something against a previous row
     ds-loop guard on                                                               report high-severity findings after each Claude Code edit (never blocks)
 ```
@@ -655,7 +656,7 @@ Standard error: empty.
 
 ## Recorded engine audit
 
-Engine branch `codex/upstream-layer`, commit `e3274a502aa1bde70c316c8e761e5386efeb7ff7`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
+Engine branch `codex/upstream-layer`, commit `d43bda48e0af36ddd606b684b023eeac10dcda1b`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
 Audited `tokens.warm.css` SHA-256: `5e3fdb4e627ae5c4fb65b36c8106a7eaab9a63841b035c469a1e77dad4e0943a`.
 
@@ -671,7 +672,7 @@ Exit status: `1`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:af9dbd1b7329   adapter css-custom-props@0.3.0   config b158c121
+  version git:4204ec9a4d54   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   [LOW] color/near-duplicate-primitives
@@ -693,8 +694,7 @@ Exit status: `1`. Standard output, verbatim:
     ambiguous-share              0
 
   next
-    ds-loop fix foundations/color/options/tailwind-11-step/tokens.warm.css         60 mechanical edit(s) — provable from the code, dry run until --write
-    decide on the rest                                                             each remaining finding states its choice on its fix line
+    decide on the rest                                                             nothing here is mechanically provable — all 1 findings state their choice on the fix line
     ds-loop scorecard foundations/color/options/tailwind-11-step/tokens.warm.css   pin these ratios as run 1 — a ratio only says something against a previous row
     ds-loop guard on                                                               report high-severity findings after each Claude Code edit (never blocks)
 ```
@@ -703,7 +703,7 @@ Standard error: empty.
 
 ## Recorded engine audit
 
-Engine branch `codex/upstream-layer`, commit `e3274a502aa1bde70c316c8e761e5386efeb7ff7`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
+Engine branch `codex/upstream-layer`, commit `d43bda48e0af36ddd606b684b023eeac10dcda1b`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
 Audited `tokens.pure.css` SHA-256: `cc81a68fd4b9cb2ad477718ea93e77d8d4eec222a37ec7a02b64d940554f1071`.
 
@@ -719,7 +719,7 @@ Exit status: `1`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:af9dbd1b7329   adapter css-custom-props@0.3.0   config b158c121
+  version git:4204ec9a4d54   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   [LOW] color/near-duplicate-primitives
@@ -741,8 +741,7 @@ Exit status: `1`. Standard output, verbatim:
     ambiguous-share              0
 
   next
-    ds-loop fix foundations/color/options/tailwind-11-step/tokens.pure.css         60 mechanical edit(s) — provable from the code, dry run until --write
-    decide on the rest                                                             each remaining finding states its choice on its fix line
+    decide on the rest                                                             nothing here is mechanically provable — all 1 findings state their choice on the fix line
     ds-loop scorecard foundations/color/options/tailwind-11-step/tokens.pure.css   pin these ratios as run 1 — a ratio only says something against a previous row
     ds-loop guard on                                                               report high-severity findings after each Claude Code edit (never blocks)
 ```

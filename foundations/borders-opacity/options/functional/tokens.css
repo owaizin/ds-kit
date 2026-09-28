@@ -1,0 +1,14 @@
+/* Example DS — independently derived; see README for use and limits. */
+:root {
+  --ds-border-none: 0rem;
+  --ds-border-hairline: 0.0625rem;
+  --ds-border-strong: 0.125rem;
+  --ds-border-emphasis: 0.25rem;
+  --ds-border-style-solid: solid;
+  --ds-border-style-dashed: dashed;
+  --ds-border-style-dotted: dotted;
+  --ds-opacity-disabled: 0.48;
+  --ds-opacity-overlay: 0.48;
+  --ds-opacity-hover: 0.08;
+  --ds-opacity-pressed: 0.16;
+}

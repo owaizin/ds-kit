@@ -2,7 +2,7 @@
 
 Reusable records and CSS patterns for an agent helping a team establish or maintain a design system. Use this kit with **Design System Loop (`ds-loop`)** to connect measured findings to project decisions, implementation contracts, and verification.
 
-This local kit contains seven original templates, three typography options, two spacing options and four colour options. It has no reference components, patterns, bundles, CLI, or installer yet. Examples use invented “Example DS” names; they are not client evidence or production recommendations.
+This local kit contains seven original templates, 21 foundation options across ten categories. It has no reference components, patterns, bundles, CLI, or installer yet. Examples use invented “Example DS” names; they are not client evidence or production recommendations.
 
 ## Use with ds-loop
 
@@ -38,6 +38,18 @@ Run `node scripts/check-options.mjs` and `node --test scripts/check-options.test
 
 Colour options ship tokens.cool.css, tokens.warm.css and tokens.pure.css: import exactly one file, alongside its README.md, tokens.json and spec.md. Each neutral exposes stable names and both themes. Set data-theme="light" or "dark" on the document root, or omit it to follow the OS. Role tokens use var() aliases to palette steps. JSON resolves through variants[neutral][mode].tokens. All 672 declared contrast pairs pass; the 12 neutral-file audits have zero literal-duplicate findings, without suppressions. Low-severity palette diagnostics remain in the actual audits.
 
+Additional foundations (all values independently derived):
+
+- Radius: sharp, soft, round.
+- Elevation: shadow-led, border-led.
+- Motion: productive, expressive; duration and travel are removed under reduced motion.
+- Z-index: named-layers.
+- Breakpoints/grid: content-first, app-shell.
+- Borders/opacity: functional.
+- Focus/accessibility: visible-ring; both ring colours pass 3:1 against all four declared light/dark surfaces.
+
+Each uses the original four-file option layout, with native reference data, usage decisions, self-checks and recorded audits. [Browse the foundations](foundations/README.md). Zero audit findings describe the checks that ran, not full product or accessibility validation.
+
 ## Inspect the options
 
 Open [the self-contained specimen](specimens/index.html) locally. It offers real-size scales, side-by-side comparison, four applied compositions and per-option checks. Select typography, spacing, density, light/dark and a 375px sample width. No fonts or scripts are fetched. Samples use the selected colour option. The Current column accepts an audit JSON locally; the committed build includes invented Example DS evidence only.
@@ -46,7 +58,7 @@ Build with `node scripts/build-specimens.mjs`; verify with `node scripts/build-s
 
 ## Content folders
 
-[Foundations](foundations/README.md) contains the twelve named categories; typography, spacing and colour have the options above, while the other nine are reserved. [Component references](components/reference/README.md), [patterns](patterns/README.md), and [bundles](bundles/README.md) contain only folder descriptions. These reserved folders contain no product implementations.
+[Foundations](foundations/README.md) contains the twelve named categories; ten foundations have options, while iconography and layout-composition are reserved. [Component references](components/reference/README.md), [patterns](patterns/README.md), and [bundles](bundles/README.md) contain only folder descriptions. These reserved folders contain no product implementations.
 
 Read [SOURCES.md](SOURCES.md) before deriving or importing third-party material. Tailwind-derived token values carry a retained MIT notice; no third-party component implementations or font files are included.
 

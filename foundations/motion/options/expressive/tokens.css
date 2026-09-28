@@ -1,0 +1,17 @@
+/* Example DS — independently derived; see README for use and limits. */
+:root {
+  --ds-motion-fast: 120ms;
+  --ds-motion-standard: 240ms;
+  --ds-motion-deliberate: 400ms;
+  --ds-motion-ease-enter: cubic-bezier(0.2, 0, 0, 1);
+  --ds-motion-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ds-motion-distance: 1rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+  --ds-motion-fast: 0ms;
+  --ds-motion-standard: 0ms;
+  --ds-motion-deliberate: 0ms;
+  --ds-motion-distance: 0rem;
+  }
+}

@@ -93,3 +93,10 @@ Use system stacks without bundling font files, or fonts verified under **SIL Ope
 - Reviewed Polaris code, icons and tokens are restricted and cannot populate this general-purpose kit under the permissive-sources policy.
 - Fluent theme/token code is MIT; referenced fonts/icons require separate checks.
 - APG cite-only handling and awesome-design-md principles-only handling are deliberate kit limits, not descriptions of their underlying licence permissions.
+
+
+## Additional C2 foundations — 2026-09-28
+
+Radius, elevation, motion, z-index, breakpoints-grid, borders-opacity and focus-accessibility values are independently derived; no third-party token values or text are imported. Each option records its derivation per token. Carbon's [motion overview](https://carbondesignsystem.com/elements/motion/overview/) informs only the productive/expressive distinction, in original prose. The source register's Carbon code licence does not turn website prose into reusable copy.
+
+W3C [non-text contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html) and [interaction animation](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html) are cited for measurement and behavior, not copied as kit text. Consulted 2026-09-28. These references do not certify the kit or every consuming product.

@@ -1,0 +1,7 @@
+/* Example DS — independently derived; see README for use and limits. */
+:root {
+  --ds-radius-small: 0rem;
+  --ds-radius-medium: 0.125rem;
+  --ds-radius-large: 0.25rem;
+  --ds-radius-full: 624.9375rem;
+}

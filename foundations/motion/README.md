@@ -1,1 +1,3 @@
-Reserved for motion foundation choices; see options/ when C2 content is authored.
+# motion
+
+Options: productive and expressive timings with reduced-motion overrides. See [options](options/) for values, derivation, platform limits, specs and actual audits. [Specimens](../../specimens/index.html).

@@ -26,12 +26,13 @@ for (const foundation of readdirSync(join(root, 'foundations'), { withFileTypes:
     } catch(error) { checks={pass:false,count:0,message:error.message};failed=true; }
     const audit = [...doc.matchAll(/```text\n([\s\S]*?)\n```/g)].map(m=>m[1]).join('\n\n') || 'No recorded audit';
     if(data.foundation==='color') { data.contrastPairs=data.contrastPairs.map(p=>({...p,ratio:contrast(resolveColor(data.variants[p.neutral][p.mode].tokens,p.fg),resolveColor(data.variants[p.neutral][p.mode].tokens,p.bg))})); if(checks.pass)checks.message='Theme CSS/JSON parity, palette aliases, stable names, source fields, six variants and '+data.contrastPairs.length+' declared contrast pairs.'; }
+    if(data.contract==='foundation-v1'&&checks.pass)checks.message='Foundation constraints, CSS/JSON parity, native mappings, source fields and audit snapshot.';
     options.push({...data,checks,hash,audit,engineExit:Math.max(...[...doc.matchAll(/Exit status: `(\d+)`/g)].map(m=>Number(m[1])))});
   }
 }
 if (!options.length) throw new Error('No options found');
 const css = readFileSync(join(root,'scripts/specimen.css'),'utf8');
-const js = readFileSync(join(root,'scripts/specimen-ui.js'),'utf8');
+const js = readFileSync(join(root,'scripts/foundation-ui.js'),'utf8')+'\n'+readFileSync(join(root,'scripts/specimen-ui.js'),'utf8');
 const current = readCurrentAudit(JSON.parse(readFileSync(join(root,'fixtures/current/audit.json'),'utf8')));
 const currentReader = readFileSync(join(root,'scripts/current-audit.mjs'),'utf8').replace('export function','function');
 const serialized = JSON.stringify(options).replaceAll('<','\\u003c');
@@ -41,11 +42,12 @@ const html = `<!doctype html>
 <link rel="icon" href="data:,"><title>Example DS — Foundation specimens</title><style>${css}</style></head>
 <body><a class="skip" href="#view">Skip to specimens</a>
 <header><div class="brand"><span class="mark" aria-hidden="true">E<span>↗</span></span><div><strong>Example DS</strong><span class="kicker">FOUNDATION LAB / 01</span></div></div><span class="offline">● Local specimen · no network</span></header>
-<section class="intro"><div><p class="eyebrow">INSPECT THE VALUES. TRY THE COMPOSITIONS.</p><h1>Foundation specimens<span class="dot">.</span></h1><p>Nine options. The same content. A place to see what changes.</p></div><div class="scope-note">System fonts only. Samples use the selected colour option. Tool controls remain separate from foundation values.</div></section>
+<section class="intro"><div><p class="eyebrow">INSPECT THE VALUES. TRY THE COMPOSITIONS.</p><h1>Foundation specimens<span class="dot">.</span></h1><p>${options.length} options across ${new Set(options.map(o=>o.foundation)).size} foundations. Inspect values and behavior.</p></div><div class="scope-note">System fonts only. Samples use the selected colour option. Tool controls remain separate from foundation values.</div></section>
 <nav aria-label="Specimen views"><button data-view="scale" aria-pressed="true">01 <span>Scale</span></button><button data-view="compare" aria-pressed="false">02 <span>Compare</span></button><button data-view="applied" aria-pressed="false">03 <span>Applied</span></button><button data-view="checks" aria-pressed="false">04 <span>Checks</span></button></nav>
 <section class="controls" aria-label="Specimen controls">
 <label>Typography<select id="type"></select></label><label>Spacing<select id="space"></select></label>
 <label>Colour<select id="color"></select></label><label>Neutral<select id="neutral"><option>cool</option><option>warm</option><option>pure</option></select></label>
+<label id="extra-option-label" hidden>Foundation option<select id="extra-option"></select></label>
 <label>Density<select id="density"><option value="comfortable">Comfortable</option><option value="compact">Compact</option></select></label>
 <label>Theme<select id="theme"><option value="light">Light</option><option value="dark">Dark</option></select></label>
 <label class="width-toggle"><input id="narrow" type="checkbox"> 375px sample width</label>

@@ -1,0 +1,12 @@
+/* Example DS — independently derived; see README for use and limits. */
+:root {
+  --ds-focus-ring: #777777;
+  --ds-focus-ring-alternate: #808080;
+  --ds-focus-width: 0.125rem;
+  --ds-focus-offset: 0.125rem;
+  --ds-focus-target-min: 2.75rem;
+  --ds-focus-surface-light: #ffffff;
+  --ds-focus-surface-light-muted: #f3f4f6;
+  --ds-focus-surface-dark: #111111;
+  --ds-focus-surface-dark-muted: #202020;
+}

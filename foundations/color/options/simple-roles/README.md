@@ -637,7 +637,7 @@ Computed using [WCAG 2 relative luminance](https://www.w3.org/TR/WCAG22/#dfn-rel
 <!-- audit:start -->
 ## Recorded engine audit
 
-Engine branch `codex/upstream-layer`, commit `e3274a502aa1bde70c316c8e761e5386efeb7ff7`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
+Engine branch `codex/upstream-layer`, commit `d43bda48e0af36ddd606b684b023eeac10dcda1b`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
 Audited `tokens.cool.css` SHA-256: `98d763483e0954416a3ad7d71d14f0f53fffd80274019e04017382932711c13e`.
 
@@ -653,7 +653,7 @@ Exit status: `1`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:af9dbd1b7329   adapter css-custom-props@0.3.0   config b158c121
+  version git:4204ec9a4d54   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   [LOW] color/near-duplicate-primitives
@@ -675,8 +675,7 @@ Exit status: `1`. Standard output, verbatim:
     ambiguous-share              0
 
   next
-    ds-loop fix foundations/color/options/simple-roles/tokens.cool.css         60 mechanical edit(s) — provable from the code, dry run until --write
-    decide on the rest                                                         each remaining finding states its choice on its fix line
+    decide on the rest                                                         nothing here is mechanically provable — all 1 findings state their choice on the fix line
     ds-loop scorecard foundations/color/options/simple-roles/tokens.cool.css   pin these ratios as run 1 — a ratio only says something against a previous row
     ds-loop guard on                                                           report high-severity findings after each Claude Code edit (never blocks)
 ```
@@ -685,7 +684,7 @@ Standard error: empty.
 
 ## Recorded engine audit
 
-Engine branch `codex/upstream-layer`, commit `e3274a502aa1bde70c316c8e761e5386efeb7ff7`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
+Engine branch `codex/upstream-layer`, commit `d43bda48e0af36ddd606b684b023eeac10dcda1b`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
 Audited `tokens.warm.css` SHA-256: `3d839b7c1bf67124525e69b62b19dc17dd6122088eaeae00ce30e469475fd9b9`.
 
@@ -701,7 +700,7 @@ Exit status: `1`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:af9dbd1b7329   adapter css-custom-props@0.3.0   config b158c121
+  version git:4204ec9a4d54   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   [LOW] color/near-duplicate-primitives
@@ -723,8 +722,7 @@ Exit status: `1`. Standard output, verbatim:
     ambiguous-share              0
 
   next
-    ds-loop fix foundations/color/options/simple-roles/tokens.warm.css         60 mechanical edit(s) — provable from the code, dry run until --write
-    decide on the rest                                                         each remaining finding states its choice on its fix line
+    decide on the rest                                                         nothing here is mechanically provable — all 1 findings state their choice on the fix line
     ds-loop scorecard foundations/color/options/simple-roles/tokens.warm.css   pin these ratios as run 1 — a ratio only says something against a previous row
     ds-loop guard on                                                           report high-severity findings after each Claude Code edit (never blocks)
 ```
@@ -733,7 +731,7 @@ Standard error: empty.
 
 ## Recorded engine audit
 
-Engine branch `codex/upstream-layer`, commit `e3274a502aa1bde70c316c8e761e5386efeb7ff7`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
+Engine branch `codex/upstream-layer`, commit `d43bda48e0af36ddd606b684b023eeac10dcda1b`; Node v22.17.1. Run 2026-09-28. The reported kit Git revision identifies the parent of these working-tree changes. Audited file content is pinned below. Kit ds-loop.config.json declares ^--ds- as upstream. No suppression is applied.
 
 Audited `tokens.pure.css` SHA-256: `65251c09f12c8ffbb2554399f0201369898907079e12da7daf583a3bb018427c`.
 
@@ -749,7 +747,7 @@ Exit status: `1`. Standard output, verbatim:
   config: /Users/owais/Documents/GitHub/ds-kit/ds-loop.config.json
 
   ds-loop audit — ds-kit  ·  target: all  ·  live scan
-  version git:af9dbd1b7329   adapter css-custom-props@0.3.0   config b158c121
+  version git:4204ec9a4d54   adapter css-custom-props@0.3.0   config b158c121
   14 rules run
 
   [LOW] color/near-duplicate-primitives
@@ -771,8 +769,7 @@ Exit status: `1`. Standard output, verbatim:
     ambiguous-share              0
 
   next
-    ds-loop fix foundations/color/options/simple-roles/tokens.pure.css         60 mechanical edit(s) — provable from the code, dry run until --write
-    decide on the rest                                                         each remaining finding states its choice on its fix line
+    decide on the rest                                                         nothing here is mechanically provable — all 1 findings state their choice on the fix line
     ds-loop scorecard foundations/color/options/simple-roles/tokens.pure.css   pin these ratios as run 1 — a ratio only says something against a previous row
     ds-loop guard on                                                           report high-severity findings after each Claude Code edit (never blocks)
 ```

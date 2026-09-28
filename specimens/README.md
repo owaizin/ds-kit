@@ -72,3 +72,33 @@ Fresh browser captures:
 - [Applied, light](screenshots/colour-aliases/applied-light.png) · [Applied, dark](screenshots/colour-aliases/applied-dark.png)
 - [Compare](screenshots/colour-aliases/compare.png) · [Checks](screenshots/colour-aliases/checks.png)
 - [375px sample](screenshots/colour-aliases/narrow-sample.png) · [Theme cascade](screenshots/colour-aliases/theme-cascade.png)
+
+## Additional foundations — 2026-09-28
+
+Twelve new options cover radius (sharp/soft/round), elevation (shadow-led/border-led), motion (productive/expressive), z-index (named-layers), breakpoints-grid (content-first/app-shell), borders-opacity (functional), and focus-accessibility (visible-ring). This makes 21 options across ten foundations; iconography and layout-composition remain reserved.
+
+Each new option has Scale, Compare and Applied views. Applied is a foundation-specific working specimen: radius geometry, layered surfaces, a motion toggle, a local stack, an adjustable grid, borders/opacity, or keyboard focus. The existing four product compositions remain available for typography, spacing and colour. Current-project audit comparison still covers those original three foundations only.
+
+Observed over local HTTP in the in-app browser:
+
+- All 24 new option × light/dark applied combinations rendered without document overflow; [results](screenshots/foundations/render-checks.json). All seven foundation comparisons rendered the expected 3/2/2/1/2/1/1 option columns.
+- All seven applied foundation views fit an actual 320px viewport without horizontal page overflow; [measurements](screenshots/foundations/narrow-checks.json). Wide grids and comparisons scroll within their own regions.
+- Productive motion changed to Selected and translated 8px with a computed 0.16s transition. Checking reduced-motion simulation retained Selected but changed transition to 0s and transform to none. No autoplay is present.
+- Keyboard Tab reached the alternate ring on light and the primary ring on dark, with `:focus-visible`, a 2px outline and 2px offset. Control minimum height was 44px. All eight declared ring/surface pairs pass 3:1; minimum 3.588719:1. This threshold follows [WCAG non-text contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html); it is not a claim of full accessibility compliance.
+- App-shell at a simulated 1600px viewport showed 12 columns and a 1440px inner grid. At 320px it showed one column and 320px content. The source thresholds are numerically checked for order and native parity.
+- Checks displayed 21 passing rows. No warning/error console messages observed.
+
+Verification: 25 Node tests pass, all 21 option self-checks pass, and the committed HTML matches its build inputs. All 12 new CSS files have zero engine findings using `codex/upstream-layer` at `d43bda4`; raw output and file hashes are in each option README. This only covers the engine's supported checks. Colour still has low proximity findings, including the explicitly retained Tailwind neutral-50/100 pair. All 29 option CSS files were re-audited after the upstream fixer correction; none offers an upstream-internal fallback fix.
+
+Not verified: native rendering, screen-reader operation, forced-colours rendering, or a real OS reduced-motion preference toggle. The OS media-query rules are checked in CSS; the reduced-motion checkbox was tested in the rendered specimen. Consumers still need to test their surfaces, clipping, zoom, motion and interaction semantics.
+
+Screenshots:
+
+- [Radius comparison](screenshots/foundations/radius-compare.png)
+- [Elevation comparison](screenshots/foundations/elevation-compare.png)
+- [Motion comparison](screenshots/foundations/motion-compare.png) · [Reduced-motion state](screenshots/foundations/motion-reduced.png)
+- [Z-index comparison](screenshots/foundations/z-index-compare.png)
+- [Grid comparison](screenshots/foundations/grid-compare.png) · [Wide grid](screenshots/foundations/grid-applied.png)
+- [Borders/opacity](screenshots/foundations/borders-compare.png)
+- [Focus comparison](screenshots/foundations/focus-compare.png) · [Keyboard focus](screenshots/foundations/focus-keyboard.png) · [320px focus](screenshots/foundations/focus-narrow.png)
+- [All 21 checks](screenshots/foundations/checks.png)

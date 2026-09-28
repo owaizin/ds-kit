@@ -1,0 +1,146 @@
+[
+  {
+    "hasContent": true,
+    "option": "radius/round",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "radius/round",
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "hasContent": true,
+    "option": "radius/sharp",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "radius/sharp",
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "hasContent": true,
+    "option": "radius/soft",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "radius/soft",
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "hasContent": true,
+    "option": "elevation/border-led",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "elevation/border-led",
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "hasContent": true,
+    "option": "elevation/shadow-led",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "elevation/shadow-led",
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "hasContent": true,
+    "option": "motion/expressive",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "motion/expressive",
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "hasContent": true,
+    "option": "motion/productive",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "motion/productive",
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "hasContent": true,
+    "option": "z-index/named-layers",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "z-index/named-layers",
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "hasContent": true,
+    "option": "breakpoints-grid/app-shell",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "breakpoints-grid/app-shell",
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "hasContent": true,
+    "option": "breakpoints-grid/content-first",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "breakpoints-grid/content-first",
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "hasContent": true,
+    "option": "borders-opacity/functional",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "borders-opacity/functional",
+    "overflow": false,
+    "theme": "dark"
+  },
+  {
+    "hasContent": true,
+    "option": "focus-accessibility/visible-ring",
+    "overflow": false,
+    "theme": "light"
+  },
+  {
+    "hasContent": true,
+    "option": "focus-accessibility/visible-ring",
+    "overflow": false,
+    "theme": "dark"
+  }
+]

@@ -1,1 +1,3 @@
-Reserved for radius foundation choices; see options/ when C2 content is authored.
+# radius
+
+Options: sharp, soft and round corner sets. See [options](options/) for values, derivation, platform limits, specs and actual audits. [Specimens](../../specimens/index.html).

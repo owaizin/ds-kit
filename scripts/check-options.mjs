@@ -1,3 +1,4 @@
+import {foundationInventory,validateFoundation} from './check-foundations.mjs';
 import { tokenFiles } from './color-contract.mjs';
 import { validateColor } from './check-color.mjs';
 import assert from 'node:assert/strict';
@@ -20,6 +21,7 @@ export function validate(data, css) {
   assert.equal(data.format, 'ds-kit-option-v1');
   if(data.foundation !== 'color') assert.equal(data.rootFontSizePx, 16, 'px equivalence tables assume a 16px reference root');
   if(data.foundation === 'color') return validateColor(data,css);
+  if(data.contract==='foundation-v1')return validateFoundation(data,css);
   const clean = css.replace(/\/\*[\s\S]*?\*\//g, '').trim();
   const block = /^:root\s*\{([^{}]*)\}$/.exec(clean);
   assert.ok(block, 'CSS must be a single :root literal-token block');
@@ -123,7 +125,7 @@ export function validate(data, css) {
 
 export function checkAll(directory = root) {
   let count = 0;
-  for (const [foundation, names] of Object.entries({ typography: ['compact-ui', 'default-ui', 'editorial'], spacing: ['base-4', 'base-8'], color: ['radix-12-step','tailwind-11-step','functional-roles','simple-roles'] })) {
+  for (const [foundation, names] of Object.entries({ typography: ['compact-ui', 'default-ui', 'editorial'], spacing: ['base-4', 'base-8'], color: ['radix-12-step','tailwind-11-step','functional-roles','simple-roles'], ...foundationInventory })) {
     const options = join(directory, 'foundations', foundation, 'options');
     const actual = readdirSync(options, { withFileTypes: true }).filter((entry) => entry.isDirectory()).map((entry) => entry.name).sort();
     assert.deepEqual(actual, [...names].sort(), 'Unexpected option inventory');

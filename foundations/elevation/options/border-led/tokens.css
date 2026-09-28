@@ -1,0 +1,10 @@
+/* Example DS — independently derived; see README for use and limits. */
+:root {
+  --ds-elevation-raised: none;
+  --ds-elevation-edge-raised: 0.0625rem;
+  --ds-elevation-overlay: none;
+  --ds-elevation-edge-overlay: 0.0625rem;
+  --ds-elevation-modal: none;
+  --ds-elevation-edge-modal: 0.125rem;
+  --ds-elevation-edge-color: #777777;
+}
