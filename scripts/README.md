@@ -11,6 +11,11 @@ The checker verifies the 22-option inventory, four-file typography/spacing layou
 
 `tokens.json` uses a small kit-local interchange shape (`ds-kit-option-v1`), not DTCG and not the future `.ds-kit.json` manifest. For typography and spacing, `tokens` contains the exact CSS string values with type/source/derivation; `roles`, `scale`, and `density` reference those tokens. Every rem token also has numeric `px` at the 16px reference root. `native.roles` contains numeric text styles; `native.steps` and `native.density` contain numeric spacing. Native consumers still choose platform fonts and preserve user text scaling. No current ds-loop JSON-adapter compatibility is claimed.
 
+For registry/catalog extraction or automatic refresh work, follow the
+[registry guidelines](../docs/registry-guidelines.md). These scripts check token
+and specimen contracts; the kit currently ships no registry generator or freshness
+check for registry output.
+
 The script does not validate rendered typography, font metrics, translations, arbitrary rendered contrast, touch targets, native scaling or product fit. It checks provenance is present, not whether a licence claim is true. Source checks and actual engine audit records live in the option READMEs and SOURCES.md. The C6/A10 engine checks remain future work; the local specimen builder is documented below.
 
 ## Re-record engine evidence

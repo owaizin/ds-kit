@@ -55,6 +55,11 @@ Every option passes its self-checks: scales that increase, CSS and JSON that agr
 
 The ds-loop skill (`node_modules/ds-loop/skill/SKILL.md`, playbooks `foundations` and `transform`) walks an agent through the same steps.
 
+For a kit catalog, component metadata or registry refresh work, read the
+[registry guidelines](docs/registry-guidelines.md). They apply ds-loop's registry
+procedure to the kit's actual sources and distinguish foundation recipes from
+implemented component APIs. Registry generation remains a separate implementation.
+
 ## Check it yourself
 
 Node 22 or later, no dependencies:

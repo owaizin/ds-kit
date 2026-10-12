@@ -19,6 +19,8 @@
 
 Use [specimens](../specimens/index.html) to inspect, compare and try the options. Record adoption decisions in the project's own documentation. Current-project comparisons remain limited to extracted typography, spacing and colour values.
 
+When cataloging these sources, follow the [registry guidelines](../docs/registry-guidelines.md): preserve option provenance and distinguish authored guidance from token options and component APIs.
+
 ## Compose an application
 
 Read [layout and composition](layout-composition/README.md) before assembling a screen, then the relevant [recipe](../patterns/README.md) and foundation usage guides. Each guide connects the existing options to hierarchy, density, responsive behavior and rendered checks. The options still supply values and provenance; recipes assign them product jobs. [Original screens and validation](../specimens/application-ui/README.md).
