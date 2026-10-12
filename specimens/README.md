@@ -111,3 +111,7 @@ Sticky is now 100 and dropdown 200 in the shared-root specimen, so a menu can ap
 
 - [Blue focus ring](screenshots/foundations/focus-brand-blue.png)
 - [Dropdown above sticky](screenshots/foundations/z-index-reordered.png)
+
+## Application composition examples
+
+[Three original screens](application-ui/index.html) exercise the authored foundation guidance and collection/settings/detail recipes. These are separate from the generated option specimen so the existing builder and its token inventory remain unchanged. [Implementation and run instructions](application-ui/README.md), [benchmark register](../docs/application-ui-benchmarks.md), [validation record](../docs/application-ui-validation.md).

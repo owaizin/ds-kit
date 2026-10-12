@@ -75,6 +75,10 @@ Use independently expressed general principles, with a link to the specific sour
 | awesome-design-md | [LICENSE @ f6961238](https://github.com/VoltAgent/awesome-design-md/blob/f6961238d5cddcf8042a74a70fc400ec67181abb/LICENSE) — MIT for the repository; not proof of rights to every represented brand's assets/content. | Inspiration and independently expressed principles only, despite repository MIT; no imported DESIGN.md files, values or copy. |
 | [Material 3 guidelines](https://m3.material.io/) | Rendered site footer points to [Google Terms](https://policies.google.com/terms), which retain Google IP; no Apache-2.0 grant for guideline prose established. Separate from the pinned Material Web code above. | Cite and independently explain a principle only; no guideline text, token tables or design assets imported. |
 
+## Application UI observations — 2026-10-02
+
+The user's local `application-ui-v4.zip` was privately inspected as a visual benchmark. The [local source register](docs/application-ui-benchmarks.md) records the exact archive and selected HTML hashes, observations, independently written destinations and limits. No commercial source code, copied values, screenshots, prose or assets are distributed. The kit's original foundation guidance, recipes and fictional Fieldwork examples select existing kit values and use independently authored HTML/CSS/JS. Static observations are distinguished from our own interaction recommendations. This does not change the permissive-source token register or the commercial-content exclusion below.
+
 ## Excluded material
 
 **No Tailwind Plus or Catalyst content**: no code, templates, copied values, screenshots, or renamed derivatives, regardless of purchased access. Tailwind CSS's MIT licence does not cover those products. Client names, code, measurements, screenshots and renamed client assets are also excluded.

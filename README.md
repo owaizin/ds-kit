@@ -30,6 +30,8 @@ open ds-kit/specimens/index.html
 
 Every option passes its self-checks: scales that increase, CSS and JSON that agree, 672 declared colour contrast pairs, focus rings at 3:1 or better on light and dark surfaces. Each README also records a real `ds-loop audit` of its CSS.
 
+**Application composition guidance** across all twelve foundation areas, plus [collection, settings and detail recipes](patterns/README.md). Start with the [composition guide](foundations/layout-composition/README.md), then open the [three original application screens](specimens/application-ui/index.html). They exercise filtering, validation, review feedback, narrow layouts and light/dark themes using the kit alone. [Benchmark evidence](docs/application-ui-benchmarks.md) and [validation](docs/application-ui-validation.md) record what was observed.
+
 **Seven templates** for the records a design-system change needs:
 
 | When | Template |
@@ -67,7 +69,7 @@ node scripts/build-specimens.mjs --check
 
 ## Limits
 
-- Iconography and layout-composition have folders but no options yet. Component reference contracts, patterns and preset bundles are not written yet.
+- Iconography and layout-composition have authored use guidance but no token/asset options. Three application patterns are included; component reference contracts and preset bundles remain unwritten.
 - Numbers pass checks; they don't prove an option suits your product. That's a decision for your team.
 - React Native values are checked numerically, not rendered.
 

@@ -1,1 +1,3 @@
-Reserved for independently authored or permitted iconography options with provenance and tradeoffs; no options are included.
+# Icon options
+
+No asset or token option is shipped. The [iconography guide](../README.md) describes selection, alignment, naming and checks for the consuming product's chosen family. No commercial icon code or assets are included.

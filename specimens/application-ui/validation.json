@@ -1,0 +1,790 @@
+{
+  "checkedAt": "2026-10-02T16:50:06.846Z",
+  "browser": "154.0.8037.95",
+  "sourceHashes": {
+    "collection.html": "c1b76ddbdf64713e0e50458cc64371cab39e7654ae87421c7d7b92184fd6e067",
+    "settings.html": "eb8742958026ccdcd3add9f19ef45503554913fd0c339d4e911834213a0a3851",
+    "detail.html": "cd5fbe01515b9138d7201b19c46bb114db9c3d9e7b8ba17595464c0b517851ca",
+    "screens.css": "a381b1f5f5937c18dedc2dc67f760273be114e106f0156d9e3b004aa18931482",
+    "screens.js": "b4ac76bf951c2212fcadba0d6d173d2f3d0745ba5352e118195138565eded4eb"
+  },
+  "cases": [
+    {
+      "name": "collection",
+      "width": 320,
+      "theme": "light",
+      "scrollWidth": 320,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 288,
+          "content": 289,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 320,
+      "theme": "dark",
+      "scrollWidth": 320,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 288,
+          "content": 289,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 375,
+      "theme": "light",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 343,
+          "content": 344,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 375,
+      "theme": "dark",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 343,
+          "content": 344,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 768,
+      "theme": "light",
+      "scrollWidth": 768,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 736,
+          "content": 737,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 768,
+      "theme": "dark",
+      "scrollWidth": 768,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 736,
+          "content": 737,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 769,
+      "theme": "light",
+      "scrollWidth": 769,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 465,
+          "content": 466,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 769,
+      "theme": "dark",
+      "scrollWidth": 769,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 465,
+          "content": 466,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 1024,
+      "theme": "light",
+      "scrollWidth": 1024,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 720,
+          "content": 721,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 1024,
+      "theme": "dark",
+      "scrollWidth": 1024,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 720,
+          "content": 721,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 1440,
+      "theme": "light",
+      "scrollWidth": 1440,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 1136,
+          "content": 1137,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 1440,
+      "theme": "dark",
+      "scrollWidth": 1440,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 1136,
+          "content": 1137,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 375,
+      "theme": "light",
+      "textScale": "200%",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "28px",
+      "titleSize": "60px",
+      "minControlHeight": 88,
+      "minimumTableWidth": [
+        {
+          "width": 311,
+          "content": 451,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 1440,
+      "theme": "light",
+      "textScale": "200%",
+      "scrollWidth": 1440,
+      "targetToken": "2.75rem",
+      "bodySize": "28px",
+      "titleSize": "60px",
+      "minControlHeight": 88,
+      "minimumTableWidth": [
+        {
+          "width": 832,
+          "content": 854,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "settings",
+      "width": 320,
+      "theme": "light",
+      "scrollWidth": 320,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 320,
+      "theme": "dark",
+      "scrollWidth": 320,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 375,
+      "theme": "light",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 375,
+      "theme": "dark",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 768,
+      "theme": "light",
+      "scrollWidth": 768,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 768,
+      "theme": "dark",
+      "scrollWidth": 768,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 769,
+      "theme": "light",
+      "scrollWidth": 769,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 769,
+      "theme": "dark",
+      "scrollWidth": 769,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 1024,
+      "theme": "light",
+      "scrollWidth": 1024,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 1024,
+      "theme": "dark",
+      "scrollWidth": 1024,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 1440,
+      "theme": "light",
+      "scrollWidth": 1440,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 1440,
+      "theme": "dark",
+      "scrollWidth": 1440,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 375,
+      "theme": "light",
+      "textScale": "200%",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "28px",
+      "titleSize": "60px",
+      "minControlHeight": 88,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "settings",
+      "width": 1440,
+      "theme": "light",
+      "textScale": "200%",
+      "scrollWidth": 1440,
+      "targetToken": "2.75rem",
+      "bodySize": "28px",
+      "titleSize": "60px",
+      "minControlHeight": 88,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "detail",
+      "width": 320,
+      "theme": "light",
+      "scrollWidth": 320,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 288,
+          "content": 288,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 320,
+      "theme": "dark",
+      "scrollWidth": 320,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 288,
+          "content": 288,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 375,
+      "theme": "light",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 343,
+          "content": 343,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 375,
+      "theme": "dark",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 343,
+          "content": 343,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 768,
+      "theme": "light",
+      "scrollWidth": 768,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 736,
+          "content": 736,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 768,
+      "theme": "dark",
+      "scrollWidth": 768,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 736,
+          "content": 736,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 769,
+      "theme": "light",
+      "scrollWidth": 769,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 193,
+          "content": 241,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 769,
+      "theme": "dark",
+      "scrollWidth": 769,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 193,
+          "content": 241,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 1024,
+      "theme": "light",
+      "scrollWidth": 1024,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 448,
+          "content": 448,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 1024,
+      "theme": "dark",
+      "scrollWidth": 1024,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 448,
+          "content": 448,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 1440,
+      "theme": "light",
+      "scrollWidth": 1440,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 725,
+          "content": 725,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 1440,
+      "theme": "dark",
+      "scrollWidth": 1440,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 725,
+          "content": 725,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 375,
+      "theme": "light",
+      "textScale": "200%",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "28px",
+      "titleSize": "60px",
+      "minControlHeight": 88,
+      "minimumTableWidth": [
+        {
+          "width": 311,
+          "content": 463,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "width": 1440,
+      "theme": "light",
+      "textScale": "200%",
+      "scrollWidth": 1440,
+      "targetToken": "2.75rem",
+      "bodySize": "28px",
+      "titleSize": "60px",
+      "minControlHeight": 88,
+      "minimumTableWidth": [
+        {
+          "width": 288,
+          "content": 463,
+          "name": "Equipment readings"
+        }
+      ]
+    },
+    {
+      "name": "collection",
+      "width": 375,
+      "theme": "light",
+      "content": "long title/ID/help",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 343,
+          "content": 344,
+          "name": "Site inspection schedule"
+        }
+      ]
+    },
+    {
+      "name": "settings",
+      "width": 375,
+      "theme": "light",
+      "content": "long title/ID/help",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": []
+    },
+    {
+      "name": "detail",
+      "width": 375,
+      "theme": "light",
+      "content": "long title/ID/help",
+      "scrollWidth": 375,
+      "targetToken": "2.75rem",
+      "bodySize": "14px",
+      "titleSize": "30px",
+      "minControlHeight": 44,
+      "minimumTableWidth": [
+        {
+          "width": 343,
+          "content": 343,
+          "name": "Equipment readings"
+        }
+      ]
+    }
+  ],
+  "behavior": [
+    "Collection search/status intersection, empty results/reset/focus, mobile navigation to settings",
+    "Settings invalid fields/focus/value retention, checkbox/save announcement, discard restore, section navigation marker",
+    "Detail review state, visible/live feedback and duplicate-action prevention",
+    "Keyboard skip link/checkbox/focus ring, forced-colour outline and actual reduced-motion transition",
+    "Theme-swap suppression at 10% playback, hover restoration, rapid-flip cleanup and semibold-matched icon strokes"
+  ],
+  "contrast": [
+    {
+      "name": "collection",
+      "theme": "light",
+      "hoverPrimaryRatio": 4.765669927751281,
+      "textSamples": 90,
+      "minTextRatio": 4.765669927751281,
+      "boundarySamples": 11,
+      "minBoundaryRatio": 3.5990832069791074,
+      "focusCanvasRatio": 4.258711484380331
+    },
+    {
+      "name": "collection",
+      "theme": "dark",
+      "hoverPrimaryRatio": 5.0691381580986805,
+      "textSamples": 90,
+      "minTextRatio": 5.0691381580986805,
+      "boundarySamples": 11,
+      "minBoundaryRatio": 3.4324773970874825,
+      "focusCanvasRatio": 3.9284865038887453
+    },
+    {
+      "name": "settings",
+      "theme": "light",
+      "hoverPrimaryRatio": 4.765669927751281,
+      "textSamples": 29,
+      "minTextRatio": 4.765669927751281,
+      "boundarySamples": 7,
+      "minBoundaryRatio": 3.5990832069791074,
+      "focusCanvasRatio": 4.258711484380331
+    },
+    {
+      "name": "settings",
+      "theme": "dark",
+      "hoverPrimaryRatio": 5.0691381580986805,
+      "textSamples": 29,
+      "minTextRatio": 5.0691381580986805,
+      "boundarySamples": 7,
+      "minBoundaryRatio": 3.4324773970874825,
+      "focusCanvasRatio": 3.9284865038887453
+    },
+    {
+      "name": "detail",
+      "theme": "light",
+      "hoverPrimaryRatio": 4.765669927751281,
+      "textSamples": 42,
+      "minTextRatio": 4.765669927751281,
+      "boundarySamples": 2,
+      "minBoundaryRatio": 3.691062979074408,
+      "focusCanvasRatio": 4.258711484380331
+    },
+    {
+      "name": "detail",
+      "theme": "dark",
+      "hoverPrimaryRatio": 5.0691381580986805,
+      "textSamples": 42,
+      "minTextRatio": 5.0691381580986805,
+      "boundarySamples": 2,
+      "minBoundaryRatio": 3.47043490094636,
+      "focusCanvasRatio": 3.9284865038887453
+    }
+  ],
+  "limits": [
+    "Solo informed visual comparison, not blind preference testing",
+    "No native or screen-reader session",
+    "No production backend or persistence",
+    "Contrast samples cover rendered text and control/focus pairs in these examples only"
+  ],
+  "polish": {
+    "themeSwitchTransitions": 0,
+    "playbackRate": 0.1,
+    "iconStyle": {
+      "stroke": "2px",
+      "vectorEffect": "non-scaling-stroke",
+      "textWeight": "600"
+    },
+    "hoverTransition": [
+      {
+        "property": "background-color",
+        "duration": 80,
+        "easing": "cubic-bezier(0.2, 0, 0, 1)"
+      }
+    ],
+    "rapidFlips": "No override left behind; selectors match final theme"
+  },
+  "errors": []
+}
